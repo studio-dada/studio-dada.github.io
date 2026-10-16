@@ -2102,8 +2102,7 @@
     const home=document.getElementById("home"), hero=v.closest(".lp-hero"), btn=document.getElementById("lpPause");
     const tallQ=window.matchMedia("(max-aspect-ratio:1/1)"), rm=window.matchMedia("(prefers-reduced-motion:reduce)");
     const saveData=!!(navigator.connection&&navigator.connection.saveData);
-    let paused=rm.matches||saveData, inView=true, ready=document.readyState==="complete";
-    v.muted=true; v.defaultMuted=true;
+    let paused=rm.matches||saveData, inView=true, ready=document.readyState==="complete";    v.muted=true; v.defaultMuted=true;
     function playing(){ return ready && !paused && inView && !document.hidden && home.classList.contains("active"); }
     function label(){
       btn.setAttribute("aria-pressed",String(paused));
@@ -2112,7 +2111,7 @@
     }
     function sync(){
       if(!playing()){ if(!v.paused) v.pause(); return; }
-      const want=tallQ.matches ? v.dataset.tall : v.dataset.wide;
+      const want=(tallQ.matches&&v.dataset.tall)||v.dataset.wide;   // 세로판이 없으면(공유용 파일) 가로판
       if(v.dataset.cur!==want){ v.classList.remove("on"); v.dataset.cur=want; v.src=want; }
       const p=v.play();
       if(p&&p.catch) p.catch(e=>{ if(e&&e.name==="NotAllowedError"){ paused=true; label(); } });

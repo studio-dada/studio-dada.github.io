@@ -1113,6 +1113,21 @@
     fit();
   })();
 </script>
+
+<style id="design-fields">
+  /* ═══════════ 설계·시공: 분야 세 칸 ═══════════ */
+  .dd-fields{list-style:none;margin:40px 0 0;padding:0 0 88px;display:grid;grid-template-columns:repeat(3,1fr);gap:0 28px;counter-reset:dd;}
+  .dd-fields li{counter-increment:dd;border-top:1px solid var(--ink);padding:16px 0 0;}
+  .dd-fields .en{display:flex;gap:12px;font-size:12px;font-weight:600;letter-spacing:.12em;color:var(--stone);}
+  .dd-fields .en::before{content:counter(dd,decimal-leading-zero);color:var(--ink);font-variant-numeric:tabular-nums;}
+  .dd-fields .ko{display:block;margin-top:22px;font-family:var(--display);font-size:24px;font-weight:700;letter-spacing:-.03em;
+    color:var(--ink);word-break:keep-all;}
+  @media(max-width:820px){
+    .dd-fields{grid-template-columns:1fr;margin-top:28px;padding-bottom:56px;}
+    .dd-fields li{padding:14px 0 22px;}
+    .dd-fields .ko{margin-top:12px;font-size:20px;}
+  }
+</style>
 </head>
 <body>
 
@@ -1676,17 +1691,15 @@
 <section class="page" id="dadadesign">
   <div class="wrap">
     <div class="page-head">
-      <div class="eyebrow">1992년부터</div>
+      <div class="eyebrow">SINCE 1992</div>
       <h1 class="serif">DADA DESIGN</h1>
-      <div class="loc">컨설팅부터 설계·시공까지 한 번에</div>
+      <div class="loc">컨설팅 · 설계 · 시공 · 공간 재생</div>
     </div>
-    <div class="pillars">
-      <div class="p-grid three">
-        <div class="pillar"><h4 class="serif">건축 설계·시공</h4></div>
-        <div class="pillar"><h4 class="serif">인테리어 설계·시공</h4></div>
-        <div class="pillar"><h4 class="serif">리모델링</h4></div>
-      </div>
-    </div>
+    <ol class="dd-fields">
+      <li><span class="en">ARCHITECTURE</span><span class="ko">건축 설계·시공</span></li>
+      <li><span class="en">INTERIOR</span><span class="ko">인테리어 설계·시공</span></li>
+      <li><span class="en">REGENERATION</span><span class="ko">리모델링·건축 재생</span></li>
+    </ol>
     <div class="port">
       <div class="sec-head"><h2 class="serif">프로젝트</h2></div>
       <div class="port-grid">

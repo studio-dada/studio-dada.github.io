@@ -1067,19 +1067,12 @@
     .lp-tag{left:20px;right:20px;bottom:30px;font-size:clamp(24px,7.1vw,34px);}   /* 휴대폰에서도 두 줄 */
     .lp-pause{right:20px;bottom:auto;top:calc(34px + (100vw - 40px) * .255);}   /* 로고 오른쪽 아래(문구와 겹치지 않게) */
   }
-  /* 유리 로고: 로고 모양으로 잘라 낸 층이 뒤 영상을 흐리게 비춤. 지원하지 않는 브라우저면 반투명 흰색
-     ('투명도 줄이기'는 따르지 않음: Windows '투명 효과'를 끈 PC도 여기에 걸려 유리가 안 보임. 로고 글자는 sr-only로 따로 있음) */
-  .lp-head .lp-mark{aspect-ratio:400/102;}
-  .lp-mark .lg,.lp-mark .lg-sh,.lp-mark .lg-rim{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
-  .lp-mark .lg{display:block;-webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20400%20102%22%3E%3Cpath%20d%3D%22M0%200H53.25A35.5%2050.875%200%200%201%2053.25%20101.75H0Z%22/%3E%3Cpath%20d%3D%22M135%200H154.75L192.75%20101.75H96Z%22/%3E%3Cpath%20d%3D%22M207%200H259.25A35.5%2050.875%200%200%201%20259.25%20101.75H207Z%22/%3E%3Cpath%20d%3D%22M341%200H360.75L399.75%20101.75H302Z%22/%3E%3C/svg%3E") center/100% 100% no-repeat;mask:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20400%20102%22%3E%3Cpath%20d%3D%22M0%200H53.25A35.5%2050.875%200%200%201%2053.25%20101.75H0Z%22/%3E%3Cpath%20d%3D%22M135%200H154.75L192.75%20101.75H96Z%22/%3E%3Cpath%20d%3D%22M207%200H259.25A35.5%2050.875%200%200%201%20259.25%20101.75H207Z%22/%3E%3Cpath%20d%3D%22M341%200H360.75L399.75%20101.75H302Z%22/%3E%3C/svg%3E") center/100% 100% no-repeat;}
-  .lp-mark .lg-rim{overflow:visible;filter:none;}
-  .lp-head .lp-mark > svg:first-of-type{color:rgba(255,255,255,.6);}
-  .lp-mark .lg,.lp-mark .lg-sh,.lp-mark .lg-rim{display:none;}
-  @supports ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){
-    .lp-head .lp-mark > svg:first-of-type{opacity:0;}
-    .lp-mark .lg,.lp-mark .lg-sh,.lp-mark .lg-rim{display:block;}
-    .lg-glass{-webkit-backdrop-filter:blur(22px) saturate(150%);backdrop-filter:blur(22px) saturate(150%);background:rgba(255,255,255,.40);}
-    .lg-sh{fill:rgba(0,0,0,.16);filter:blur(18px);transform:translateY(8px);}
+  #home .lp-hero{container-type:inline-size;}
+  .lp-word{display:inline-block;color:#fff;font-family:var(--display);font-weight:800;letter-spacing:-.045em;line-height:.74;
+    white-space:nowrap;font-size:calc((100cqw - 80px) / 6.21);text-shadow:0 2px 30px rgba(0,0,0,.18);}
+  @media(max-width:820px){
+    .lp-word{font-size:calc((100cqw - 40px) / 6.21);}
+    .lp-pause{top:calc(20px + var(--word-h, calc((100cqw - 40px) / 6.21 * .74)) + 18px);}
   }
 
   /* 상단 메뉴 글씨 크게 */
@@ -1089,6 +1082,21 @@
     .nav-cta{font-size:14px;padding:11px 20px;}
   }
 </style>
+<script>
+  // 첫 화면 'DADA DESIGN'을 화면 너비에 딱 맞추기(글꼴이 늦게 오거나 바뀌어도)
+  (function(){
+    var w=document.querySelector('.lp-word'); if(!w) return;
+    var hero=w.closest('.lp-hero');
+    function fit(){
+      var box=w.parentElement.clientWidth; if(!box) return;
+      w.style.fontSize=''; var cur=parseFloat(getComputedStyle(w).fontSize), tw=w.getBoundingClientRect().width; if(!tw) return;
+      w.style.fontSize=(cur*box/tw).toFixed(2)+'px'; hero.style.setProperty('--word-h', w.offsetHeight+'px');
+    }
+    window.addEventListener('resize',fit); document.addEventListener('pagechange',fit);
+    if(document.fonts&&document.fonts.ready) document.fonts.ready.then(fit);
+    fit();
+  })();
+</script>
 </head>
 <body>
 
@@ -1154,7 +1162,7 @@
     <div class="lp-side" aria-hidden="true">Architecture · Space · Art</div>
     <button class="lp-pause" id="lpPause" type="button" aria-pressed="false" aria-label="영상 멈춤">❚❚</button>
     <div class="lp-head">
-      <div class="lp-mark"><span class="sr-only">DADA</span><svg viewBox="0 0 400 102" fill="currentColor" aria-hidden="true"><use href="#dada-logo"/></svg><svg class="lg-sh" viewBox="0 0 400 102" aria-hidden="true"><path d="M0 0H53.25A35.5 50.875 0 0 1 53.25 101.75H0Z"/><path d="M135 0H154.75L192.75 101.75H96Z"/><path d="M207 0H259.25A35.5 50.875 0 0 1 259.25 101.75H207Z"/><path d="M341 0H360.75L399.75 101.75H302Z"/></svg><span class="lg lg-glass"></span></div>
+      <div class="lp-mark"><span class="lp-word">DADA DESIGN</span></div>
       <p class="lp-tag" lang="en">Spaces to Enjoy,<br> in Mountains and Forests.</p>
     </div>
 

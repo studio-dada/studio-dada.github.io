@@ -924,6 +924,71 @@
     .cmp td,.cmp thead th:not(:first-child){min-width:150px;}
   }
 </style>
+
+<style id="tone">
+  /* ═══════════ NOT A HOTEL 톤 ═══════════ */
+  /* 상단 바: 언제나 검은 바, 흰 로고·메뉴. 펼친 메뉴 패널(휴대폰)과 하위 메뉴는 미색 바탕에 어두운 글씨 그대로 */
+  header,header.over-hero:not(.menu-open),header.menu-open{background:#0f0f0e;-webkit-backdrop-filter:none;backdrop-filter:none;border-bottom:0;}
+  main{padding-top:68px;}
+  header .logo,header.over-hero:not(.menu-open) .logo{color:#fff;}
+  header .menu-toggle,header.over-hero:not(.menu-open) .menu-toggle{color:#fff;}
+  @media(min-width:981px){
+    header .nav .menu{margin-left:auto;}
+    header .menu > .menu-item > a,header.over-hero:not(.menu-open) .menu > .menu-item > a{color:rgba(255,255,255,.72);font-size:13.5px;font-weight:600;letter-spacing:0;text-transform:none;}
+    header .menu > .menu-item > a:is(.on,:hover,:focus-visible),header.over-hero:not(.menu-open) .menu > .menu-item > a:is(.on,:hover,:focus-visible){color:#fff;}
+    header .submenu a,header.over-hero:not(.menu-open) .submenu a{color:var(--link-muted);text-transform:none;letter-spacing:0;font-size:13px;}
+    header .submenu a:is(.on,:hover,:focus-visible),header.over-hero:not(.menu-open) .submenu a:is(.on,:hover,:focus-visible){color:var(--ink);}
+  }
+  .nav-cta{flex:none;margin-left:14px;background:#fff;color:#141412;text-decoration:none;border-radius:999px;padding:10px 18px;font:600 13px var(--sans);transition:opacity .2s ease;}
+  .nav-cta:hover{opacity:.86;}
+  .nav-cta:focus-visible{outline:2px solid #fff;outline-offset:3px;}
+  @media(max-width:980px){ .nav-cta{display:none;} }
+  /* 첫 화면은 검은 바 아래에서 시작 */
+  #home .lp-hero{margin-top:0;height:calc(100vh - 68px);}
+  @media(max-width:820px){ #home .lp-hero{height:calc(88vh - 68px);} }   /* 예전과 같은 아랫변(88vh) */
+  /* 제목: 더 굵게 */
+  h1.serif,h2.serif,.sec-head h2,.lp-value h2,.lp-pick .hd h2,.lp-sec .hd h2,.page-head h1{font-weight:800;letter-spacing:-.05em;}
+  /* 사진: 모서리 10px */
+  .hero-img,.gslider,.pf-hero img,.pf-shot img,.port-item .pic,.lp-wk .pic,.ex-photo img,.ex-card{border-radius:10px;}
+  .gslider,.ex-card{overflow:hidden;}
+  .ex-thumbs img{border-radius:4px;}
+  /* 공간 대관 목록 */
+  .sr-list{padding-top:56px;}
+  .sr-head{font-family:var(--display);font-size:48px;font-weight:800;letter-spacing:-.045em;line-height:1.1;padding-bottom:46px;border-bottom:1px solid var(--line);}
+  .sr-filter{display:flex;align-items:center;gap:10px;padding:24px 0 40px;overflow-x:auto;}
+  .sr-filter .k{font-size:13px;font-weight:600;color:var(--ink);margin-right:4px;white-space:nowrap;}
+  .sr-filter button{border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:9px 16px;
+    font:500 13.5px var(--sans);cursor:pointer;white-space:nowrap;transition:background .2s ease,color .2s ease,border-color .2s ease;}
+  .sr-filter button:hover{border-color:var(--ink);}
+  .sr-filter button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink);}
+  .sr-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px 16px;padding-bottom:96px;}
+  .sr-card{display:block;color:var(--ink);text-decoration:none;cursor:pointer;}
+  .sr-card[hidden]{display:none;}
+  .sr-card .ph{aspect-ratio:16/9;border-radius:10px;background-size:cover;background-position:center;background-color:var(--paper-2);transition:opacity .3s ease;}
+  .sr-card:hover .ph{opacity:.92;}
+  .sr-card .nm{font-family:var(--display);font-size:21px;font-weight:800;letter-spacing:-.02em;margin-top:16px;}
+  .sr-card .lo{font-size:15px;color:var(--stone);margin-top:6px;}
+  .sr-card .cap{font-size:17px;font-weight:700;margin-top:12px;}
+  .sr-filter button:focus-visible,.sr-card:focus-visible{outline:2px solid var(--ink);outline-offset:3px;}
+  .sr-grid-3{grid-template-columns:repeat(3,1fr);padding-bottom:0;}
+  @media(max-width:820px){
+    .sr-list{padding-top:34px;}
+    .sr-head{font-size:34px;padding-bottom:26px;}
+    .sr-filter{padding:18px 0 26px;}
+    .sr-grid{grid-template-columns:1fr;gap:34px;padding-bottom:72px;}
+    .sr-card .nm{font-size:19px;} .sr-card .lo{font-size:14px;} .sr-card .cap{font-size:16px;}
+    .sr-grid-3{padding-bottom:0;}
+  }
+</style>
+<script>
+  // 지역 칩: 고른 지역의 카드만 보이기
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('.sr-filter [data-region]'); if (!b) return;
+    var box = b.closest('.sr-list'), reg = b.dataset.region;
+    box.querySelectorAll('.sr-filter [data-region]').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+    box.querySelectorAll('.sr-card').forEach(function (c) { c.hidden = reg !== 'all' && c.dataset.region !== reg; });
+  });
+</script>
 </head>
 <body>
 
@@ -971,6 +1036,7 @@
       <div class="menu-item"><a href="#dadadesign" data-page="dadadesign">설계·시공</a></div>
       <div class="menu-item"><a href="#about" data-page="about">소개</a></div>
     </nav>
+    <a class="nav-cta" href="#spacerental" data-page="spacerental">예약 문의</a>
   </div>
   <button class="menu-backdrop" type="button" aria-label="메뉴 닫기" tabindex="-1" hidden></button>
 </header>
@@ -1025,27 +1091,18 @@
           <p class="lp-sub">다양한 지역과 분위기를 준비했습니다.</p>
         </div>
       </div>
-      <div class="lp-places rv">
-        <a class="lp-pl" href="#s1941" data-page="s1941">
-          <div class="pic" data-lazybg="images/card-1941.jpg"></div>
-          <div class="info">
-            <div><div class="nm">STUDIO 1941</div><div class="lo">경기 수원</div></div>
-            <div class="go">자세히 보기 <span aria-hidden="true">→</span></div>
-          </div>
+      <div class="sr-grid sr-grid-3 rv">
+        <a class="sr-card" href="#s1941" data-page="s1941" data-region="mountain">
+          <div class="ph" data-lazybg="images/space-hero-1941-spring.jpg"></div>
+          <div class="nm">STUDIO 1941</div><div class="lo">경기 수원 · 1941년 한옥</div><div class="lo">A동 · B동 · 테라스</div><div class="cap">최대 30명</div>
         </a>
-        <a class="lp-pl" href="#forest" data-page="forest">
-          <div class="pic" data-lazybg="images/card-forest.jpg"></div>
-          <div class="info">
-            <div><div class="nm">DADA FOREST</div><div class="lo">강원 평창</div></div>
-            <div class="go">자세히 보기 <span aria-hidden="true">→</span></div>
-          </div>
+        <a class="sr-card" href="#forest" data-page="forest" data-region="forest">
+          <div class="ph" data-lazybg="images/forest-main.jpg"></div>
+          <div class="nm">DADA FOREST</div><div class="lo">강원 평창 · 자작나무 숲속 목조 건물</div><div class="lo">A동 · B동</div><div class="cap">최대 15명</div>
         </a>
-        <a class="lp-pl" href="#spaceon" data-page="spaceon">
-          <div class="pic" data-lazybg="images/spaceon-main.jpg"></div>
-          <div class="info">
-            <div><div class="nm">SPACE ON</div><div class="lo">강원 강릉</div></div>
-            <div class="go">자세히 보기 <span aria-hidden="true">→</span></div>
-          </div>
+        <a class="sr-card" href="#spaceon" data-page="spaceon" data-region="city">
+          <div class="ph" data-lazybg="images/spaceon-main.jpg"></div>
+          <div class="nm">SPACE ON</div><div class="lo">강원 강릉 · 구도심 한옥</div><div class="lo">실내 홀 · 회랑 · 중정</div><div class="cap">인원 문의</div>
         </a>
       </div>
     </div>
@@ -1070,63 +1127,28 @@
 
 <!-- ================= SPACE RENTAL ================= -->
 <section class="page" id="spacerental">
-  <div class="hero">
-    <div class="hero-visual" aria-hidden="true">
-    <div class="hero-track" id="heroTrack">
-      <div class="hero-slide on" style="background-image:url('images/space-hero-forest-winter.jpg')"></div>
-      <div class="hero-slide" data-bg="images/space-hero-1941-spring.jpg"></div>
-      <div class="hero-slide" data-bg="images/space-hero-forest.jpg"></div>
-      <div class="hero-slide" data-bg="images/space-hero-spaceon.jpg"></div>
-    </div>
-    <div class="hero-overlay"></div>
-    </div>
-    <div class="wrap hero-content">
-      <div class="hero-cap brand on">
-        <div class="eyebrow">수원 · 평창 · 강릉</div>
-        <h1>공간 대관</h1>
-        <div class="tag">창밖으로 계절이 보이는<br>모임 공간 세 곳</div>
-      </div>
-    </div>
-    <button class="hero-arrow prev" id="heroPrev" aria-label="이전 사진">‹</button>
-    <button class="hero-arrow next" id="heroNext" aria-label="다음 사진">›</button>
-    <div class="hero-dots" id="heroDots"></div>
-  </div>
-
-  <div class="statement">
-    <div class="wrap grid">
-      <div class="lead serif">자연 속 모임과 워케이션</div>
-      <div class="body">
-        광교산 자락의 1941년 한옥부터 오대산 가까운 자작나무 숲, 강릉 구도심 옛집의 붉은 마당까지.
-      </div>
-    </div>
-  </div>
-
-  <div class="locations">
+  <div class="sr-list">
     <div class="wrap">
-      <div class="sec-head">
-        <h2 class="serif">대관 공간</h2>
+      <h1 class="sr-head">공간 대관</h1>
+      <div class="sr-filter" role="group" aria-label="지역으로 공간 보기">
+        <span class="k">지역</span>
+        <button type="button" data-region="all" aria-pressed="true">전체</button>
+        <button type="button" data-region="mountain" aria-pressed="false">산</button>
+        <button type="button" data-region="forest" aria-pressed="false">숲</button>
+        <button type="button" data-region="city" aria-pressed="false">도심</button>
       </div>
-      <div class="loc-grid">
-        <a class="loc-card" href="#s1941" data-page="s1941">
-          <div class="pic" data-lazybg="images/card-1941.jpg"></div>
-          <div class="idx">경기 수원</div>
-          <h3 class="serif">STUDIO 1941</h3>
-          <div class="meta">1941년 한옥, 홀 두 개와 정원 테라스</div>
-          <div class="go">자세히 보기 <span aria-hidden="true">→</span></div>
+      <div class="sr-grid">
+        <a class="sr-card" href="#s1941" data-page="s1941" data-region="mountain">
+          <div class="ph" data-lazybg="images/space-hero-1941-spring.jpg"></div>
+          <div class="nm">STUDIO 1941</div><div class="lo">경기 수원 · 1941년 한옥</div><div class="lo">A동 · B동 · 테라스</div><div class="cap">최대 30명</div>
         </a>
-        <a class="loc-card" href="#forest" data-page="forest">
-          <div class="pic" data-lazybg="images/card-forest.jpg"></div>
-          <div class="idx">강원 평창</div>
-          <h3 class="serif">DADA FOREST</h3>
-          <div class="meta">자작나무 숲속 작은 목조 건물 두 동</div>
-          <div class="go">자세히 보기 <span aria-hidden="true">→</span></div>
+        <a class="sr-card" href="#forest" data-page="forest" data-region="forest">
+          <div class="ph" data-lazybg="images/forest-main.jpg"></div>
+          <div class="nm">DADA FOREST</div><div class="lo">강원 평창 · 자작나무 숲속 목조 건물</div><div class="lo">A동 · B동</div><div class="cap">최대 15명</div>
         </a>
-        <a class="loc-card" href="#spaceon" data-page="spaceon">
-          <div class="pic" data-lazybg="images/spaceon-main.jpg"></div>
-          <div class="idx">강원 강릉</div>
-          <h3 class="serif">SPACE ON</h3>
-          <div class="meta">강릉 구도심의 한옥, 붉은 마당과 회랑</div>
-          <div class="go">자세히 보기 <span aria-hidden="true">→</span></div>
+        <a class="sr-card" href="#spaceon" data-page="spaceon" data-region="city">
+          <div class="ph" data-lazybg="images/spaceon-main.jpg"></div>
+          <div class="nm">SPACE ON</div><div class="lo">강원 강릉 · 구도심 한옥</div><div class="lo">실내 홀 · 회랑 · 중정</div><div class="cap">인원 문의</div>
         </a>
       </div>
     </div>

@@ -989,6 +989,67 @@
     box.querySelectorAll('.sr-card').forEach(function (c) { c.hidden = reg !== 'all' && c.dataset.region !== reg; });
   });
 </script>
+
+<style id="s1941-2">
+  /* ═══════════ 랜딩 영상 ═══════════ */
+  .lp-track{background:#1d1c19 url('images/hero-1941-wide.jpg') center/cover no-repeat;}
+  @media(max-aspect-ratio:1/1){ .lp-track{background-image:url('images/hero-1941-tall.jpg');} }
+  .lp-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease;}
+  .lp-video.on{opacity:1;}
+
+  /* ═══════════ STUDIO 1941 상세 ═══════════ */
+  .page-head .cats{font-size:14px;color:var(--ink);margin-top:10px;letter-spacing:-.01em;word-break:keep-all;}
+  .d-intro p{max-width:900px;word-break:keep-all;}
+  .d-about{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:56px;margin-top:30px;align-items:start;}
+  .d-about .desc{margin-top:0;max-width:none;word-break:keep-all;}
+  .d-uses{list-style:none;margin:0;padding:0;border-top:1px solid var(--line);}
+  .d-uses li{padding:11px 0;border-bottom:1px solid var(--line-soft);font-size:15px;color:var(--ink);word-break:keep-all;}
+  .d-sec{padding:56px 0 8px;}
+  .d-sec h3{font-family:var(--display);font-size:24px;font-weight:800;letter-spacing:-.03em;margin-bottom:24px;}
+  .d-sec .specs{padding:0;}
+  .specs .row .de small{display:block;margin-top:6px;font-size:13px;color:var(--stone);line-height:1.6;word-break:keep-all;}
+  .d-sec + .gsec{margin-top:64px;}
+  .d-why{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:0 28px;counter-reset:why;}
+  .d-why li{counter-increment:why;border-top:1px solid var(--line);padding:18px 0 26px;font-size:16px;font-weight:600;line-height:1.55;
+    letter-spacing:-.02em;word-break:keep-all;}
+  .d-why li::before{content:counter(why,decimal-leading-zero);display:block;font-size:12px;font-weight:600;color:var(--stone);
+    letter-spacing:.08em;margin-bottom:10px;font-variant-numeric:tabular-nums;}
+  .price-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .price{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;}
+  .price caption{caption-side:bottom;text-align:left;font-size:13px;color:var(--stone);padding-top:12px;}
+  .price th,.price td{padding:16px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;}
+  .price thead th{font-size:14px;font-weight:700;border-bottom-color:var(--ink);}
+  .price thead th small,.price tbody th small{display:block;font-size:12px;font-weight:400;color:var(--stone);margin-top:4px;white-space:nowrap;}
+  .price tbody th{font-size:16px;font-weight:800;letter-spacing:-.02em;padding-left:0;}
+  .price td{font-size:20px;font-weight:700;letter-spacing:-.02em;white-space:nowrap;}
+  .price-note{list-style:none;margin:22px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px 28px;font-size:14px;color:var(--ink-soft);}
+  .price-note b{color:var(--ink);font-weight:700;margin-right:6px;}
+  .d-chips{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px;}
+  .d-chips li{border:1px solid var(--line);border-radius:999px;padding:9px 16px;font-size:14px;color:var(--ink);}
+  .d-loc{margin:0;border-top:1px solid var(--line);}
+  .d-loc > div{display:grid;grid-template-columns:150px 1fr;gap:20px;padding:15px 0;border-bottom:1px solid var(--line-soft);}
+  .d-loc dt{font-weight:600;font-size:14.5px;}
+  .d-loc dd{margin:0;font-size:15px;color:var(--ink-soft);word-break:keep-all;}
+  .d-maps{display:flex;gap:26px;margin-top:20px;}
+  .d-maps a{color:var(--ink);font-size:14.5px;font-weight:600;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:2px;}
+  .d-dada{padding-bottom:56px;}
+  .d-dada p{font-size:16px;line-height:1.9;color:var(--ink-soft);max-width:760px;word-break:keep-all;}
+  .d-dada .lp-btn{margin-top:18px;}
+  @media(max-width:820px){
+    .d-about{grid-template-columns:1fr;gap:26px;}
+    .d-sec{padding-top:44px;}
+    .d-sec h3{font-size:21px;margin-bottom:18px;}
+    .d-why{grid-template-columns:1fr;}
+    .d-why li{padding:14px 0 18px;font-size:15.5px;}
+    .price th,.price td{padding:12px 5px;}
+    .price thead th{font-size:13px;}
+    .price thead th small{font-size:10.5px;letter-spacing:-.02em;}
+    .price td{font-size:15px;}
+    .price tbody th{font-size:15px;}
+    .price tbody th small{display:none;}   /* 면적·인원은 바로 위 '공간 구성'에 있음 */
+    .d-loc > div{grid-template-columns:96px 1fr;gap:12px;}
+  }
+</style>
 </head>
 <body>
 
@@ -1047,21 +1108,16 @@
 <section class="page active" id="home">
   <div class="lp-hero">
     <div class="lp-track" id="lpTrack">
-      <div class="lp-slide on" style="background-image:url('images/space-hero-forest-winter.jpg')" role="img" aria-label="DADA FOREST 설경"></div>
-      <div class="lp-slide" data-bg="images/s1941-main.jpg" role="img" aria-label="STUDIO 1941"></div>
-      <div class="lp-slide" data-bg="images/spaceon-main.jpg" role="img" aria-label="SPACE ON"></div>
-      <div class="lp-slide" data-bg="images/forest-main.jpg" role="img" aria-label="DADA FOREST"></div>
-      <div class="lp-slide" data-bg="images/space-hero-1941-spring.jpg" role="img" aria-label="STUDIO 1941 봄"></div>
+      <video class="lp-video" id="lpVideo" muted loop playsinline preload="none" aria-hidden="true"
+        data-wide="video/hero-1941-wide.mp4" data-tall="video/hero-1941-tall.mp4"></video>
     </div>
     <div class="lp-veil"></div>
     <div class="lp-side" aria-hidden="true">Architecture · Space · Art</div>
-    <div class="lp-count" aria-hidden="true"><b id="lpNum">01</b> / 05</div>
-    <button class="lp-pause" id="lpPause" type="button" aria-pressed="false" aria-label="사진 자동 넘김 멈춤">❚❚</button>
+    <button class="lp-pause" id="lpPause" type="button" aria-pressed="false" aria-label="영상 멈춤">❚❚</button>
     <div class="lp-head">
       <div class="lp-mark"><span class="sr-only">DADA</span><svg viewBox="0 0 400 102" fill="currentColor" aria-hidden="true"><use href="#dada-logo"/></svg></div>
       <p class="lp-tag">산과 숲 속에서 즐기는 공간</p>
     </div>
-    <div class="lp-dots" id="lpDots"></div>
 
     <div class="lp-bar">
       <div class="wrap">
@@ -1262,12 +1318,12 @@
           </thead>
           <tbody>
             <tr><th scope="row">위치</th><td>경기 수원 광교산</td><td>강원 평창</td><td>강원 강릉 구도심</td></tr>
-            <tr><th scope="row">실내</th><td>A동 20평 · 최대 20명<br>B동 6평 · 최대 10명</td><td>A동 20평 · 최대 15명<br>B동 15평 · 최대 10명</td><td>실내 홀 · 회랑<br><span class="todo">면적·인원 입력</span></td></tr>
-            <tr><th scope="row">야외</th><td>테라스 30평 · 최대 30명</td><td>자작나무 숲 500평<br>살구나무 광장 · 테라스 각 30평</td><td>중정(마당)</td></tr>
+            <tr><th scope="row">실내</th><td>A동 20평 · 최대 25명<br>B동 8평 · 최대 12명</td><td>A동 20평 · 최대 15명<br>B동 15평 · 최대 10명</td><td>실내 홀 · 회랑<br><span class="todo">면적·인원 입력</span></td></tr>
+            <tr><th scope="row">야외</th><td>메인 테라스 30평 · 최대 30명<br>느티나무 테라스 30평 · 최대 20명</td><td>자작나무 숲 500평<br>살구나무 광장 · 테라스 각 30평</td><td>중정(마당)</td></tr>
             <tr><th scope="row">이용 시간</th><td>09:00–13:00<br>13:00–18:00<br>18:00–22:00</td><td>12:00–18:00<br>18:00–22:00</td><td><span class="todo">입력</span></td></tr>
             <tr><th scope="row">주차</th><td>20대</td><td>20대</td><td><span class="todo">입력</span></td></tr>
-            <tr><th scope="row">추천 용도</th><td>워크숍 · 수업 · 소모임 · 촬영</td><td>워크숍 · 사외 모임 · 요가·명상</td><td>전시 · 공연 · 수업 · 워크숍 · 팝업 · 촬영</td></tr>
-            <tr><th scope="row">요금</th><td><span class="todo">입력</span></td><td><span class="todo">입력</span></td><td><span class="todo">입력</span></td></tr>
+            <tr><th scope="row">추천 용도</th><td>스몰웨딩 · 기업행사 · 문화행사 · 촬영</td><td>워크숍 · 사외 모임 · 요가·명상</td><td>전시 · 공연 · 수업 · 워크숍 · 팝업 · 촬영</td></tr>
+            <tr><th scope="row">요금</th><td>A동 12~80만원<br>B동 6~50만원</td><td><span class="todo">입력</span></td><td><span class="todo">입력</span></td></tr>
             <tr><th scope="row">예약</th><td>네이버 예약</td><td>전화 예약</td><td>전화 문의</td></tr>
           </tbody>
         </table>
@@ -1284,19 +1340,86 @@
       <div class="eyebrow">경기 수원</div>
       <h1 class="serif">STUDIO 1941</h1>
       <div class="loc">경기 수원시 장안구 상광교동 322 · 부지 800평 · 주차 20대</div>
+      <div class="cats">공간대여 · 스몰웨딩 · 문화행사 · 촬영 · 기업행사&amp;워크숍 · 모임&amp;파티</div>
     </div>
-    <div class="hero-img pic--img" data-lazybg="images/space-hero-1941-spring.jpg" role="img" aria-label="STUDIO 1941 본채와 테라스"></div>
+    <div class="hero-img pic--img" data-lazybg="images/s1941-terrace-main-05-wide.jpg" role="img" aria-label="STUDIO 1941 메인 테라스와 A동"></div>
 
     <div class="d-intro">
-      <p class="serif">바람 소리 들리는 1941년 한옥</p>
-      <div class="desc">서까래와 나무 기둥을 남겨 고친 한옥입니다. 창밖으로 봄·여름에는 초록, 가을에는 단풍, 겨울에는 눈 덮인 정원이 보입니다. 워크숍과 클래스, 작은 공연에 잘 어울리고, 통기타 시 낭독회도 이곳에서 진행했습니다.</div>
+      <p class="serif">STUDIO 1941은 아름다운 자연 속 역사건축을 재생하여 삶의 가치를 높이는 멋진 공간으로 여러분께 찾아갑니다.</p>
+      <div class="d-about">
+        <div class="desc">도심에서 가까운 광교산 자락, 800평 부지에 자연 수목이 있고, 낭만의 테라스를 중심으로 두 개의 홀(A동, B동)이 있습니다. 이 공간은 여러분의 다양한 프로그램 및 활동을 온전히 그리고 프라이빗하게 받아들입니다. 이 공간은 여러분의 활동에 배경이 되며 광교산의 계절적 변화가 그 위에 온전히 더해집니다.<br><br>필요한 시간만큼 온전히 활용하세요.</div>
+        <ul class="d-uses">
+          <li>스튜디오 촬영</li>
+          <li>스몰웨딩</li>
+          <li>가족행사</li>
+          <li>기업행사(워크숍, 세미나, 회식 및 파티)</li>
+          <li>문화예술(공연·전시) 및 아카데미</li>
+          <li>각종 모임</li>
+          <li>피크닉</li>
+        </ul>
+      </div>
     </div>
 
-    <div class="specs">
-      <div class="row"><span class="nm">A동 · 메인 홀</span><span class="de">홀 · 주방 · 바 · 화장실</span><span class="ca">20평 · 최대 20명</span></div>
-      <div class="row"><span class="nm">B동 · 소모임 홀</span><span class="de">홀 · 발코니</span><span class="ca">6평 · 최대 10명</span></div>
-      <div class="row"><span class="nm">테라스</span><span class="de">광교산 전망 · 야외 식사</span><span class="ca">30평 · 최대 30명</span></div>
-      <div class="row"><span class="nm">부대시설</span><span class="de">빔프로젝터 · 스크린 · 피아노 · 캡슐커피 · 냉온수기</span><span class="ca">공용</span></div>
+    <div class="d-sec">
+      <h3>특징</h3>
+      <ol class="d-why">
+        <li>광교산 자락의 자연</li>
+        <li>1941년 역사건축물에 현대의 기능을 구현한 감성공간</li>
+        <li>테라스를 중심으로 독립된 두 개의 홀</li>
+        <li>800평 부지에 조성된 자연 수목의 숲에서 누리는 온전한 프라이버시</li>
+        <li>필요한 시간만큼 자유로운 이용</li>
+        <li>도심에 인접하고, 넉넉한 주차 공간과 편리한 대중교통</li>
+      </ol>
+    </div>
+
+    <div class="d-sec">
+      <h3>공간 구성</h3>
+      <div class="specs">
+        <div class="row"><span class="nm">A동 · 메인홀</span><span class="de">메인홀 · 주방 · 바 · 화장실<small>빔프로젝터 · 건반피아노 · 블루투스스피커 · 캡슐커피(유료) · 냉온수기(얼음)</small></span><span class="ca">20평 · 최대 25명</span></div>
+        <div class="row"><span class="nm">B동 · 소모임 홀</span><span class="de">부속홀<small>빔프로젝터 · 건반피아노 · 블루투스스피커 (A동 캡슐커피 · 냉온수기(얼음))</small></span><span class="ca">8평 · 최대 12명</span></div>
+        <div class="row"><span class="nm">메인 테라스</span><span class="de">A동 예약 시 무료 이용</span><span class="ca">30평 · 최대 30명</span></div>
+        <div class="row"><span class="nm">느티나무 테라스</span><span class="de">B동 예약 시 무료 이용</span><span class="ca">30평 · 최대 20명</span></div>
+        <div class="row"><span class="nm">테라스 공용</span><span class="de">웨딩 스크린 · 웨딩 테이블</span><span class="ca"></span></div>
+      </div>
+    </div>
+
+    <div class="gsec">
+      <div class="gsec-head">
+        <h3>A동 · 메인홀</h3>
+        <span class="count" id="gcount-s41h"></span>
+      </div>
+      <div class="gslider">
+        <div class="gtrack" id="gtrack-s41h"></div>
+        <button class="garrow prev" data-g="s41h" data-d="-1" aria-label="이전 사진">‹</button>
+        <button class="garrow next" data-g="s41h" data-d="1" aria-label="다음 사진">›</button>
+      </div>
+      <div class="gdots" id="gdots-s41h"></div>
+    </div>
+
+    <div class="gsec">
+      <div class="gsec-head">
+        <h3>B동 · 소모임 홀</h3>
+        <span class="count" id="gcount-s41k"></span>
+      </div>
+      <div class="gslider">
+        <div class="gtrack" id="gtrack-s41k"></div>
+        <button class="garrow prev" data-g="s41k" data-d="-1" aria-label="이전 사진">‹</button>
+        <button class="garrow next" data-g="s41k" data-d="1" aria-label="다음 사진">›</button>
+      </div>
+      <div class="gdots" id="gdots-s41k"></div>
+    </div>
+
+    <div class="gsec">
+      <div class="gsec-head">
+        <h3>테라스</h3>
+        <span class="count" id="gcount-s41t"></span>
+      </div>
+      <div class="gslider">
+        <div class="gtrack" id="gtrack-s41t"></div>
+        <button class="garrow prev" data-g="s41t" data-d="-1" aria-label="이전 사진">‹</button>
+        <button class="garrow next" data-g="s41t" data-d="1" aria-label="다음 사진">›</button>
+      </div>
+      <div class="gdots" id="gdots-s41t"></div>
     </div>
 
     <div class="gsec">
@@ -1312,17 +1435,63 @@
       <div class="gdots" id="gdots-s41a"></div>
     </div>
 
-    <div class="gsec">
-      <div class="gsec-head">
-        <h3>테라스</h3>
-        <span class="count" id="gcount-s41b"></span>
+    <div class="d-sec">
+      <h3>대관 요금</h3>
+      <div class="price-wrap">
+        <table class="price">
+          <caption>주중 ~ 주말·공휴일 요금 · 단위 만원</caption>
+          <thead>
+            <tr><th scope="col"><span class="sr-only">공간</span></th>
+              <th scope="col">오전<small>09:00~13:00</small></th><th scope="col">오후<small>13:00~18:00</small></th>
+              <th scope="col">야간<small>18:00~22:00</small></th><th scope="col">종일</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">A동<small>메인홀 · 20평 · 최대 25명</small></th><td>12~20</td><td>20~30</td><td>28~35</td><td>50~80</td></tr>
+            <tr><th scope="row">B동<small>소모임 홀 · 8평 · 최대 12명</small></th><td>6~9</td><td>10~15</td><td>14~21</td><td>25~50</td></tr>
+          </tbody>
+        </table>
       </div>
-      <div class="gslider">
-        <div class="gtrack" id="gtrack-s41b"></div>
-        <button class="garrow prev" data-g="s41b" data-d="-1" aria-label="이전 사진">‹</button>
-        <button class="garrow next" data-g="s41b" data-d="1" aria-label="다음 사진">›</button>
+      <ul class="price-note">
+        <li><b>메인 테라스</b> 30평 · A동 예약 시 무료 이용</li>
+        <li><b>느티나무 테라스</b> 30평 · B동 예약 시 무료 이용</li>
+        <li><b>테라스 공용</b> 웨딩 스크린 · 웨딩 테이블</li>
+      </ul>
+    </div>
+
+    <div class="d-sec">
+      <h3>추천 용도</h3>
+      <ul class="d-chips">
+        <li>스몰웨딩</li>
+        <li>가족모임·행사</li>
+        <li>문화행사(공연·전시)</li>
+        <li>기업행사(워크숍·세미나)</li>
+        <li>스터디·독서모임</li>
+        <li>살롱</li>
+        <li>사진·영상 촬영</li>
+        <li>소규모 모임</li>
+        <li>피크닉</li>
+      </ul>
+    </div>
+
+    <div class="d-sec">
+      <h3>오시는 길</h3>
+      <dl class="d-loc">
+        <div><dt>주소</dt><dd>경기 수원시 장안구 상광교동 322</dd></div>
+        <div><dt>버스</dt><dd>13번 · 상광교신다리.광교로컬푸드직매장 정류장</dd></div>
+        <div><dt>오시는 방법</dt><dd>광교로컬푸드직매장을 지나자마자 좌회전으로 돌아오시면 입구가 보입니다.</dd></div>
+        <div><dt>주차</dt><dd>20대</dd></div>
+      </dl>
+      <div class="d-maps">
+        <a href="https://map.naver.com/p/search/%EA%B2%BD%EA%B8%B0%20%EC%88%98%EC%9B%90%EC%8B%9C%20%EC%9E%A5%EC%95%88%EA%B5%AC%20%EC%83%81%EA%B4%91%EA%B5%90%EB%8F%99%20322" target="_blank" rel="noopener">네이버 지도 <span aria-hidden="true">→</span></a>
+        <a href="https://map.kakao.com/?q=%EA%B2%BD%EA%B8%B0%20%EC%88%98%EC%9B%90%EC%8B%9C%20%EC%9E%A5%EC%95%88%EA%B5%AC%20%EC%83%81%EA%B4%91%EA%B5%90%EB%8F%99%20322" target="_blank" rel="noopener">카카오 지도 <span aria-hidden="true">→</span></a>
       </div>
-      <div class="gdots" id="gdots-s41b"></div>
+    </div>
+
+    <div class="d-sec d-dada">
+      <h3>DADA</h3>
+      <p>STUDIO 1941은 DADA DESIGN이 설계·시공한 프로젝트로 근대 역사건축물에 현대적 기능을 부여하며 복원하였습니다.<br>
+        아름다운 자연 속 감성적 역사건축 환경을 느끼며 여러분의 삶을 멋지게 계획하시기를 바랍니다.</p>
+      <a class="lp-btn" href="#dadadesign" data-page="dadadesign">설계·시공 보기 <span aria-hidden="true">→</span></a>
     </div>
 
     <div class="use">
@@ -1841,19 +2010,40 @@
       "images/spaceon-int-6.jpg",
       "images/spaceon-int-7.jpg"
     ],
+      s41h:[
+      "images/s1941-a-hall-01.jpg",
+      "images/s1941-a-hall-03.jpg",
+      "images/s1941-a-hall-02.jpg",
+      "images/s1941-a-hall-04.jpg",
+      "images/s1941-a-bar-01.jpg",
+      "images/s1941-a-bar-03.jpg"
+    ],
+      s41k:[
+      "images/s1941-b-hall-03.jpg",
+      "images/s1941-b-hall-04.jpg",
+      "images/s1941-b-hall-01.jpg",
+      "images/s1941-b-hall-05.jpg",
+      "images/s1941-b-deck-01.jpg"
+    ],
+      s41t:[
+      "images/s1941-terrace-main-01.jpg",
+      "images/s1941-terrace-main-05.jpg",
+      "images/s1941-terrace-fireplace-01.jpg",
+      "images/s1941-zelkova-03.jpg",
+      "images/s1941-zelkova-01.jpg",
+      "images/s1941-terrace-main-08.jpg",
+      "images/s1941-terrace-flowers-01.jpg",
+      "images/s1941-stone-basin-05.jpg"
+    ],
       s41a:[
       "images/s1941-ext-1.jpg",
       "images/s1941-ext-2.jpg",
-      "images/s1941-ext-3.jpg",
-      "images/s1941-ext-4.jpg"
-    ],
-      s41b:[
-      "images/s1941-terrace-1.jpg",
-      "images/s1941-terrace-2.jpg",
       "images/s1941-terrace-3.jpg",
-      "images/s1941-terrace-4.jpg",
-      "images/s1941-terrace-5.jpg",
-      "images/s1941-terrace-6.jpg"
+      "images/s1941-terrace-1.jpg",
+      "images/s1941-ext-3.jpg",
+      "images/s1941-terrace-2.jpg",
+      "images/s1941-ext-4.jpg",
+      "images/s1941-terrace-4.jpg"
     ],
       fa:[
       "images/forest-bldg-1.jpg",
@@ -1903,46 +2093,37 @@
     });
   })();
 
-  // ---- 홈 히어로: 마우스를 올리거나 멈춤 버튼을 누르면 정지, '동작 줄이기' 설정이면 자동 넘김 없음 ----
+  // ---- 홈 히어로 영상: 홈이 화면에 보일 때만 재생, 멈춤 버튼, '동작 줄이기'·데이터 절약이면 사진만 ----
   (function(){
-    const track=document.getElementById("lpTrack"); if(!track) return;
-    const home=document.getElementById("home"), hero=track.closest(".lp-hero");
-    const slides=[...track.children], dots=document.getElementById("lpDots"), num=document.getElementById("lpNum");
-    const pauseBtn=document.getElementById("lpPause");
-    const reducedMotion=window.matchMedia("(prefers-reduced-motion:reduce)");
-    let i=0, t, paused=reducedMotion.matches;
-    slides.forEach((_,k)=>{
-      const b=document.createElement("button");
-      b.type="button";
-      b.setAttribute("aria-label",(k+1)+"번째 사진");
-      b.addEventListener("click",()=>{i=k;draw();reset();});
-      dots.appendChild(b);
-    });
-    function draw(){
-      slides.forEach((s,k)=>s.classList.toggle("on",k===i));
-      [...dots.children].forEach((b,k)=>b.classList.toggle("on",k===i));
-      num.textContent=String(i+1).padStart(2,"0");
+    const v=document.getElementById("lpVideo"); if(!v) return;
+    const home=document.getElementById("home"), hero=v.closest(".lp-hero"), btn=document.getElementById("lpPause");
+    const tallQ=window.matchMedia("(max-aspect-ratio:1/1)"), rm=window.matchMedia("(prefers-reduced-motion:reduce)");
+    const saveData=!!(navigator.connection&&navigator.connection.saveData);
+    let paused=rm.matches||saveData, inView=true, ready=document.readyState==="complete";
+    v.muted=true; v.defaultMuted=true;
+    function playing(){ return ready && !paused && inView && !document.hidden && home.classList.contains("active"); }
+    function label(){
+      btn.setAttribute("aria-pressed",String(paused));
+      btn.setAttribute("aria-label",paused ? "영상 재생" : "영상 멈춤");
+      btn.textContent=paused ? "▶" : "❚❚";
     }
-    function next(){ i=(i+1)%slides.length; draw(); }
-    function playing(){
-      return !paused && !document.hidden && home.classList.contains("active")
-        && !hero.matches(":hover") && !hero.contains(document.activeElement);
+    function sync(){
+      if(!playing()){ if(!v.paused) v.pause(); return; }
+      const want=tallQ.matches ? v.dataset.tall : v.dataset.wide;
+      if(v.dataset.cur!==want){ v.classList.remove("on"); v.dataset.cur=want; v.src=want; }
+      const p=v.play();
+      if(p&&p.catch) p.catch(e=>{ if(e&&e.name==="NotAllowedError"){ paused=true; label(); } });
     }
-    function reset(){ clearInterval(t); if(playing()) t=setInterval(next,7200); }
-    function syncPause(){
-      pauseBtn.setAttribute("aria-pressed",String(paused));
-      pauseBtn.setAttribute("aria-label",paused ? "사진 자동 넘김 다시 시작" : "사진 자동 넘김 멈춤");
-      pauseBtn.textContent=paused ? "▶" : "❚❚";
-    }
-    pauseBtn.addEventListener("click",()=>{paused=!paused;syncPause();reset();});
-    hero.addEventListener("mouseenter",()=>clearInterval(t));
-    hero.addEventListener("mouseleave",reset);
-    hero.addEventListener("focusin",()=>clearInterval(t));
-    hero.addEventListener("focusout",()=>requestAnimationFrame(reset));
-    document.addEventListener("visibilitychange",reset);
-    document.addEventListener("pagechange",reset);
-    reducedMotion.addEventListener("change",()=>{paused=reducedMotion.matches;syncPause();reset();});
-    syncPause(); draw(); reset();
+    v.addEventListener("playing",()=>v.classList.add("on"));
+    v.addEventListener("error",()=>v.classList.remove("on"));
+    btn.addEventListener("click",()=>{ paused=!paused; label(); sync(); });
+    if("IntersectionObserver" in window) new IntersectionObserver(es=>{ inView=es[0].isIntersecting; sync(); }).observe(hero);
+    document.addEventListener("visibilitychange",sync);
+    document.addEventListener("pagechange",sync);
+    tallQ.addEventListener("change",sync);
+    rm.addEventListener("change",()=>{ paused=rm.matches; label(); sync(); });
+    if(!ready) window.addEventListener("load",()=>{ ready=true; sync(); });
+    label(); sync();
   })();
 
   // ---- 스크롤 등장 ----
@@ -2032,7 +2213,7 @@ if (root) (async () => {
   const INFO = {
     s1941: { t: 'STUDIO 1941', lo: '경기 수원', href: '#s1941',
       p: '서까래와 나무 기둥을 남겨 고친 1941년 한옥',
-      rows: [['A동 · 메인 홀', '20평 · 최대 20명'], ['B동 · 소모임 홀', '6평 · 최대 10명'], ['테라스', '30평 · 최대 30명']] },
+      rows: [['A동 · 메인홀', '20평 · 최대 25명'], ['B동 · 소모임 홀', '8평 · 최대 12명'], ['메인 테라스', '30평 · 최대 30명'], ['느티나무 테라스', '30평 · 최대 20명']] },
     forest: { t: 'DADA FOREST', lo: '강원 평창', href: '#forest',
       p: '오대산 가까운 자작나무 숲속 작은 목조 건물 두 동',
       rows: [['A동 · 홀', '20평 · 최대 15명'], ['B동 · 홀', '15평 · 최대 10명'], ['주방 · 바 · 화장실', '7평'], ['전망대 · 바비큐', '4평']] },
@@ -2057,7 +2238,7 @@ if (root) (async () => {
   // 모임 조건 비교용 사실 (구성표·이용 안내 기준)
   const SPEC = {
     s1941: { uses: ['워크숍', '수업·클래스', '소모임', '촬영', '공연'], slots: ['오전', '오후', '야간'],
-      people: n => n <= 20 ? ['ok', 'A동 메인 홀 최대 20명'] : n <= 30 ? ['ok', '테라스까지 쓰면 최대 30명'] : ['no', '최대 30명(테라스 포함)'] },
+      people: n => n <= 25 ? ['ok', 'A동 메인홀 최대 25명'] : n <= 30 ? ['ok', '메인 테라스까지 쓰면 최대 30명'] : ['no', '최대 30명(테라스 포함)'] },
     forest: { uses: ['워크숍', '사외 모임', '요가·명상', '소모임'], slots: ['오후', '야간'],
       people: n => n <= 15 ? ['ok', 'A동 홀 최대 15명'] : n <= 25 ? ['maybe', 'A·B동을 나눠 쓰면 25명, 문의 필요'] : ['no', '실내 홀은 최대 15명·10명'] },
     spaceon: { uses: ['전시·팝업', '공연', '수업·클래스', '워크숍', '촬영'], slots: null,
@@ -2066,7 +2247,7 @@ if (root) (async () => {
   // 실제 사진 (계절·시간에 맞춰 보여 줌)
   const PHOTOS = {
     s1941: { green: [['images/space-hero-1941-spring.jpg', '봄'], ['images/s1941-ext-2.jpg', '여름 마당'], ['images/s1941-terrace-3.jpg', '테라스']],
-             autumn: [['images/s1941-ext-3.jpg', '가을'], ['images/s1941-terrace-2.jpg', '가을 테라스']],
+             autumn: [['images/s1941-ext-3.jpg', '가을'], ['images/s1941-terrace-main-05.jpg', '메인 테라스'], ['images/s1941-terrace-2.jpg', '가을 테라스']],
              snow: [['images/s1941-ext-4.jpg', '눈 오는 저녁'], ['images/s1941-terrace-4.jpg', '눈 덮인 테라스']] },
     forest: { green: [['images/forest-bldg-5.jpg', '봄'], ['images/forest-bldg-3.jpg', '저녁']], autumn: [['images/forest-birch-1.jpg', '가을 숲']],
               snow: [['images/space-hero-forest-winter.jpg', '겨울'], ['images/forest-main.jpg', '눈 덮인 숲'], ['images/forest-birch-2.jpg', '퍼걸러']] },

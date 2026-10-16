@@ -1003,9 +1003,13 @@
   .page-head .cats{font-size:14px;color:var(--ink);margin-top:10px;letter-spacing:-.01em;word-break:keep-all;}
   .d-intro p{max-width:900px;word-break:keep-all;}
   .d-about{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:56px;margin-top:30px;align-items:start;}
-  .d-about .desc{margin-top:0;max-width:none;word-break:keep-all;}
+  .d-about .desc{margin-top:0;max-width:none;padding-top:13px;word-break:keep-all;}   /* 첫 줄을 오른쪽 목록 첫 줄과 맞춤 */
   .d-uses{list-style:none;margin:0;padding:0;border-top:1px solid var(--line);}
-  .d-uses li{padding:11px 0;border-bottom:1px solid var(--line-soft);font-size:15px;color:var(--ink);word-break:keep-all;}
+  .d-uses li{display:grid;grid-template-columns:112px 1fr;gap:16px;padding:13px 0;border-bottom:1px solid var(--line-soft);
+    font-size:15px;line-height:1.6;color:var(--ink-soft);word-break:keep-all;}
+  .d-uses li b{color:var(--ink);font-weight:700;}
+  .d-uses li i{font-style:normal;white-space:nowrap;}   /* 항목 하나는 줄바꿈 없이 */
+  .specs .row .de b{color:var(--ink);font-weight:700;}
   .d-sec{padding:56px 0 8px;}
   .d-sec h3{font-family:var(--display);font-size:24px;font-weight:800;letter-spacing:-.03em;margin-bottom:24px;}
   .d-sec .specs{padding:0;}
@@ -1039,6 +1043,8 @@
   .d-dada .lp-btn{margin-top:18px;}
   @media(max-width:820px){
     .d-about{grid-template-columns:1fr;gap:26px;}
+    .d-about .desc{padding-top:0;}
+    .d-uses li{grid-template-columns:96px 1fr;gap:12px;}
     .d-sec{padding-top:44px;}
     .d-sec h3{font-size:21px;margin-bottom:18px;}
     .d-why{grid-template-columns:1fr;}
@@ -1336,11 +1342,11 @@
   <div class="lnav"><div class="wrap"><b>STUDIO 1941</b><a class="lnav-cta" href="https://map.naver.com/p/search/%EA%B2%BD%EA%B8%B0%20%EC%88%98%EC%9B%90%EC%8B%9C%20%EC%9E%A5%EC%95%88%EA%B5%AC%20%EC%83%81%EA%B4%91%EA%B5%90%EB%8F%99%20322" target="_blank" rel="noopener">네이버 예약</a></div></div>
   <div class="wrap">
     <div class="page-head">
-      <div class="eyebrow">(EST·1941·GWANGGYO)</div>
+      <div class="eyebrow">(SINCE 1941 GWANGGYO)</div>
       <h1 class="serif">STUDIO 1941</h1>
       <div class="signal"><span>IN NATURE</span>·<span>HERITAGE 1941</span>·<span>ART&amp;CULTURE</span>·<span>CREATIVE SPACE</span></div>
       <div class="loc">경기 수원시 장안구 상광교동 322 · 부지 800평 · 주차 20대</div>
-      <div class="cats"><span>공간대여</span> · <span>스몰웨딩</span> · <span>문화행사</span> · <span>촬영</span> · <span>기업행사&amp;워크숍</span> · <span>모임&amp;파티</span></div>
+      <div class="cats"><span>스몰웨딩</span> · <span>가족모임·행사</span> · <span>문화행사(공연·전시)</span> · <span>기업행사(워크숍·세미나)</span> · <span>스터디·독서모임</span> · <span>살롱</span> · <span>사진·영상 촬영</span> · <span>소규모 모임</span> · <span>피크닉</span> · <span>캠핑</span> · <span>워케이션</span></div>
     </div>
     <div class="hero-img pic--img" data-lazybg="images/s1941-terrace-main-05-wide.jpg" role="img" aria-label="STUDIO 1941 메인 테라스와 A동"></div>
 
@@ -1349,13 +1355,11 @@
       <div class="d-about">
         <div class="desc">도심에서 가까운 광교산 자락, 800평 부지에 자연 수목이 있고, 낭만의 테라스를 중심으로 두 개의 홀(A동, B동)이 있습니다. 이 공간은 여러분의 다양한 프로그램 및 활동을 온전히 그리고 프라이빗하게 받아들입니다. 이 공간은 여러분의 활동에 배경이 되며 광교산의 계절적 변화가 그 위에 온전히 더해집니다.<br><br>필요한 시간만큼 온전히 활용하세요.</div>
         <ul class="d-uses">
-          <li>스튜디오 촬영</li>
-          <li>스몰웨딩</li>
-          <li>가족행사</li>
-          <li>기업행사(워크숍, 세미나, 회식 및 파티)</li>
-          <li>문화예술(공연·전시) 및 아카데미</li>
-          <li>각종 모임</li>
-          <li>피크닉</li>
+          <li><b>웨딩·행사</b><span><i>스몰웨딩</i> · <i>가족 행사</i> · <i>기업행사(워크숍·세미나)</i></span></li>
+          <li><b>문화</b><span><i>공연</i> · <i>전시</i> · <i>살롱</i></span></li>
+          <li><b>모임</b><span><i>가족모임</i> · <i>스터디</i> · <i>독서모임</i> · <i>소규모 모임</i></span></li>
+          <li><b>촬영</b><span><i>사진</i> · <i>영상</i></span></li>
+          <li><b>휴식·워케이션</b><span><i>피크닉</i> · <i>캠핑</i> · <i>워케이션</i></span></li>
         </ul>
       </div>
     </div>
@@ -1375,8 +1379,8 @@
     <div class="d-sec">
       <h3>SPACES</h3>
       <div class="specs">
-        <div class="row"><span class="nm">A동 · 메인홀</span><span class="de">메인홀 · 주방 · 바 · 화장실<small>빔프로젝터 · 건반피아노 · 블루투스스피커 · 캡슐커피(유료) · 냉온수기(얼음)</small></span><span class="ca">20평 · 최대 25명</span></div>
-        <div class="row"><span class="nm">B동 · 소모임 홀</span><span class="de">부속홀<small>빔프로젝터 · 건반피아노 · 블루투스스피커 (A동 캡슐커피 · 냉온수기(얼음))</small></span><span class="ca">8평 · 최대 12명</span></div>
+        <div class="row"><span class="nm">A동 · 메인홀</span><span class="de"><b>메인홀 · 주방 · 바 · 화장실</b><small>빔프로젝터 · 건반피아노 · 블루투스스피커 · 캡슐커피(유료) · 냉온수기(얼음)</small></span><span class="ca">20평 · 최대 25명</span></div>
+        <div class="row"><span class="nm">B동 · 소모임 홀</span><span class="de"><b>부속홀</b><small>빔프로젝터 · 건반피아노 · 블루투스스피커 (A동 캡슐커피 · 냉온수기(얼음))</small></span><span class="ca">8평 · 최대 12명</span></div>
         <div class="row"><span class="nm">메인 테라스</span><span class="de">A동 예약 시 무료 이용</span><span class="ca">30평 · 최대 30명</span></div>
         <div class="row"><span class="nm">느티나무 테라스</span><span class="de">B동 예약 시 무료 이용</span><span class="ca">30평 · 최대 20명</span></div>
         <div class="row"><span class="nm">테라스 공용</span><span class="de">웨딩 스크린 · 웨딩 테이블</span><span class="ca"></span></div>
@@ -1470,6 +1474,8 @@
         <li>사진·영상 촬영</li>
         <li>소규모 모임</li>
         <li>피크닉</li>
+        <li>캠핑</li>
+        <li>워케이션</li>
       </ul>
     </div>
 

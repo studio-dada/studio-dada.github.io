@@ -1544,7 +1544,7 @@
       <h1 class="serif">DADA FOREST</h1>
       <div class="loc">강원 평창군 진부면 척천리 235 · 부지 3,000평 · 주차 20대</div>
     </div>
-    <div class="hero-img pic--img" data-lazybg="images/forest-main.jpg"></div>
+    <div class="hero-img pic--img" data-lazybg="images/forest-apricot-plaza-01-wide.jpg" role="img" aria-label="DADA FOREST 살구나무 광장과 목조 건물"></div>
 
     <div class="d-intro">
       <p class="serif">오대산 가까운 자작나무 숲속 워케이션</p>
@@ -1561,15 +1561,28 @@
 
     <div class="gsec">
       <div class="gsec-head">
-        <h3>목조 건물과 데크</h3>
-        <span class="count" id="gcount-fa"></span>
+        <h3>목조 홀</h3>
+        <span class="count" id="gcount-fh"></span>
       </div>
       <div class="gslider">
-        <div class="gtrack" id="gtrack-fa"></div>
-        <button class="garrow prev" data-g="fa" data-d="-1" aria-label="이전 사진">‹</button>
-        <button class="garrow next" data-g="fa" data-d="1" aria-label="다음 사진">›</button>
+        <div class="gtrack" id="gtrack-fh"></div>
+        <button class="garrow prev" data-g="fh" data-d="-1" aria-label="이전 사진">‹</button>
+        <button class="garrow next" data-g="fh" data-d="1" aria-label="다음 사진">›</button>
       </div>
-      <div class="gdots" id="gdots-fa"></div>
+      <div class="gdots" id="gdots-fh"></div>
+    </div>
+
+    <div class="gsec">
+      <div class="gsec-head">
+        <h3>데크와 살구나무 광장</h3>
+        <span class="count" id="gcount-fd"></span>
+      </div>
+      <div class="gslider">
+        <div class="gtrack" id="gtrack-fd"></div>
+        <button class="garrow prev" data-g="fd" data-d="-1" aria-label="이전 사진">‹</button>
+        <button class="garrow next" data-g="fd" data-d="1" aria-label="다음 사진">›</button>
+      </div>
+      <div class="gdots" id="gdots-fd"></div>
     </div>
 
     <div class="gsec">
@@ -1583,6 +1596,19 @@
         <button class="garrow next" data-g="fb" data-d="1" aria-label="다음 사진">›</button>
       </div>
       <div class="gdots" id="gdots-fb"></div>
+    </div>
+
+    <div class="gsec">
+      <div class="gsec-head">
+        <h3>계절별 풍경</h3>
+        <span class="count" id="gcount-fw"></span>
+      </div>
+      <div class="gslider">
+        <div class="gtrack" id="gtrack-fw"></div>
+        <button class="garrow prev" data-g="fw" data-d="-1" aria-label="이전 사진">‹</button>
+        <button class="garrow next" data-g="fw" data-d="1" aria-label="다음 사진">›</button>
+      </div>
+      <div class="gdots" id="gdots-fw"></div>
     </div>
 
     <div class="use">
@@ -2208,19 +2234,47 @@
       "images/s1941-ext-4.jpg",
       "images/s1941-terrace-4.jpg"
     ],
-      fa:[
+      fh:[
+      "images/forest-hall-1-01.jpg",
+      "images/forest-hall-1-03.jpg",
+      "images/forest-hall-1-05.jpg",
+      "images/forest-hall-1-07.jpg",
+      "images/forest-hall-2-01.jpg",
+      "images/forest-hall-2-05.jpg",
+      "images/forest-hall-2-06.jpg",
+      "images/forest-sculpture-02.jpg",
+      "images/forest-workation-01.jpg"
+    ],
+      fd:[
+      "images/forest-deck-01.jpg",
+      "images/forest-apricot-plaza-03.jpg",
+      "images/forest-deck-02.jpg",
+      "images/forest-apricot-plaza-05.jpg",
+      "images/forest-deck-04.jpg",
+      "images/forest-deck-05.jpg",
+      "images/forest-deck-slope-01.jpg"
+    ],
+      fb:[
+      "images/forest-birch-pergola-01.jpg",
+      "images/forest-birch-path-02.jpg",
+      "images/forest-birch-pergola-06.jpg",
+      "images/forest-birch-edge-01.jpg",
+      "images/forest-birch-edge-02.jpg",
+      "images/forest-birch-path-01.jpg",
+      "images/forest-birch-pergola-10.jpg",
+      "images/forest-pine-grove-01.jpg",
+      "images/forest-lawn-01.jpg"
+    ],
+      fw:[
+      "images/space-hero-forest-winter.jpg",
       "images/forest-bldg-1.jpg",
       "images/forest-bldg-2.jpg",
       "images/forest-bldg-3.jpg",
       "images/forest-bldg-4.jpg",
-      "images/forest-bldg-5.jpg"
-    ],
-      fb:[
-      "images/forest-birch-1.jpg",
       "images/forest-birch-2.jpg",
-      "images/forest-birch-3.jpg",
       "images/forest-birch-4.jpg",
-      "images/forest-birch-5.jpg"
+      "images/forest-bldg-5.jpg",
+      "images/forest-birch-1.jpg"
     ] };
     const state={};
     Object.keys(sets).forEach(g=>{
@@ -2411,7 +2465,7 @@ if (root) (async () => {
     s1941: { green: [['images/space-hero-1941-spring.jpg', '봄'], ['images/s1941-ext-2.jpg', '여름 마당'], ['images/s1941-terrace-3.jpg', '테라스']],
              autumn: [['images/s1941-ext-3.jpg', '가을'], ['images/s1941-terrace-main-05.jpg', '메인 테라스'], ['images/s1941-terrace-2.jpg', '가을 테라스']],
              snow: [['images/s1941-ext-4.jpg', '눈 오는 저녁'], ['images/s1941-terrace-4.jpg', '눈 덮인 테라스']] },
-    forest: { green: [['images/forest-bldg-5.jpg', '봄'], ['images/forest-bldg-3.jpg', '저녁']], autumn: [['images/forest-birch-1.jpg', '가을 숲']],
+    forest: { green: [['images/forest-bldg-5.jpg', '봄'], ['images/forest-bldg-3.jpg', '저녁']], autumn: [['images/forest-birch-path-02.jpg', '가을 자작나무 길'], ['images/forest-deck-01.jpg', '데크와 살구나무'], ['images/forest-birch-1.jpg', '가을 숲']],
               snow: [['images/space-hero-forest-winter.jpg', '겨울'], ['images/forest-main.jpg', '눈 덮인 숲'], ['images/forest-birch-2.jpg', '퍼걸러']] },
     spaceon: { day: [['images/spaceon-main.jpg', '마당'], ['images/spaceon-ext-5.jpg', '마당과 회랑'], ['images/spaceon-int-1.jpg', '회랑']],
                night: [['images/spaceon-ext-2.jpg', '저녁 마당'], ['images/spaceon-ext-3.jpg', '저녁']] }

@@ -1198,11 +1198,12 @@
   #about .contact2{margin-top:88px;padding:88px 0 96px;}
   /* Our values: 사진 · 글 좌우 교차 (짝수 줄은 사진이 오른쪽) */
   #about .ab-rows{list-style:none;margin:64px 0 0;padding:0;display:flex;flex-direction:column;gap:72px;text-align:left;}
-  #about .ab-row{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+  #about .ab-row{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
   #about .ab-row:nth-child(even) .ab-pic{order:2;}
   #about .ab-pic{margin:0;aspect-ratio:1/1;overflow:hidden;border-radius:10px;background:#2a2824;}
   #about .ab-pic img{display:block;width:100%;height:100%;object-fit:cover;}
-  #about .ab-txt{padding:0 24px;}
+  #about .ab-txt{padding:48px 24px 0;}   /* 위쪽에 맞추고 48px만 내림(운영자: 딱 붙지 않게) */
+  #about .ab-txt p{margin-top:24px;font-size:16px;line-height:1.9;color:var(--ink-soft);word-break:keep-all;}
   #about .ab-no{display:block;font-size:13px;font-weight:600;letter-spacing:.08em;color:var(--stone);font-variant-numeric:tabular-nums;}
   #about .ab-txt h3{margin-top:14px;font-family:var(--display);font-size:clamp(28px,3vw,40px);font-weight:800;letter-spacing:-.03em;line-height:1.1;color:var(--ink);}
   /* 문의 칸: 로고 > 전화번호 > 이름표·링크 */
@@ -1236,6 +1237,8 @@
     #about .ab-row{grid-template-columns:1fr;gap:18px;}
     #about .ab-row:nth-child(even) .ab-pic{order:0;}
     #about .ab-txt{padding:0;}
+    #about .ab-txt p{margin-top:14px;font-size:15px;line-height:1.8;}
+    #about .ab-txt p br{display:none;}   /* 휴대폰은 폭이 좁아 정한 줄바꿈 대신 자연스럽게 */
     #about .ab-txt h3{margin-top:8px;font-size:26px;}
     #about .ab-logo{width:132px;margin-bottom:40px;}
     #about .ab-tel{font-size:30px;}
@@ -2160,19 +2163,28 @@
       <ul class="ab-rows">
         <li class="ab-row">
           <figure class="ab-pic"><img src="images/about-value-nature.jpg" alt="DADA FOREST의 자작나무 숲" loading="lazy" decoding="async" width="1200" height="1200"></figure>
-          <div class="ab-txt"><span class="ab-no">01</span><h3>IN NATURE</h3></div>
+          <div class="ab-txt"><span class="ab-no">01</span><h3>IN NATURE</h3><p>자연은 되도록 그대로 둡니다.<br>
+땅의 생김새와 나무를 살리고, 주변 풍경을 거스르지 않게 설계합니다.<br>
+건물이 풍경의 주인공이 되지 않도록 합니다.</p></div>
         </li>
         <li class="ab-row">
           <figure class="ab-pic"><img src="images/about-value-heritage.jpg" alt="SPACE ON의 서까래와 회랑" loading="lazy" decoding="async" width="1200" height="1200"></figure>
-          <div class="ab-txt"><span class="ab-no">02</span><h3>HERITAGE</h3></div>
+          <div class="ab-txt"><span class="ab-no">02</span><h3>HERITAGE</h3><p>과거와 현재가 함께하는 공간을 만듭니다.<br>
+오래된 공간에 담긴 시간과 이야기를 이어갑니다.<br>
+고쳐 쓰는 것이 가장 오래가는 건축이라고 믿기 때문입니다.<br>
+건물에 쌓인 시간과 이야기는 지키고, 다음 세대로 이어 갑니다.</p></div>
         </li>
         <li class="ab-row">
-          <figure class="ab-pic"><img src="images/about-value-culture.jpg" alt="STUDIO 1941 홀" loading="lazy" decoding="async" width="1200" height="1200"></figure>
-          <div class="ab-txt"><span class="ab-no">03</span><h3>ART&amp;CULTURE</h3></div>
+          <figure class="ab-pic"><img src="images/about-value-culture.jpg" alt="DADA FOREST 홀" loading="lazy" decoding="async" width="1200" height="1200"></figure>
+          <div class="ab-txt"><span class="ab-no">03</span><h3>ART&amp;CULTURE</h3><p>DADA의 공간이 예술과 문화로 채워지길 바랍니다.<br>
+음악가와 미술가, 무언가를 만드는 모든 사람에게<br>
+작업하고, 공유하고, 서로 만날 수 있는 자리를 내어 드립니다.</p></div>
         </li>
         <li class="ab-row">
-          <figure class="ab-pic"><img src="images/about-value-space.jpg" alt="DADA FOREST 홀" loading="lazy" decoding="async" width="1200" height="1200"></figure>
-          <div class="ab-txt"><span class="ab-no">04</span><h3>CREATIVE SPACE</h3></div>
+          <figure class="ab-pic"><img src="images/about-value-space.jpg" alt="STUDIO 1941 홀" loading="lazy" decoding="async" width="1200" height="1200"></figure>
+          <div class="ab-txt"><span class="ab-no">04</span><h3>CREATIVE SPACE</h3><p>자연 속 오래된 공간에서 새로운 영감을 얻어가세요.<br>
+일상에서 한 걸음 떨어진 곳에서 영감과 아이디어를 얻고,<br>
+새로운 일이 시작되는 곳을 만듭니다.</p></div>
         </li>
       </ul>
     </section>

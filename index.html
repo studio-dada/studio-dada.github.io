@@ -1171,7 +1171,7 @@
   /* ═══════════ 소개: 하는 일 · 가치 (픽토그램) ═══════════ */
   .ab-sec{padding:96px 0 24px;text-align:center;}
   .ab-sec + .ab-sec{padding-top:72px;border-top:1px solid var(--line-soft);margin-top:72px;}
-  .ab-sec h2{font-family:var(--display);font-size:clamp(34px,4vw,52px);font-weight:800;letter-spacing:-.04em;color:var(--ink);}
+  .ab-sec h2{font-family:var(--display);font-size:clamp(27px,3.2vw,42px);font-weight:800;letter-spacing:-.04em;color:var(--ink);}
   .ab-lead{margin-top:14px;font-size:16px;color:var(--stone);letter-spacing:-.01em;word-break:keep-all;}
   .ab-grid{list-style:none;margin:64px auto 0;padding:0;display:grid;gap:56px 48px;}
   .ab-grid.three{grid-template-columns:repeat(3,1fr);max-width:1200px;}
@@ -1199,6 +1199,23 @@
   #about .enquiry{margin-bottom:56px;}
   #about .c2-grid{max-width:900px;margin:0 auto;}
   #about .c-foot{justify-content:center;margin-top:56px;}
+  /* 문의 칸: 왼쪽 로고 · 오른쪽 세로 목록 (NOT A HOTEL 바닥 목록 방식) */
+  #about .ab-contact{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:88px;padding:88px 0 104px;
+    border-top:1px solid var(--line-soft);text-align:left;}
+  #about .ab-logo{display:block;width:200px;height:auto;color:var(--ink);}
+  #about .ab-links{margin-top:16px;font-size:13px;color:var(--ink-soft);}
+  #about .ab-links a,#about .ab-list a{color:inherit;text-decoration:none;}
+  #about .ab-links span,#about .ab-list .mt span{margin:0 10px;color:var(--line);}
+  #about .ab-call{display:flex;flex-direction:column;gap:6px;padding-bottom:28px;}
+  #about .ab-call span{font-size:13px;font-weight:600;letter-spacing:.02em;color:var(--stone);}
+  #about .ab-call a{font-family:var(--display);font-size:30px;font-weight:800;letter-spacing:-.02em;color:var(--ink);text-decoration:none;}
+  #about .ab-list{list-style:none;margin:0;padding:0;}
+  #about .ab-list li{padding:22px 0;border-top:1px solid var(--line-soft);}
+  #about .ab-list a{display:inline-flex;align-items:center;gap:10px;color:var(--ink);}
+  #about .ab-arr{font-size:18px;font-weight:600;}
+  #about .ab-list .nm{font-family:var(--display);font-size:22px;font-weight:800;letter-spacing:-.02em;}
+  #about .ab-list a:hover .nm{text-decoration:underline;text-underline-offset:4px;}
+  #about .ab-list .mt{margin-top:8px;font-size:13px;color:var(--ink-soft);word-break:keep-all;}
   @media(max-width:980px){ .ab-grid.four{grid-template-columns:repeat(2,1fr);max-width:720px;} #about .ab-grid.four{max-width:720px;margin-left:auto;margin-right:auto;} }
   @media(max-width:820px){
     .ab-sec{padding-top:64px;}
@@ -1216,6 +1233,10 @@
     #about .contact2{margin-top:64px;padding:64px 0 72px;}
     #about .enquiry{margin-bottom:40px;}
     #about .c-foot{flex-direction:column;align-items:center;gap:10px;}
+    #about .ab-contact{grid-template-columns:1fr;gap:40px;margin-top:64px;padding:64px 0 72px;}
+    #about .ab-logo{width:150px;}
+    #about .ab-call a{font-size:26px;}
+    #about .ab-list .nm{font-size:19px;}
   }
 </style>
 </head>
@@ -2106,7 +2127,7 @@
     </div>
     <div class="manifesto">
       <p>DADA는 1992년 건축 설계·시공으로 시작했습니다.<br>1996년에는 수원의 VISION 22로 제1회 경기도 건축문화상 대상을 받았습니다.</p>
-      <p>지금은 직접 짓고 고친 수원, 평창, 강릉의 공간을<br>모임과 워케이션, 전시 공간으로 공유합니다.</p>
+      <p>지금은 직접 짓고, 고친 공간을 공유합니다.</p>
     </div>
     <section class="ab-sec" aria-labelledby="ab-work">
       <h2 id="ab-work">What we do</h2>
@@ -2133,7 +2154,6 @@
     </section>
     <section class="ab-sec" aria-labelledby="ab-values">
       <h2 id="ab-values">Our values</h2>
-      <p class="ab-lead">DADA의 공간이 지키는 네 가지</p>
       <ul class="ab-grid four">
         <li>
           <svg class="ab-ic" viewBox="0 0 64 64" width="64" height="64" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="45" cy="17" r="7"/><path d="M4 52 22 26l11 15 7-9 20 20z"/></svg>
@@ -2154,43 +2174,18 @@
       </ul>
     </section>
 
-    <div class="contact2">
-      <div class="enquiry">
-        <div class="l">문의<br><a href="tel:031-221-2100">031-221-2100</a></div>
+    <div class="ab-contact">
+      <div class="ab-brand">
+        <svg class="ab-logo" viewBox="0 0 400 102" fill="currentColor" role="img" aria-label="DADA"><use href="#dada-logo"/></svg>
+        <div class="ab-links"><a href="https://www.instagram.com/studio_1941/" target="_blank" rel="noopener">Instagram</a><span>/</span><a href="mailto:artcafe1941@naver.com">artcafe1941@naver.com</a></div>
       </div>
-      <div class="c2-grid">
-        <div class="c2">
-          <h3>STUDIO 1941</h3>
-          <div class="k">주소</div>
-          <div class="v">경기 수원시 장안구 상광교동 322</div>
-          <div class="k">예약</div>
-          <div class="v">네이버 예약</div>
-          <div class="k">주차</div>
-          <div class="v">20대</div>
-        </div>
-        <div class="c2">
-          <h3>DADA FOREST</h3>
-          <div class="k">주소</div>
-          <div class="v">강원 평창군 진부면 척천리 235</div>
-          <div class="k">예약</div>
-          <div class="v">전화 예약</div>
-          <div class="k">주차</div>
-          <div class="v">20대</div>
-        </div>
-        <div class="c2">
-          <h3>SPACE ON</h3>
-          <div class="k">주소</div>
-          <div class="v">강원 강릉시 임영로 99-6</div>
-          <div class="k">예약</div>
-          <div class="v">전화 문의</div>
-          <div class="k">주차</div>
-          <div class="v"><span class="todo">입력</span></div>
-        </div>
-      </div>
-      <div class="c-foot">
-        <!-- TODO: 실제 운영 계정·메일 주소인지 확인 -->
-        <a href="https://www.instagram.com/studio_1941/" target="_blank" rel="noopener">인스타그램 · @studio_1941</a>
-        <a href="mailto:artcafe1941@naver.com">이메일 · artcafe1941@naver.com</a>
+      <div class="ab-reach">
+        <div class="ab-call"><span>상담 및 대여 문의</span><a class="enquiry-tel" href="tel:031-221-2100">031-221-2100</a></div>
+        <ul class="ab-list">
+          <li><a href="#s1941" data-page="s1941"><span class="nm">STUDIO 1941</span><span class="ab-arr" aria-hidden="true">→</span></a><div class="mt">경기 수원시 장안구 상광교동 322<span>/</span>네이버 예약</div></li>
+          <li><a href="#forest" data-page="forest"><span class="nm">DADA FOREST</span><span class="ab-arr" aria-hidden="true">→</span></a><div class="mt">강원 평창군 진부면 척천리 235<span>/</span>전화 예약</div></li>
+          <li><a href="#spaceon" data-page="spaceon"><span class="nm">SPACE ON</span><span class="ab-arr" aria-hidden="true">→</span></a><div class="mt">강원 강릉시 임영로 99-6<span>/</span>전화 문의</div></li>
+        </ul>
       </div>
     </div>
   </div>

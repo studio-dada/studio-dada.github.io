@@ -3007,13 +3007,11 @@ if (root) (async () => {
     // 임영로 99-6: 남대천 다리 북단 교차로 모퉁이의 필지(약 17×20m). 긴 변이 임영로(북북서~남남동)를 따름.
     // 마당 사진으로 본 둘레: 북쪽 노란 평지붕 건물, 동쪽 기와지붕 한옥(마당 쪽 전체가 목재 틀 유리 회랑),
     // 남쪽 같은 한옥의 흰 회벽 면(작은 창), 서쪽 짙은 목재 담과 지붕 얹은 대문. 마당은 붉은 벽돌, 가장자리는 회색 자갈.
-    const g = plot('spaceon', 44, 36, 'paving');
-    const clip = clipper('spaceon', 44, 36), cRoad = clip(roadMat), cWater = clip(waterMat);
-    strip(g, 50, 6, 0, 12.5, -0.06, cRoad);                             // 강변 도로
-    strip(g, 50, 4.5, 0, 16.7, -0.06, cWater, 0.02);                     // 남대천
-    strip(g, 9, 10, 12.5, 16, 0.28, cRoad, 0.05);                        // 다리
-    const site = new THREE.Group(); site.position.set(-2, 0, -4); site.rotation.y = 0.59; g.add(site); // 임영로 방향
-    strip(site, 8, 60, 13.5, 0, 0, cRoad);                               // 임영로
+    // 판을 키움(2026-10-22): 강·다리까지 보이게. 한 번에 한 공간만 보이므로 옆 판과 겹쳐도 됨
+    const PW = 60, PD = 76;
+    const g = plot('spaceon', PW, PD, 'paving');
+    const clip = clipper('spaceon', PW, PD), cRoad = clip(roadMat), cWater = clip(waterMat);
+    const site = new THREE.Group(); site.position.set(-2, 0, -4); site.rotation.y = 0.59; g.add(site); // 건물(그대로)
     const court = strip(site, 8.4, 11.8, -0.6, 1.1, 0, new THREE.MeshStandardMaterial({ map: bricks, roughness: 0.95, name: 'court' }), 0.04);
     court.receiveShadow = true;
     const peb = M('#c9c8c4');
@@ -3052,12 +3050,27 @@ if (root) (async () => {
     lantern(site, -4, 4.6); lantern(site, -4.1, -3.6);
     parasol(site, -1.5, 2.5); table(site, -1.5, 2.5, 0.2);
     [[-3.8, -2], [-3.8, 6], [2.6, 6.2], [2.7, -3.6]].forEach(([x, z]) => lampPost(site, x, z, 0.35));
-    // 이웃: 북쪽 붉은 지붕 건물, 서쪽 초록 지붕 건물, 뒤편 블록
-    const nb = building({ blob: false, w: 12, d: 4.5, h: 3.4, wall: clip(M('#e3ddd2')), roof: clip(M('#b8473a', { side: THREE.DoubleSide })), roofH: 1.6, x: 0, z: -13, parent: site });
-    nb.traverse(o => { if (o.isMesh) o.castShadow = false; });
-    box(7, 3.2, 9, clip(M('#cfcabf')), -13, 1.6, 5, site); box(7.2, 0.3, 9.2, clip(M('#5f8a64')), -13, 3.35, 5, site);
-    const cCity = clip(C.city);
-    [[-14, -9, 6, 6], [-8, -17, 7, 8], [-20, 2, 6, 5]].forEach(([x, z, w, h]) => box(w, h, 6, cCity, x, h / 2, z, site, false));
+    // ---- 주변 (2026-10-22 운영자 항공사진 기준으로 다시 배치. 건물은 그대로 두고 주변만) ----
+    // env 판은 항공사진 방향: x = 사진 오른쪽(임영로 쪽), z = 사진 아래(남대천 쪽), 원점 = 마당. 거리는 판 안에 들어오게 줄임
+    const env = new THREE.Group(); env.position.set(-0.6, 0, 1.1); env.rotation.y = -2.13; site.add(env);
+    const ROAD = [0.58, 0.81];                                          // 임영로·다리 방향(사진에서 오른쪽 아래로)
+    const along = Math.atan2(-ROAD[1], ROAD[0]);
+    strip(env, 120, 10, 19.5, 0, along, cRoad);                          // 임영로(건물 오른쪽, 위아래로 길게)
+    strip(env, 140, 5, 0, 14.75, 0.087, cRoad);                          // 강변 도로(건물 아래쪽, 강과 나란히)
+    strip(env, 140, 30, 0, 33, 0.087, cWater, 0.02);                     // 남대천(강변 도로 아래)
+    // 다리: 임영로를 따라 강을 건넘. 바닥보다 살짝 높은 상판 + 양쪽 난간
+    const bridge = new THREE.Group(); bridge.position.set(19.5 + 0.716 * 27, 0, 27); bridge.rotation.y = along; env.add(bridge);
+    box(26, 0.5, 10, cRoad, 0, 0.25, 0, bridge, false);
+    [-4.8, 4.8].forEach(z => box(26, 0.9, 0.3, clip(M('#b9b5ac')), 0, 0.95, z, bridge, false));
+    // 이웃 건물: 색 없이 회색 상자(생략해서). [사진 x, 사진 z, 길이, 폭, 높이, 길이 방향]
+    const cCity = clip(C.city), gridDir = Math.atan2(-0.85, 0.53);       // 동네 건물은 대부분 임영로와 나란히
+    const nbr = (x, z, l, w, h, rot = gridDir) => {
+      const n = new THREE.Group(); n.position.set(x, 0, z); n.rotation.y = rot; env.add(n); box(l, h, w, cCity, 0, h / 2, 0, n, false);
+    };
+    nbr(-2.7, -18, 14, 5, 3.4, along);                                   // 바로 위: 길을 따라 긴 집(붉은 지붕 집)
+    nbr(-10.9, 6.8, 12, 5, 3.2); nbr(-14.5, 0.5, 5, 4, 3.2);              // 바로 왼쪽 아래: ㄱ자 집
+    nbr(-25, -3, 11, 10, 4.5); nbr(-27, 12, 9, 7, 4); nbr(-17, 15, 8, 4.5, 3.6); // 왼쪽: 큰 건물들(낮게)
+    nbr(-11, -16, 7, 5, 3.6); nbr(-22, -18, 8, 7, 5); nbr(-31, -31, 8, 8, 4.5); // 위쪽 작은 건물들
     pointLight(site, 0, 3, 1.5);
   }
 

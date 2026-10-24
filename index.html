@@ -1248,6 +1248,39 @@
     #about .ab-links{margin-top:32px;font-size:13.5px;}
   }
 </style>
+
+<style id="portfolio-grid">
+  /* ═══════════ 프로젝트 상세: 위 개요 · 아래 같은 크기 사진 칸 ═══════════ */
+  .pf-over{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:56px;margin-top:40px;align-items:start;}
+  .pf-over .d-intro{padding:0;margin:0;}
+  .pf-over .d-intro p.serif{margin-top:0;}
+  .pf-over .specs{padding:0;}
+  .pf-over .specs .row{grid-template-columns:110px 1fr auto;gap:16px;padding:12px 0;font-size:14px;}
+  .pf-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:56px 0 0;}
+  .pf-tile{display:block;padding:0;border:0;background:#e9e5dc;aspect-ratio:4/3;overflow:hidden;border-radius:6px;cursor:zoom-in;}
+  .pf-tile img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .35s ease,opacity .2s ease;}
+  .pf-tile:hover img{transform:scale(1.03);}
+  .pf-tile:focus-visible{outline:2px solid var(--ink);outline-offset:2px;}
+  /* 크게 보기 */
+  .pf-lb{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;background:#0f0f0e;}
+  .pf-lb[hidden]{display:none;}
+  .pf-lb figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:14px;}
+  .pf-lb img{display:block;max-width:86vw;max-height:80vh;width:auto;height:auto;border-radius:4px;}
+  .pf-lb figcaption{font-size:13px;color:rgba(255,255,255,.75);letter-spacing:.02em;}
+  .pf-lb button{position:absolute;border:0;background:transparent;color:#fff;cursor:pointer;line-height:1;}
+  .pf-lb-x{top:18px;right:22px;font-size:34px;}
+  .pf-lb-nav{top:50%;transform:translateY(-50%);font-size:48px;padding:10px 16px;}
+  .pf-lb-nav.prev{left:14px;} .pf-lb-nav.next{right:14px;}
+  html.pf-lb-on,html.pf-lb-on body{overflow:hidden;}
+  @media(max-width:980px){ .pf-grid{grid-template-columns:repeat(3,1fr);} }
+  @media(max-width:820px){
+    .pf-over{grid-template-columns:1fr;gap:28px;margin-top:28px;}
+    .pf-over .specs .row{grid-template-columns:96px 1fr;}
+    .pf-grid{grid-template-columns:repeat(2,1fr);gap:6px;margin-top:36px;}
+    .pf-lb img{max-width:96vw;max-height:76vh;}
+    .pf-lb-nav{top:auto;bottom:18px;transform:none;font-size:40px;}
+  }
+</style>
 </head>
 <body>
 
@@ -1916,7 +1949,7 @@
       <h1 class="serif">희연재 喜蓮齋</h1>
       <div class="loc">경기 양평군 서종면 수입리 · 연면적 229.7㎡ · 지하 1층 / 지상 2층</div>
     </div>
-    <div class="pf-hero"><img loading="lazy" decoding="async" src="images/hy-main.jpg" alt="희연재 전경"></div>
+    <div class="pf-over">
     <div class="d-intro">
       <p class="serif">북한강이 내려다보이는 양평 경사지의 단독주택</p>
       <div class="desc">경사진 땅을 깎아 고르지 않고, 거실과 침실·아틀리에를 서로 다른 높이에 두었습니다. 실내 천장에는 목재를 댔습니다.</div>
@@ -1931,18 +1964,16 @@
       <div class="row"><span class="nm">외부마감</span><span class="de">노출콘크리트 · 드라이비트</span><span class="ca">-</span></div>
       <div class="row"><span class="nm">설계·시공</span><span class="de">DADA DESIGN</span><span class="ca">컨설팅부터 준공까지</span></div>
     </div>
-    <div class="pf-sec">
-      <div class="pf-head"><h3>외관</h3></div>
-      <div class="pf-shot"><img src="images/hy-01.jpg" alt="외관 전경" loading="lazy"><div class="cap">외관 전경</div></div>
-      <div class="pf-shot"><img src="images/hy-02.jpg" alt="측면에서 본 전경" loading="lazy"><div class="cap">측면에서 본 전경</div></div>
-      <div class="pf-shot"><img src="images/hy-03.jpg" alt="진입부" loading="lazy"><div class="cap">진입부</div></div>
     </div>
-    <div class="pf-sec">
-      <div class="pf-head"><h3>실내</h3></div>
-      <div class="pf-shot"><img src="images/hy-04.jpg" alt="거실" loading="lazy"><div class="cap">거실</div></div>
-      <div class="pf-shot"><img src="images/hy-05.jpg" alt="높이가 다른 실내" loading="lazy"><div class="cap">높이가 다른 실내</div></div>
-      <div class="pf-shot"><img src="images/hy-06.jpg" alt="목재 천장" loading="lazy"><div class="cap">목재 천장</div></div>
-      <div class="pf-shot"><img src="images/hy-07.jpg" alt="실내 디테일" loading="lazy"><div class="cap">실내 디테일</div></div>
+    <div class="pf-grid">
+      <button class="pf-tile" type="button" aria-label="희연재 전경 크게 보기"><img src="images/hy-main.jpg" alt="희연재 전경" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="외관 전경 크게 보기"><img src="images/hy-01.jpg" alt="외관 전경" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="측면에서 본 전경 크게 보기"><img src="images/hy-02.jpg" alt="측면에서 본 전경" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="진입부 크게 보기"><img src="images/hy-03.jpg" alt="진입부" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="거실 크게 보기"><img src="images/hy-04.jpg" alt="거실" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="높이가 다른 실내 크게 보기"><img src="images/hy-05.jpg" alt="높이가 다른 실내" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="목재 천장 크게 보기"><img src="images/hy-06.jpg" alt="목재 천장" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="실내 디테일 크게 보기"><img src="images/hy-07.jpg" alt="실내 디테일" loading="lazy" decoding="async"></button>
     </div>
     <nav class="pf-nav" aria-label="프로젝트 이동">
       <a href="#dadadesign" data-page="dadadesign">← 프로젝트 목록</a>
@@ -1960,7 +1991,7 @@
       <h1 class="serif">VISION 22</h1>
       <div class="loc">경기 수원시 팔달구 원천동 · 연면적 2,522.7㎡ · 지하 1층 / 지상 5층</div>
     </div>
-    <div class="pf-hero"><img loading="lazy" decoding="async" src="images/v22-main.jpg" alt="VISION 22 전경"></div>
+    <div class="pf-over">
     <div class="d-intro">
       <p class="serif">두 길이 만나는 모퉁이 땅의 복합 건물</p>
       <div class="desc">길 쪽 벽은 대지 모서리를 따라 꺾지 않고 곡면으로 돌렸습니다. 곡면에는 알루미늄 시트패널과 유리를 수평 띠로 둘렀고, 원통형 코어가 이 띠를 세로로 끊습니다. 원형 천창으로 들어온 빛이 보이드를 거쳐 아래층까지 내려옵니다.</div>
@@ -1977,41 +2008,33 @@
       <div class="row"><span class="nm">수상</span><span class="de">제1회 경기도 건축문화상 대상</span><span class="ca">1996</span></div>
       <div class="row"><span class="nm">설계·시공</span><span class="de">DADA DESIGN</span><span class="ca">컨설팅부터 준공까지</span></div>
     </div>
-    <div class="pf-sec">
-      <div class="pf-head"><h3>외관</h3></div>
-      <div class="pf-shot"><img src="images/v22-01.jpg" alt="거리에서 본 전경" loading="lazy"><div class="cap">거리에서 본 전경</div></div>
-      <div class="pf-shot"><img src="images/v22-02.jpg" alt="곡면 외벽과 원통 코어" loading="lazy"><div class="cap">곡면 외벽과 원통 코어</div></div>
-      <div class="pf-shot"><img src="images/v22-03.jpg" alt="상부 곡면" loading="lazy"><div class="cap">상부 곡면</div></div>
-      <div class="pf-shot"><img src="images/v22-04.jpg" alt="상부 사이니지" loading="lazy"><div class="cap">상부 사이니지</div></div>
-      <div class="pf-shot"><img src="images/v22-05.jpg" alt="저층부의 곡면과 필로티" loading="lazy"><div class="cap">저층부의 곡면과 필로티</div></div>
     </div>
-    <div class="pf-sec">
-      <div class="pf-head"><h3>입면과 출입구</h3></div>
-      <div class="pf-shot"><img src="images/v22-06.jpg" alt="입면의 수평 띠" loading="lazy"><div class="cap">입면의 수평 띠</div></div>
-      <div class="pf-shot"><img src="images/v22-07.jpg" alt="알루미늄 시트패널 상세" loading="lazy"><div class="cap">알루미늄 시트패널 상세</div></div>
-      <div class="pf-shot"><img src="images/v22-08.jpg" alt="난간과 캐노피" loading="lazy"><div class="cap">난간과 캐노피</div></div>
-      <div class="pf-shot"><img src="images/v22-09.jpg" alt="정면 출입구" loading="lazy"><div class="cap">정면 출입구</div></div>
-      <div class="pf-shot"><img src="images/v22-10.jpg" alt="주 출입구의 붉은 캐노피와 황동 문" loading="lazy"><div class="cap">주 출입구의 붉은 캐노피와 황동 문</div></div>
-    </div>
-    <div class="pf-sec">
-      <div class="pf-head"><h3>실내</h3></div>
-      <div class="pf-shot"><img src="images/v22-11.jpg" alt="붉은 아치와 유리 바닥" loading="lazy"><div class="cap">붉은 아치와 유리 바닥</div></div>
-      <div class="pf-shot"><img src="images/v22-12.jpg" alt="로비" loading="lazy"><div class="cap">로비</div></div>
-      <div class="pf-shot"><img src="images/v22-13.jpg" alt="층을 잇는 보이드" loading="lazy"><div class="cap">층을 잇는 보이드</div></div>
-      <div class="pf-shot"><img src="images/v22-14.jpg" alt="실내 계단" loading="lazy"><div class="cap">실내 계단</div></div>
-      <div class="pf-shot"><img src="images/v22-15.jpg" alt="계단을 내려다본 전경" loading="lazy"><div class="cap">계단을 내려다본 전경</div></div>
-      <div class="pf-shot"><img src="images/v22-16.jpg" alt="원형 천창" loading="lazy"><div class="cap">원형 천창</div></div>
-    </div>
-    <div class="pf-sec">
-      <div class="pf-head"><h3>스케치와 도면</h3></div>
-      <div class="pf-shot"><img src="images/v22-17.jpg" alt="투시 스케치" loading="lazy"><div class="cap">투시 스케치</div></div>
-      <div class="pf-shot"><img src="images/v22-18.jpg" alt="액소노메트릭" loading="lazy"><div class="cap">액소노메트릭</div></div>
-      <div class="pf-shot"><img src="images/v22-19.jpg" alt="배치 및 1층 평면도" loading="lazy"><div class="cap">배치 및 1층 평면도</div></div>
-      <div class="pf-shot"><img src="images/v22-20.jpg" alt="2층 평면도" loading="lazy"><div class="cap">2층 평면도</div></div>
-      <div class="pf-shot"><img src="images/v22-21.jpg" alt="3층 평면도" loading="lazy"><div class="cap">3층 평면도</div></div>
-      <div class="pf-shot"><img src="images/v22-22.jpg" alt="4층 평면도" loading="lazy"><div class="cap">4층 평면도</div></div>
-      <div class="pf-shot"><img src="images/v22-23.jpg" alt="5층 평면도" loading="lazy"><div class="cap">5층 평면도</div></div>
-      <div class="pf-shot"><img src="images/v22-24.jpg" alt="지하층 평면도" loading="lazy"><div class="cap">지하층 평면도</div></div>
+    <div class="pf-grid">
+      <button class="pf-tile" type="button" aria-label="VISION 22 전경 크게 보기"><img src="images/v22-main.jpg" alt="VISION 22 전경" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="거리에서 본 전경 크게 보기"><img src="images/v22-01.jpg" alt="거리에서 본 전경" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="곡면 외벽과 원통 코어 크게 보기"><img src="images/v22-02.jpg" alt="곡면 외벽과 원통 코어" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="상부 곡면 크게 보기"><img src="images/v22-03.jpg" alt="상부 곡면" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="상부 사이니지 크게 보기"><img src="images/v22-04.jpg" alt="상부 사이니지" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="저층부의 곡면과 필로티 크게 보기"><img src="images/v22-05.jpg" alt="저층부의 곡면과 필로티" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="입면의 수평 띠 크게 보기"><img src="images/v22-06.jpg" alt="입면의 수평 띠" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="알루미늄 시트패널 상세 크게 보기"><img src="images/v22-07.jpg" alt="알루미늄 시트패널 상세" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="난간과 캐노피 크게 보기"><img src="images/v22-08.jpg" alt="난간과 캐노피" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="정면 출입구 크게 보기"><img src="images/v22-09.jpg" alt="정면 출입구" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="주 출입구의 붉은 캐노피와 황동 문 크게 보기"><img src="images/v22-10.jpg" alt="주 출입구의 붉은 캐노피와 황동 문" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="붉은 아치와 유리 바닥 크게 보기"><img src="images/v22-11.jpg" alt="붉은 아치와 유리 바닥" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="로비 크게 보기"><img src="images/v22-12.jpg" alt="로비" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="층을 잇는 보이드 크게 보기"><img src="images/v22-13.jpg" alt="층을 잇는 보이드" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="실내 계단 크게 보기"><img src="images/v22-14.jpg" alt="실내 계단" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="계단을 내려다본 전경 크게 보기"><img src="images/v22-15.jpg" alt="계단을 내려다본 전경" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="원형 천창 크게 보기"><img src="images/v22-16.jpg" alt="원형 천창" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="투시 스케치 크게 보기"><img src="images/v22-17.jpg" alt="투시 스케치" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="액소노메트릭 크게 보기"><img src="images/v22-18.jpg" alt="액소노메트릭" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="배치 및 1층 평면도 크게 보기"><img src="images/v22-19.jpg" alt="배치 및 1층 평면도" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="2층 평면도 크게 보기"><img src="images/v22-20.jpg" alt="2층 평면도" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="3층 평면도 크게 보기"><img src="images/v22-21.jpg" alt="3층 평면도" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="4층 평면도 크게 보기"><img src="images/v22-22.jpg" alt="4층 평면도" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="5층 평면도 크게 보기"><img src="images/v22-23.jpg" alt="5층 평면도" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="지하층 평면도 크게 보기"><img src="images/v22-24.jpg" alt="지하층 평면도" loading="lazy" decoding="async"></button>
     </div>
     <nav class="pf-nav" aria-label="프로젝트 이동">
       <a href="#dadadesign" data-page="dadadesign">← 프로젝트 목록</a>
@@ -2029,7 +2052,7 @@
       <h1 class="serif">STUDIO 1941</h1>
       <div class="loc">경기 수원시 장안구 상광교동 322 · 부지 800평 · 두 동(A동 · B동)</div>
     </div>
-    <div class="pf-hero"><img loading="lazy" decoding="async" src="images/s1941-main.jpg" alt="가을의 STUDIO 1941"></div>
+    <div class="pf-over">
     <div class="d-intro">
       <p class="serif">광교산 자락, 1941년 건물을 고쳐 만든 두 개의 홀</p>
       <div class="desc">800평 부지에 자연 수목이 있고, 테라스를 가운데 두고 A동 메인홀과 B동 소모임 홀이 있습니다.</div>
@@ -2045,15 +2068,13 @@
       <div class="row"><span class="nm">설계·시공</span><span class="de">DADA DESIGN</span><span class="ca">컨설팅부터 준공까지</span></div>
       <div class="row"><span class="nm">공간 대관</span><span class="de"><a href="#s1941" data-page="s1941">STUDIO 1941 대관 안내 →</a></span><span class="ca"></span></div>
     </div>
-    <div class="pf-sec">
-      <div class="pf-head"><h3>외관</h3></div>
-      <div class="pf-shot"><img src="images/s1941-ext-4.jpg" alt="눈 내린 저녁" loading="lazy"><div class="cap">눈 내린 저녁</div></div>
-      <div class="pf-shot"><img src="images/s1941-zelkova-03.jpg" alt="느티나무 테라스" loading="lazy"><div class="cap">느티나무 테라스</div></div>
     </div>
-    <div class="pf-sec">
-      <div class="pf-head"><h3>실내</h3></div>
-      <div class="pf-shot"><img src="images/s1941-a-hall-01.jpg" alt="A동 메인홀" loading="lazy"><div class="cap">A동 메인홀</div></div>
-      <div class="pf-shot"><img src="images/s1941-b-hall-01.jpg" alt="B동 소모임 홀" loading="lazy"><div class="cap">B동 소모임 홀</div></div>
+    <div class="pf-grid">
+      <button class="pf-tile" type="button" aria-label="가을의 STUDIO 1941 크게 보기"><img src="images/s1941-main.jpg" alt="가을의 STUDIO 1941" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="눈 내린 저녁 크게 보기"><img src="images/s1941-ext-4.jpg" alt="눈 내린 저녁" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="느티나무 테라스 크게 보기"><img src="images/s1941-zelkova-03.jpg" alt="느티나무 테라스" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="A동 메인홀 크게 보기"><img src="images/s1941-a-hall-01.jpg" alt="A동 메인홀" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="B동 소모임 홀 크게 보기"><img src="images/s1941-b-hall-01.jpg" alt="B동 소모임 홀" loading="lazy" decoding="async"></button>
     </div>
     <nav class="pf-nav" aria-label="프로젝트 이동">
       <a href="#dadadesign" data-page="dadadesign">← 프로젝트 목록</a>
@@ -2071,7 +2092,7 @@
       <h1 class="serif">SPACE ON</h1>
       <div class="loc">강원 강릉시 임영로 99-6 · 강릉 구도심 · 단층</div>
     </div>
-    <div class="pf-hero"><img loading="lazy" decoding="async" src="images/spaceon-ext-2.jpg" alt="해 질 녘 SPACE ON 마당"></div>
+    <div class="pf-over">
     <div class="d-intro">
       <p class="serif">기와지붕과 서까래를 남겨 고친 강릉 구도심의 옛집</p>
       <div class="desc">기존 목구조와 기와지붕을 남기고, 마당 둘레에 폴리카보네이트 회랑을 새로 둘렀습니다. 실내 홀은 서까래를 드러냈습니다. 중정을 가운데 둔 ㄷ자 배치입니다.</div>
@@ -2088,15 +2109,13 @@
       <div class="row"><span class="nm">설계·시공</span><span class="de">DADA DESIGN</span><span class="ca">컨설팅부터 준공까지</span></div>
       <div class="row"><span class="nm">공간 대관</span><span class="de"><a href="#spaceon" data-page="spaceon">SPACE ON 대관 안내 →</a></span><span class="ca"></span></div>
     </div>
-    <div class="pf-sec">
-      <div class="pf-head"><h3>마당과 외관</h3></div>
-      <div class="pf-shot"><img src="images/spaceon-ext-3.jpg" alt="저녁의 마당" loading="lazy"><div class="cap">저녁의 마당</div></div>
-      <div class="pf-shot"><img src="images/spaceon-ext-5.jpg" alt="붉은 마당과 회랑" loading="lazy"><div class="cap">붉은 마당과 회랑</div></div>
     </div>
-    <div class="pf-sec">
-      <div class="pf-head"><h3>실내</h3></div>
-      <div class="pf-shot"><img src="images/spaceon-int-1.jpg" alt="회랑" loading="lazy"><div class="cap">회랑</div></div>
-      <div class="pf-shot"><img src="images/spaceon-int-2.jpg" alt="서까래를 드러낸 홀" loading="lazy"><div class="cap">서까래를 드러낸 홀</div></div>
+    <div class="pf-grid">
+      <button class="pf-tile" type="button" aria-label="해 질 녘 SPACE ON 마당 크게 보기"><img src="images/spaceon-ext-2.jpg" alt="해 질 녘 SPACE ON 마당" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="저녁의 마당 크게 보기"><img src="images/spaceon-ext-3.jpg" alt="저녁의 마당" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="붉은 마당과 회랑 크게 보기"><img src="images/spaceon-ext-5.jpg" alt="붉은 마당과 회랑" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="회랑 크게 보기"><img src="images/spaceon-int-1.jpg" alt="회랑" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="서까래를 드러낸 홀 크게 보기"><img src="images/spaceon-int-2.jpg" alt="서까래를 드러낸 홀" loading="lazy" decoding="async"></button>
     </div>
     <nav class="pf-nav" aria-label="프로젝트 이동">
       <a href="#dadadesign" data-page="dadadesign">← 프로젝트 목록</a>
@@ -2114,7 +2133,7 @@
       <h1 class="serif">DADA FOREST</h1>
       <div class="loc">강원 평창군 진부면 척천리 235 · 부지 3,000평 · 목조 건물 두 동</div>
     </div>
-    <div class="pf-hero"><img loading="lazy" decoding="async" src="images/forest-bldg-1.jpg" alt="눈 덮인 DADA FOREST 목조 건물"></div>
+    <div class="pf-over">
     <div class="d-intro">
       <p class="serif">오대산 가까운 자작나무 숲속의 목조 건물 두 동</p>
       <div class="desc">자작나무와 낙엽송, 전나무가 자라는 숲 사이에 작은 목조 건물 두 동이 있습니다. 두 동에 홀과 발코니를 두고, 주방·바와 바비큐 공간을 따로 마련했습니다.</div>
@@ -2130,15 +2149,13 @@
       <div class="row"><span class="nm">설계·시공</span><span class="de">DADA DESIGN</span><span class="ca">컨설팅부터 준공까지</span></div>
       <div class="row"><span class="nm">공간 대관</span><span class="de"><a href="#forest" data-page="forest">DADA FOREST 대관 안내 →</a></span><span class="ca"></span></div>
     </div>
-    <div class="pf-sec">
-      <div class="pf-head"><h3>건물</h3></div>
-      <div class="pf-shot"><img src="images/forest-bldg-3.jpg" alt="저녁의 목조 건물과 마당" loading="lazy"><div class="cap">저녁의 목조 건물과 마당</div></div>
-      <div class="pf-shot"><img src="images/forest-bldg-5.jpg" alt="여름의 발코니" loading="lazy"><div class="cap">여름의 발코니</div></div>
     </div>
-    <div class="pf-sec">
-      <div class="pf-head"><h3>숲</h3></div>
-      <div class="pf-shot"><img src="images/forest-birch-1.jpg" alt="가을 숲길" loading="lazy"><div class="cap">가을 숲길</div></div>
-      <div class="pf-shot"><img src="images/forest-birch-4.jpg" alt="눈 쌓인 난간과 등" loading="lazy"><div class="cap">눈 쌓인 난간과 등</div></div>
+    <div class="pf-grid">
+      <button class="pf-tile" type="button" aria-label="눈 덮인 DADA FOREST 목조 건물 크게 보기"><img src="images/forest-bldg-1.jpg" alt="눈 덮인 DADA FOREST 목조 건물" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="저녁의 목조 건물과 마당 크게 보기"><img src="images/forest-bldg-3.jpg" alt="저녁의 목조 건물과 마당" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="여름의 발코니 크게 보기"><img src="images/forest-bldg-5.jpg" alt="여름의 발코니" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="가을 숲길 크게 보기"><img src="images/forest-birch-1.jpg" alt="가을 숲길" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="눈 쌓인 난간과 등 크게 보기"><img src="images/forest-birch-4.jpg" alt="눈 쌓인 난간과 등" loading="lazy" decoding="async"></button>
     </div>
     <nav class="pf-nav" aria-label="프로젝트 이동">
       <a href="#dadadesign" data-page="dadadesign">← 프로젝트 목록</a>
@@ -2157,7 +2174,7 @@
       <h1 class="serif">상하이 신천지 연구 上海 新天地</h1>
       <div class="loc">중국 상하이 타이핑차오(太平橋) 신천지</div>
     </div>
-    <div class="pf-hero"><img loading="lazy" decoding="async" src="images/pf-xtd-street3.jpg" alt="신천지 거리"></div>
+    <div class="pf-over">
     <div class="d-intro">
       <p class="serif">도시재생을 위한 역사문화환경의 새로운 장소적 보존기법 연구</p>
       <div class="desc">상하이 타이핑차오 신천지를 대상으로, 도시재생 과정에서 역사·문화 환경을 보존하는 방법을 연구했습니다. 재생 이전 옛 건물의 모습과 재생 뒤의 거리, 지역 개발 계획을 함께 살폈습니다.</div>
@@ -2168,23 +2185,18 @@
       <div class="row"><span class="nm">소속</span><span class="de">성균관대학교 과학기술대학원 건축공학</span><span class="ca">지도 김도년 교수</span></div>
       <div class="row"><span class="nm">구분</span><span class="de">연구</span><span class="ca">설계 프로젝트 아님</span></div>
     </div>
-    <div class="pf-sec">
-      <div class="pf-head"><h3>재생 뒤의 거리</h3></div>
-      <div class="pf-shot"><img src="images/pf-xtd-street1.jpg" alt="신천지 거리" loading="lazy"><div class="cap">신천지 거리</div></div>
-      <div class="pf-shot"><img src="images/pf-xtd-street2.jpg" alt="신천지 거리" loading="lazy"><div class="cap">신천지 거리</div></div>
-      <div class="pf-shot"><img src="images/pf-xtd-street4.jpg" alt="신천지 거리" loading="lazy"><div class="cap">신천지 거리</div></div>
     </div>
-    <div class="pf-sec">
-      <div class="pf-head"><h3>재생 이전</h3></div>
-      <div class="pf-shot"><img src="images/pf-xtd-old1.jpg" alt="옛 벽돌 건물" loading="lazy"><div class="cap">옛 벽돌 건물</div></div>
-      <div class="pf-shot"><img src="images/pf-xtd-old3.jpg" alt="철거 중인 옛 건물" loading="lazy"><div class="cap">철거 중인 옛 건물</div></div>
-      <div class="pf-shot"><img src="images/pf-xtd-old5.jpg" alt="철거 중인 옛 건물" loading="lazy"><div class="cap">철거 중인 옛 건물</div></div>
-    </div>
-    <div class="pf-sec">
-      <div class="pf-head"><h3>계획</h3></div>
-      <div class="pf-shot"><img src="images/pf-xtd-map.jpg" alt="신천지 구역 배치" loading="lazy"><div class="cap">신천지 구역 배치</div></div>
-      <div class="pf-shot"><img src="images/pf-xtd-plan.jpg" alt="타이핑차오 지역 개발 계획" loading="lazy"><div class="cap">타이핑차오 지역 개발 계획</div></div>
-      <div class="pf-shot"><img src="images/pf-xtd-model.jpg" alt="타이핑차오 지역 모형" loading="lazy"><div class="cap">타이핑차오 지역 모형</div></div>
+    <div class="pf-grid">
+      <button class="pf-tile" type="button" aria-label="신천지 거리 크게 보기"><img src="images/pf-xtd-street3.jpg" alt="신천지 거리" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="신천지 거리 크게 보기"><img src="images/pf-xtd-street1.jpg" alt="신천지 거리" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="신천지 거리 크게 보기"><img src="images/pf-xtd-street2.jpg" alt="신천지 거리" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="신천지 거리 크게 보기"><img src="images/pf-xtd-street4.jpg" alt="신천지 거리" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="옛 벽돌 건물 크게 보기"><img src="images/pf-xtd-old1.jpg" alt="옛 벽돌 건물" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="철거 중인 옛 건물 크게 보기"><img src="images/pf-xtd-old3.jpg" alt="철거 중인 옛 건물" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="철거 중인 옛 건물 크게 보기"><img src="images/pf-xtd-old5.jpg" alt="철거 중인 옛 건물" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="신천지 구역 배치 크게 보기"><img src="images/pf-xtd-map.jpg" alt="신천지 구역 배치" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="타이핑차오 지역 개발 계획 크게 보기"><img src="images/pf-xtd-plan.jpg" alt="타이핑차오 지역 개발 계획" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="타이핑차오 지역 모형 크게 보기"><img src="images/pf-xtd-model.jpg" alt="타이핑차오 지역 모형" loading="lazy" decoding="async"></button>
     </div>
     <nav class="pf-nav" aria-label="프로젝트 이동">
       <a href="#dadadesign" data-page="dadadesign">← 프로젝트 목록</a>
@@ -2202,7 +2214,7 @@
       <h1 class="serif">세농종묘 본사 北京世農種苗</h1>
       <div class="loc">중국 베이징 다싱(大兴) 바이오·의약 산업단지 · 2006년 8월 설계 · 2008년 6월 준공</div>
     </div>
-    <div class="pf-hero"><img loading="lazy" decoding="async" src="images/pf-bj-persp1.jpg" alt="세농종묘 본사 외관 투시도"></div>
+    <div class="pf-over">
     <div class="d-intro">
       <p class="serif">씨앗·물·하늘을 커튼월의 색으로 옮긴 본사 건물</p>
       <div class="desc">베이징 세농종묘의 본사입니다. 2006년 8월 설계를 시작해 2008년 6월에 완공했습니다. 씨앗이 자라는 모습과 물, 하늘의 색을 유리 커튼월에 담았습니다. 건축설계는 베이징시건축설계연구원(BIAD)이, 실내설계와 건설사업관리(CM)는 DADA DESIGN이 맡았습니다.</div>
@@ -2214,16 +2226,14 @@
       <div class="row"><span class="nm">기간</span><span class="de">2006년 8월 설계 시작</span><span class="ca">2008년 6월 준공</span></div>
       <div class="row"><span class="nm">실내설계·CM</span><span class="de">DADA DESIGN</span><span class="ca">설계 자문</span></div>
     </div>
-    <div class="pf-sec">
-      <div class="pf-head"><h3>외관</h3></div>
-      <div class="pf-shot"><img src="images/pf-bj-persp2.jpg" alt="외관 투시도" loading="lazy"><div class="cap">외관 투시도</div></div>
-      <div class="pf-shot"><img src="images/pf-bj-persp3.jpg" alt="건물 사이 길" loading="lazy"><div class="cap">건물 사이 길</div></div>
-      <div class="pf-shot"><img src="images/pf-bj-persp4.jpg" alt="계단식 정원" loading="lazy"><div class="cap">계단식 정원</div></div>
     </div>
-    <div class="pf-sec">
-      <div class="pf-head"><h3>실내</h3></div>
-      <div class="pf-shot"><img src="images/pf-bj-int1.jpg" alt="실내 투시도" loading="lazy"><div class="cap">실내 투시도</div></div>
-      <div class="pf-shot"><img src="images/pf-bj-int2.jpg" alt="로비 투시도" loading="lazy"><div class="cap">로비 투시도</div></div>
+    <div class="pf-grid">
+      <button class="pf-tile" type="button" aria-label="세농종묘 본사 외관 투시도 크게 보기"><img src="images/pf-bj-persp1.jpg" alt="세농종묘 본사 외관 투시도" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="외관 투시도 크게 보기"><img src="images/pf-bj-persp2.jpg" alt="외관 투시도" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="건물 사이 길 크게 보기"><img src="images/pf-bj-persp3.jpg" alt="건물 사이 길" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="계단식 정원 크게 보기"><img src="images/pf-bj-persp4.jpg" alt="계단식 정원" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="실내 투시도 크게 보기"><img src="images/pf-bj-int1.jpg" alt="실내 투시도" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="로비 투시도 크게 보기"><img src="images/pf-bj-int2.jpg" alt="로비 투시도" loading="lazy" decoding="async"></button>
     </div>
     <nav class="pf-nav" aria-label="프로젝트 이동">
       <a href="#dadadesign" data-page="dadadesign">← 프로젝트 목록</a>
@@ -2242,7 +2252,7 @@
       <h1 class="serif">실학박물관·다산유적지 통합 계획</h1>
       <div class="loc">경기 남양주시 조안면 능내리 75번지 일대 · 총면적 33,354㎡</div>
     </div>
-    <div class="pf-hero"><img loading="lazy" decoding="async" src="images/pf-sh-persp.jpg" alt="실학박물관 투시도"></div>
+    <div class="pf-over">
     <div class="d-intro">
       <p class="serif">실학박물관과 다산유적지를 하나로 잇는 계획</p>
       <div class="desc">다산 정약용 선생의 묘와 생가가 있는 다산유적지 옆에 실학박물관을 짓고, 유적지와 박물관을 하나의 동선으로 잇는 계획안입니다. 유적지 확장과 수변 정비, 문화마을 조성까지 세 단계로 나눠 계획했습니다.</div>
@@ -2256,21 +2266,16 @@
       <div class="row"><span class="nm">주요 시설</span><span class="de">상설·특별·기획·야외 전시실, 대강당, 어린이 박물관, 수장고, 연구실</span><span class="ca">-</span></div>
       <div class="row"><span class="nm">설계</span><span class="de">DADA DESIGN</span><span class="ca">계획안</span></div>
     </div>
-    <div class="pf-sec">
-      <div class="pf-head"><h3>배치</h3></div>
-      <div class="pf-shot"><img src="images/pf-sh-site.jpg" alt="배치도" loading="lazy"><div class="cap">배치도</div></div>
-      <div class="pf-shot"><img src="images/pf-sh-aerial.jpg" alt="단계별 계획 구역" loading="lazy"><div class="cap">단계별 계획 구역</div></div>
     </div>
-    <div class="pf-sec">
-      <div class="pf-head"><h3>투시도</h3></div>
-      <div class="pf-shot"><img src="images/pf-sh-img2.jpg" alt="중정과 수공간" loading="lazy"><div class="cap">중정과 수공간</div></div>
-      <div class="pf-shot"><img src="images/pf-sh-img3.jpg" alt="수공간 옆 데크" loading="lazy"><div class="cap">수공간 옆 데크</div></div>
-      <div class="pf-shot"><img src="images/pf-sh-img4.jpg" alt="유리 회랑" loading="lazy"><div class="cap">유리 회랑</div></div>
-      <div class="pf-shot"><img src="images/pf-sh-img1.jpg" alt="박물관 전체" loading="lazy"><div class="cap">박물관 전체</div></div>
-    </div>
-    <div class="pf-sec">
-      <div class="pf-head"><h3>스케치</h3></div>
-      <div class="pf-shot"><img src="images/pf-sh-sketch.jpg" alt="입구 스케치" loading="lazy"><div class="cap">입구 스케치</div></div>
+    <div class="pf-grid">
+      <button class="pf-tile" type="button" aria-label="실학박물관 투시도 크게 보기"><img src="images/pf-sh-persp.jpg" alt="실학박물관 투시도" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="배치도 크게 보기"><img src="images/pf-sh-site.jpg" alt="배치도" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="단계별 계획 구역 크게 보기"><img src="images/pf-sh-aerial.jpg" alt="단계별 계획 구역" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="중정과 수공간 크게 보기"><img src="images/pf-sh-img2.jpg" alt="중정과 수공간" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="수공간 옆 데크 크게 보기"><img src="images/pf-sh-img3.jpg" alt="수공간 옆 데크" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="유리 회랑 크게 보기"><img src="images/pf-sh-img4.jpg" alt="유리 회랑" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="박물관 전체 크게 보기"><img src="images/pf-sh-img1.jpg" alt="박물관 전체" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="입구 스케치 크게 보기"><img src="images/pf-sh-sketch.jpg" alt="입구 스케치" loading="lazy" decoding="async"></button>
     </div>
     <nav class="pf-nav" aria-label="프로젝트 이동">
       <a href="#dadadesign" data-page="dadadesign">← 프로젝트 목록</a>
@@ -2289,7 +2294,7 @@
       <h1 class="serif">울란바토르 광장 계획</h1>
       <div class="loc">몽골 울란바토르 · 레닌 박물관 앞 광장</div>
     </div>
-    <div class="pf-hero"><img loading="lazy" decoding="async" src="images/pf-ula-main.jpg" alt="울란바토르 광장 투시도"></div>
+    <div class="pf-over">
     <div class="d-intro">
       <p class="serif">광장 아래에 상가를 두고, 땅 위는 걷는 사람의 광장으로</p>
       <div class="desc">레닌 박물관과 극장, 투자청 사이의 광장 계획안입니다. 상가를 광장 아래에 두고 바닥에 유리를 끼워, 낮에는 햇빛이 상가로 들고 밤에는 상가의 불빛이 광장을 밝히게 했습니다. 상가 배치는 두 가지 안으로 비교했습니다.</div>
@@ -2301,16 +2306,14 @@
       <div class="row"><span class="nm">2안</span><span class="de">상가를 나누고 건물 사이 12m를 틔워 광장으로 들어오게 함</span><span class="ca">-</span></div>
       <div class="row"><span class="nm">설계</span><span class="de">DADA DESIGN</span><span class="ca">계획안</span></div>
     </div>
-    <div class="pf-sec">
-      <div class="pf-head"><h3>두 가지 안</h3></div>
-      <div class="pf-shot"><img src="images/pf-ula-alt1.jpg" alt="1안" loading="lazy"><div class="cap">1안</div></div>
-      <div class="pf-shot"><img src="images/pf-ula-alt2.jpg" alt="2안" loading="lazy"><div class="cap">2안</div></div>
     </div>
-    <div class="pf-sec">
-      <div class="pf-head"><h3>광장</h3></div>
-      <div class="pf-shot"><img src="images/pf-ula-plaza.jpg" alt="광장 바닥" loading="lazy"><div class="cap">광장 바닥</div></div>
-      <div class="pf-shot"><img src="images/pf-ula-night.jpg" alt="밤의 광장" loading="lazy"><div class="cap">밤의 광장</div></div>
-      <div class="pf-shot"><img src="images/pf-ula-canopy.jpg" alt="상가 입구" loading="lazy"><div class="cap">상가 입구</div></div>
+    <div class="pf-grid">
+      <button class="pf-tile" type="button" aria-label="울란바토르 광장 투시도 크게 보기"><img src="images/pf-ula-main.jpg" alt="울란바토르 광장 투시도" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="1안 크게 보기"><img src="images/pf-ula-alt1.jpg" alt="1안" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="2안 크게 보기"><img src="images/pf-ula-alt2.jpg" alt="2안" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="광장 바닥 크게 보기"><img src="images/pf-ula-plaza.jpg" alt="광장 바닥" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="밤의 광장 크게 보기"><img src="images/pf-ula-night.jpg" alt="밤의 광장" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="상가 입구 크게 보기"><img src="images/pf-ula-canopy.jpg" alt="상가 입구" loading="lazy" decoding="async"></button>
     </div>
     <nav class="pf-nav" aria-label="프로젝트 이동">
       <a href="#dadadesign" data-page="dadadesign">← 프로젝트 목록</a>
@@ -2328,7 +2331,7 @@
       <h1 class="serif">봉계당 鳳溪堂</h1>
       <div class="loc">경기 용인시 신봉동 114-10 · 연면적 137.76㎡ · 지상 1층</div>
     </div>
-    <div class="pf-hero"><img loading="lazy" decoding="async" src="images/pf-bkd-main.jpg" alt="봉계당 대문과 재실"></div>
+    <div class="pf-over">
     <div class="d-intro">
       <p class="serif">용인이씨 참의공파 종회의 재실</p>
       <div class="desc">용인이씨 참의공파 종회의 재실입니다. 나무 기둥 위에 기와지붕을 올린 목구조 한옥으로, 벽은 회벽으로 바르고 바닥에는 전통 마루를 깔았습니다. 대문과 담장도 함께 설계했습니다.</div>
@@ -2344,16 +2347,14 @@
       <div class="row"><span class="nm">외부마감</span><span class="de">벽 회벽 바르기 · 바닥 전통 마루 깔기</span><span class="ca">-</span></div>
       <div class="row"><span class="nm">설계·시공</span><span class="de">DADA DESIGN</span><span class="ca">컨설팅부터 준공까지</span></div>
     </div>
-    <div class="pf-sec">
-      <div class="pf-head"><h3>외관</h3></div>
-      <div class="pf-shot"><img src="images/pf-bkd-gate.jpg" alt="대문" loading="lazy"><div class="cap">대문</div></div>
-      <div class="pf-shot"><img src="images/pf-bkd-side.jpg" alt="툇마루와 기둥" loading="lazy"><div class="cap">툇마루와 기둥</div></div>
-      <div class="pf-shot"><img src="images/pf-bkd-front.jpg" alt="정면 창호" loading="lazy"><div class="cap">정면 창호</div></div>
-      <div class="pf-shot"><img src="images/pf-bkd-wall.jpg" alt="담장 옆 길" loading="lazy"><div class="cap">담장 옆 길</div></div>
     </div>
-    <div class="pf-sec">
-      <div class="pf-head"><h3>세부</h3></div>
-      <div class="pf-shot"><img src="images/pf-bkd-column.jpg" alt="기둥과 툇마루" loading="lazy"><div class="cap">기둥과 툇마루</div></div>
+    <div class="pf-grid">
+      <button class="pf-tile" type="button" aria-label="봉계당 대문과 재실 크게 보기"><img src="images/pf-bkd-main.jpg" alt="봉계당 대문과 재실" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="대문 크게 보기"><img src="images/pf-bkd-gate.jpg" alt="대문" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="툇마루와 기둥 크게 보기"><img src="images/pf-bkd-side.jpg" alt="툇마루와 기둥" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="정면 창호 크게 보기"><img src="images/pf-bkd-front.jpg" alt="정면 창호" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="담장 옆 길 크게 보기"><img src="images/pf-bkd-wall.jpg" alt="담장 옆 길" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="기둥과 툇마루 크게 보기"><img src="images/pf-bkd-column.jpg" alt="기둥과 툇마루" loading="lazy" decoding="async"></button>
     </div>
     <nav class="pf-nav" aria-label="프로젝트 이동">
       <a href="#dadadesign" data-page="dadadesign">← 프로젝트 목록</a>
@@ -3941,6 +3942,36 @@ if (root) (async () => {
   io.observe(viewport);
   document.addEventListener('pagechange', () => { if (!page.classList.contains('active')) visible = false; });
 })();
+</script>
+
+<div class="pf-lb" hidden role="dialog" aria-modal="true" aria-label="사진 크게 보기">
+  <button class="pf-lb-x" type="button" aria-label="닫기">×</button>
+  <button class="pf-lb-nav prev" type="button" aria-label="이전 사진">‹</button>
+  <figure><img alt=""><figcaption></figcaption></figure>
+  <button class="pf-lb-nav next" type="button" aria-label="다음 사진">›</button>
+</div>
+<script>
+  (function(){
+    var lb=document.querySelector('.pf-lb'), img=lb.querySelector('img'), cap=lb.querySelector('figcaption'), list=[], i=0, back=null;
+    // 작은 판넬 사진은 화면에서 너무 작지 않게 최대 1.8배까지만 키움(그 이상은 흐려짐)
+    img.addEventListener('load',function(){ var w=img.naturalWidth, h=img.naturalHeight; if(!w) return;
+      var k=Math.min(1.8, innerWidth*(innerWidth<821?0.96:0.86)/w, innerHeight*(innerWidth<821?0.76:0.8)/h); img.style.width=(k>1?Math.round(w*k):w)+'px'; });
+    function show(k){ i=(k+list.length)%list.length; var t=list[i].querySelector('img'); img.style.width=''; img.src=t.getAttribute('src'); img.alt=t.alt;
+      cap.textContent=t.alt+'  ·  '+(i+1)+' / '+list.length; }
+    function open(tile){ list=[].slice.call(tile.parentNode.querySelectorAll('.pf-tile')); back=tile; show(list.indexOf(tile));
+      lb.hidden=false; document.documentElement.classList.add('pf-lb-on'); lb.querySelector('.pf-lb-x').focus(); }
+    function close(){ lb.hidden=true; document.documentElement.classList.remove('pf-lb-on'); img.removeAttribute('src'); if(back) back.focus(); }
+    document.addEventListener('click',function(e){ var t=e.target.closest('.pf-tile'); if(t){ open(t); } });
+    lb.querySelector('.pf-lb-x').addEventListener('click',close);
+    lb.querySelector('.prev').addEventListener('click',function(){ show(i-1); });
+    lb.querySelector('.next').addEventListener('click',function(){ show(i+1); });
+    lb.addEventListener('click',function(e){ if(e.target===lb||e.target.tagName==='FIGURE') close(); });
+    document.addEventListener('keydown',function(e){ if(lb.hidden) return;
+      if(e.key==='Escape') close(); else if(e.key==='ArrowLeft') show(i-1); else if(e.key==='ArrowRight') show(i+1); });
+    var x0=null; lb.addEventListener('touchstart',function(e){ x0=e.touches[0].clientX; },{passive:true});
+    lb.addEventListener('touchend',function(e){ if(x0===null) return; var dx=e.changedTouches[0].clientX-x0; x0=null;
+      if(Math.abs(dx)>40) show(dx<0?i+1:i-1); });
+  })();
 </script>
 </body>
 </html>

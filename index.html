@@ -1265,12 +1265,15 @@
   .pf-tile{display:block;padding:0;border:0;background:#e9e5dc;aspect-ratio:4/3;overflow:hidden;border-radius:6px;cursor:zoom-in;}
   .pf-tile img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .35s ease,opacity .2s ease;}
   .pf-tile:hover img{transform:scale(1.03);}
+  .pf-tile.fit{background:#ebe7de;}
+  .pf-tile.fit img{object-fit:contain;padding:8px;}   /* 도면은 잘리지 않게 */
+  .pf-tile.fit:hover img{transform:none;}
   .pf-tile:focus-visible{outline:2px solid var(--ink);outline-offset:2px;}
   /* 크게 보기 */
   .pf-lb{position:fixed;inset:0;z-index:5000;display:flex;align-items:center;justify-content:center;background:rgba(15,15,14,.5);}   /* 반투명: 뒤 페이지가 살짝 비치게(운영자 의견) */
   .pf-lb[hidden]{display:none;}
   .pf-lb figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:14px;}
-  .pf-lb img{display:block;max-width:70vw;max-height:72vh;width:auto;height:auto;border-radius:4px;}
+  .pf-lb img{display:block;max-width:none;max-height:none;width:auto;height:auto;object-fit:contain;border-radius:4px;}
   .pf-lb img{box-shadow:0 12px 40px rgba(0,0,0,.35);}
   .pf-lb figcaption{font-size:13px;color:#fff;letter-spacing:.02em;background:rgba(15,15,14,.6);padding:6px 14px;border-radius:999px;}
   .pf-lb button{position:absolute;border:0;background:rgba(15,15,14,.6);color:#fff;cursor:pointer;line-height:1;
@@ -1284,7 +1287,6 @@
     .pf-over{grid-template-columns:1fr;gap:28px;margin-top:28px;}
     .pf-over .specs .row{grid-template-columns:96px 1fr;}
     .pf-grid{grid-template-columns:repeat(2,1fr);gap:6px;margin-top:36px;}
-    .pf-lb img{max-width:96vw;max-height:70vh;}
     .pf-lb-x{top:80px;right:14px;}
     .pf-lb-nav{top:auto;bottom:18px;transform:none;font-size:30px;}
   }
@@ -1959,7 +1961,6 @@
     </div>
     <div class="pf-over">
     <div class="d-intro">
-      <p class="serif">북한강이 내려다보이는 양평 경사지의 단독주택</p>
       <div class="desc">경사진 땅을 깎아 고르지 않고, 거실과 침실·아틀리에를 서로 다른 높이에 두었습니다. 실내 천장에는 목재를 댔습니다.</div>
     </div>
     <div class="specs">
@@ -1973,14 +1974,26 @@
     </div>
     </div>
     <div class="pf-grid">
-      <button class="pf-tile" type="button" aria-label="외관 전경 크게 보기"><img src="images/pf-hy-ext1.jpg" alt="외관 전경" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="진입부 크게 보기"><img src="images/pf-hy-ext2.jpg" alt="진입부" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="마당에서 본 외관 크게 보기"><img src="images/pf-hy-ext3.jpg" alt="마당에서 본 외관" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="테라스 크게 보기"><img src="images/pf-hy-bw.jpg" alt="테라스" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="거실 크게 보기"><img src="images/pf-hy-int1.jpg" alt="거실" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="식당 크게 보기"><img src="images/pf-hy-int2.jpg" alt="식당" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="2층 계단과 원형 창 크게 보기"><img src="images/pf-hy-int3.jpg" alt="2층 계단과 원형 창" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="2층 거실 크게 보기"><img src="images/pf-hy-int4.jpg" alt="2층 거실" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="희연재 喜蓮齋 1 크게 보기"><img src="images/pf-hy-ext1.jpg" alt="희연재 喜蓮齋 1" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="희연재 喜蓮齋 2 크게 보기"><img src="images/pf-hy-ext2.jpg" alt="희연재 喜蓮齋 2" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="희연재 喜蓮齋 3 크게 보기"><img src="images/pf-hy-ext3.jpg" alt="희연재 喜蓮齋 3" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="희연재 喜蓮齋 4 크게 보기"><img src="images/pf-hy-bw.jpg" alt="희연재 喜蓮齋 4" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="희연재 喜蓮齋 5 크게 보기"><img src="images/pf-hy-living.jpg" alt="희연재 喜蓮齋 5" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="희연재 喜蓮齋 6 크게 보기"><img src="images/pf-hy-int1.jpg" alt="희연재 喜蓮齋 6" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="희연재 喜蓮齋 7 크게 보기"><img src="images/pf-hy-int2.jpg" alt="희연재 喜蓮齋 7" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="희연재 喜蓮齋 8 크게 보기"><img src="images/pf-hy-int3.jpg" alt="희연재 喜蓮齋 8" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="희연재 喜蓮齋 9 크게 보기"><img src="images/pf-hy-int4.jpg" alt="희연재 喜蓮齋 9" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="희연재 喜蓮齋 10 크게 보기"><img src="images/pf-hy-model.jpg" alt="희연재 喜蓮齋 10" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="희연재 喜蓮齋 11 크게 보기"><img src="images/pf-hy-model2.jpg" alt="희연재 喜蓮齋 11" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="희연재 喜蓮齋 12 크게 보기"><img src="images/pf-hy-dw-sketch.jpg" alt="희연재 喜蓮齋 12" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="희연재 喜蓮齋 13 크게 보기"><img src="images/pf-hy-dw-site.jpg" alt="희연재 喜蓮齋 13" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="희연재 喜蓮齋 14 크게 보기"><img src="images/pf-hy-dw-planb.jpg" alt="희연재 喜蓮齋 14" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="희연재 喜蓮齋 15 크게 보기"><img src="images/pf-hy-dw-plan1.jpg" alt="희연재 喜蓮齋 15" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="희연재 喜蓮齋 16 크게 보기"><img src="images/pf-hy-dw-plan2.jpg" alt="희연재 喜蓮齋 16" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="희연재 喜蓮齋 17 크게 보기"><img src="images/pf-hy-dw-elev-e.jpg" alt="희연재 喜蓮齋 17" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="희연재 喜蓮齋 18 크게 보기"><img src="images/pf-hy-dw-elev-w.jpg" alt="희연재 喜蓮齋 18" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="희연재 喜蓮齋 19 크게 보기"><img src="images/pf-hy-dw-elev-s.jpg" alt="희연재 喜蓮齋 19" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="희연재 喜蓮齋 20 크게 보기"><img src="images/pf-hy-dw-elev-n.jpg" alt="희연재 喜蓮齋 20" loading="lazy" decoding="async"></button>
     </div>
     <nav class="pf-nav" aria-label="프로젝트 이동">
       <a href="#dadadesign" data-page="dadadesign">← 프로젝트 목록</a>
@@ -2000,7 +2013,6 @@
     </div>
     <div class="pf-over">
     <div class="d-intro">
-      <p class="serif">두 길이 만나는 모퉁이 땅의 복합 건물</p>
       <div class="desc">길 쪽 벽은 대지 모서리를 따라 꺾지 않고 곡면으로 돌렸습니다. 곡면에는 알루미늄 시트패널과 유리를 수평 띠로 둘렀고, 원통형 코어가 이 띠를 세로로 끊습니다. 원형 천창으로 들어온 빛이 보이드를 거쳐 아래층까지 내려옵니다.</div>
     </div>
     <div class="specs">
@@ -2016,31 +2028,31 @@
     </div>
     </div>
     <div class="pf-grid">
-      <button class="pf-tile" type="button" aria-label="VISION 22 전경 크게 보기"><img src="images/v22-main.jpg" alt="VISION 22 전경" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="거리에서 본 전경 크게 보기"><img src="images/v22-01.jpg" alt="거리에서 본 전경" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="곡면 외벽과 원통 코어 크게 보기"><img src="images/v22-02.jpg" alt="곡면 외벽과 원통 코어" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="상부 곡면 크게 보기"><img src="images/v22-03.jpg" alt="상부 곡면" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="상부 사이니지 크게 보기"><img src="images/v22-04.jpg" alt="상부 사이니지" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="저층부의 곡면과 필로티 크게 보기"><img src="images/v22-05.jpg" alt="저층부의 곡면과 필로티" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="입면의 수평 띠 크게 보기"><img src="images/v22-06.jpg" alt="입면의 수평 띠" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="알루미늄 시트패널 상세 크게 보기"><img src="images/v22-07.jpg" alt="알루미늄 시트패널 상세" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="난간과 캐노피 크게 보기"><img src="images/v22-08.jpg" alt="난간과 캐노피" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="정면 출입구 크게 보기"><img src="images/v22-09.jpg" alt="정면 출입구" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="주 출입구의 붉은 캐노피와 황동 문 크게 보기"><img src="images/v22-10.jpg" alt="주 출입구의 붉은 캐노피와 황동 문" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="붉은 아치와 유리 바닥 크게 보기"><img src="images/v22-11.jpg" alt="붉은 아치와 유리 바닥" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="로비 크게 보기"><img src="images/v22-12.jpg" alt="로비" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="층을 잇는 보이드 크게 보기"><img src="images/v22-13.jpg" alt="층을 잇는 보이드" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="실내 계단 크게 보기"><img src="images/v22-14.jpg" alt="실내 계단" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="계단을 내려다본 전경 크게 보기"><img src="images/v22-15.jpg" alt="계단을 내려다본 전경" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="원형 천창 크게 보기"><img src="images/v22-16.jpg" alt="원형 천창" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="투시 스케치 크게 보기"><img src="images/v22-17.jpg" alt="투시 스케치" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="액소노메트릭 크게 보기"><img src="images/v22-18.jpg" alt="액소노메트릭" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="배치 및 1층 평면도 크게 보기"><img src="images/v22-19.jpg" alt="배치 및 1층 평면도" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="2층 평면도 크게 보기"><img src="images/v22-20.jpg" alt="2층 평면도" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="3층 평면도 크게 보기"><img src="images/v22-21.jpg" alt="3층 평면도" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="4층 평면도 크게 보기"><img src="images/v22-22.jpg" alt="4층 평면도" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="5층 평면도 크게 보기"><img src="images/v22-23.jpg" alt="5층 평면도" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="지하층 평면도 크게 보기"><img src="images/v22-24.jpg" alt="지하층 평면도" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="VISION 22 1 크게 보기"><img src="images/v22-main.jpg" alt="VISION 22 1" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="VISION 22 2 크게 보기"><img src="images/v22-01.jpg" alt="VISION 22 2" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="VISION 22 3 크게 보기"><img src="images/v22-02.jpg" alt="VISION 22 3" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="VISION 22 4 크게 보기"><img src="images/v22-03.jpg" alt="VISION 22 4" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="VISION 22 5 크게 보기"><img src="images/v22-04.jpg" alt="VISION 22 5" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="VISION 22 6 크게 보기"><img src="images/v22-05.jpg" alt="VISION 22 6" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="VISION 22 7 크게 보기"><img src="images/v22-06.jpg" alt="VISION 22 7" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="VISION 22 8 크게 보기"><img src="images/v22-07.jpg" alt="VISION 22 8" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="VISION 22 9 크게 보기"><img src="images/v22-08.jpg" alt="VISION 22 9" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="VISION 22 10 크게 보기"><img src="images/v22-09.jpg" alt="VISION 22 10" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="VISION 22 11 크게 보기"><img src="images/v22-10.jpg" alt="VISION 22 11" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="VISION 22 12 크게 보기"><img src="images/v22-11.jpg" alt="VISION 22 12" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="VISION 22 13 크게 보기"><img src="images/v22-12.jpg" alt="VISION 22 13" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="VISION 22 14 크게 보기"><img src="images/v22-13.jpg" alt="VISION 22 14" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="VISION 22 15 크게 보기"><img src="images/v22-14.jpg" alt="VISION 22 15" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="VISION 22 16 크게 보기"><img src="images/v22-15.jpg" alt="VISION 22 16" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="VISION 22 17 크게 보기"><img src="images/v22-16.jpg" alt="VISION 22 17" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="VISION 22 18 크게 보기"><img src="images/v22-17.jpg" alt="VISION 22 18" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="VISION 22 19 크게 보기"><img src="images/v22-18.jpg" alt="VISION 22 19" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="VISION 22 20 크게 보기"><img src="images/v22-19.jpg" alt="VISION 22 20" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="VISION 22 21 크게 보기"><img src="images/v22-20.jpg" alt="VISION 22 21" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="VISION 22 22 크게 보기"><img src="images/v22-21.jpg" alt="VISION 22 22" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="VISION 22 23 크게 보기"><img src="images/v22-22.jpg" alt="VISION 22 23" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="VISION 22 24 크게 보기"><img src="images/v22-23.jpg" alt="VISION 22 24" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="VISION 22 25 크게 보기"><img src="images/v22-24.jpg" alt="VISION 22 25" loading="lazy" decoding="async"></button>
     </div>
     <nav class="pf-nav" aria-label="프로젝트 이동">
       <a href="#dadadesign" data-page="dadadesign">← 프로젝트 목록</a>
@@ -2060,7 +2072,6 @@
     </div>
     <div class="pf-over">
     <div class="d-intro">
-      <p class="serif">광교산 자락, 1941년 건물을 고쳐 만든 두 개의 홀</p>
       <div class="desc">800평 부지에 자연 수목이 있고, 테라스를 가운데 두고 A동 메인홀과 B동 소모임 홀이 있습니다.</div>
     </div>
     <div class="specs">
@@ -2075,11 +2086,11 @@
     </div>
     </div>
     <div class="pf-grid">
-      <button class="pf-tile" type="button" aria-label="가을의 STUDIO 1941 크게 보기"><img src="images/s1941-main.jpg" alt="가을의 STUDIO 1941" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="눈 내린 저녁 크게 보기"><img src="images/s1941-ext-4.jpg" alt="눈 내린 저녁" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="느티나무 테라스 크게 보기"><img src="images/s1941-zelkova-03.jpg" alt="느티나무 테라스" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="A동 메인홀 크게 보기"><img src="images/s1941-a-hall-01.jpg" alt="A동 메인홀" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="B동 소모임 홀 크게 보기"><img src="images/s1941-b-hall-01.jpg" alt="B동 소모임 홀" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="STUDIO 1941 1 크게 보기"><img src="images/s1941-main.jpg" alt="STUDIO 1941 1" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="STUDIO 1941 2 크게 보기"><img src="images/s1941-ext-4.jpg" alt="STUDIO 1941 2" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="STUDIO 1941 3 크게 보기"><img src="images/s1941-zelkova-03.jpg" alt="STUDIO 1941 3" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="STUDIO 1941 4 크게 보기"><img src="images/s1941-a-hall-01.jpg" alt="STUDIO 1941 4" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="STUDIO 1941 5 크게 보기"><img src="images/s1941-b-hall-01.jpg" alt="STUDIO 1941 5" loading="lazy" decoding="async"></button>
     </div>
     <nav class="pf-nav" aria-label="프로젝트 이동">
       <a href="#dadadesign" data-page="dadadesign">← 프로젝트 목록</a>
@@ -2099,7 +2110,6 @@
     </div>
     <div class="pf-over">
     <div class="d-intro">
-      <p class="serif">기와지붕과 서까래를 남겨 고친 강릉 구도심의 옛집</p>
       <div class="desc">기존 목구조와 기와지붕을 남기고, 마당 둘레에 폴리카보네이트 회랑을 새로 둘렀습니다. 실내 홀은 서까래를 드러냈습니다. 중정을 가운데 둔 ㄷ자 배치입니다.</div>
     </div>
     <div class="specs">
@@ -2115,11 +2125,11 @@
     </div>
     </div>
     <div class="pf-grid">
-      <button class="pf-tile" type="button" aria-label="해 질 녘 SPACE ON 마당 크게 보기"><img src="images/spaceon-ext-2.jpg" alt="해 질 녘 SPACE ON 마당" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="저녁의 마당 크게 보기"><img src="images/spaceon-ext-3.jpg" alt="저녁의 마당" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="붉은 마당과 회랑 크게 보기"><img src="images/spaceon-ext-5.jpg" alt="붉은 마당과 회랑" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="회랑 크게 보기"><img src="images/spaceon-int-1.jpg" alt="회랑" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="서까래를 드러낸 홀 크게 보기"><img src="images/spaceon-int-2.jpg" alt="서까래를 드러낸 홀" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="SPACE ON 1 크게 보기"><img src="images/spaceon-ext-2.jpg" alt="SPACE ON 1" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="SPACE ON 2 크게 보기"><img src="images/spaceon-ext-3.jpg" alt="SPACE ON 2" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="SPACE ON 3 크게 보기"><img src="images/spaceon-ext-5.jpg" alt="SPACE ON 3" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="SPACE ON 4 크게 보기"><img src="images/spaceon-int-1.jpg" alt="SPACE ON 4" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="SPACE ON 5 크게 보기"><img src="images/spaceon-int-2.jpg" alt="SPACE ON 5" loading="lazy" decoding="async"></button>
     </div>
     <nav class="pf-nav" aria-label="프로젝트 이동">
       <a href="#dadadesign" data-page="dadadesign">← 프로젝트 목록</a>
@@ -2139,7 +2149,6 @@
     </div>
     <div class="pf-over">
     <div class="d-intro">
-      <p class="serif">오대산 가까운 자작나무 숲속의 목조 건물 두 동</p>
       <div class="desc">자작나무와 낙엽송, 전나무가 자라는 숲 사이에 작은 목조 건물 두 동이 있습니다. 두 동에 홀과 발코니를 두고, 주방·바와 바비큐 공간을 따로 마련했습니다.</div>
     </div>
     <div class="specs">
@@ -2154,11 +2163,58 @@
     </div>
     </div>
     <div class="pf-grid">
-      <button class="pf-tile" type="button" aria-label="눈 덮인 DADA FOREST 목조 건물 크게 보기"><img src="images/forest-bldg-1.jpg" alt="눈 덮인 DADA FOREST 목조 건물" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="저녁의 목조 건물과 마당 크게 보기"><img src="images/forest-bldg-3.jpg" alt="저녁의 목조 건물과 마당" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="여름의 발코니 크게 보기"><img src="images/forest-bldg-5.jpg" alt="여름의 발코니" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="가을 숲길 크게 보기"><img src="images/forest-birch-1.jpg" alt="가을 숲길" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="눈 쌓인 난간과 등 크게 보기"><img src="images/forest-birch-4.jpg" alt="눈 쌓인 난간과 등" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="DADA FOREST 1 크게 보기"><img src="images/forest-bldg-1.jpg" alt="DADA FOREST 1" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="DADA FOREST 2 크게 보기"><img src="images/forest-bldg-3.jpg" alt="DADA FOREST 2" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="DADA FOREST 3 크게 보기"><img src="images/forest-bldg-5.jpg" alt="DADA FOREST 3" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="DADA FOREST 4 크게 보기"><img src="images/forest-birch-1.jpg" alt="DADA FOREST 4" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="DADA FOREST 5 크게 보기"><img src="images/forest-birch-4.jpg" alt="DADA FOREST 5" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="DADA FOREST 6 크게 보기"><img src="images/pf-fo-top1.jpg" alt="DADA FOREST 6" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="DADA FOREST 7 크게 보기"><img src="images/pf-fo-top2.jpg" alt="DADA FOREST 7" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="DADA FOREST 8 크게 보기"><img src="images/pf-fo-top3.jpg" alt="DADA FOREST 8" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="DADA FOREST 9 크게 보기"><img src="images/pf-fo-top4.jpg" alt="DADA FOREST 9" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="DADA FOREST 10 크게 보기"><img src="images/pf-fo-top5.jpg" alt="DADA FOREST 10" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="DADA FOREST 11 크게 보기"><img src="images/pf-fo-spring.jpg" alt="DADA FOREST 11" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="DADA FOREST 12 크게 보기"><img src="images/pf-fo-summer.jpg" alt="DADA FOREST 12" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="DADA FOREST 13 크게 보기"><img src="images/pf-fo-fall.jpg" alt="DADA FOREST 13" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="DADA FOREST 14 크게 보기"><img src="images/pf-fo-winter.jpg" alt="DADA FOREST 14" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="DADA FOREST 15 크게 보기"><img src="images/pf-fo-cherry.jpg" alt="DADA FOREST 15" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="DADA FOREST 16 크게 보기"><img src="images/pf-fo-deck.jpg" alt="DADA FOREST 16" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="DADA FOREST 17 크게 보기"><img src="images/pf-fo-hall.jpg" alt="DADA FOREST 17" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="DADA FOREST 18 크게 보기"><img src="images/pf-fo-n1.jpg" alt="DADA FOREST 18" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="DADA FOREST 19 크게 보기"><img src="images/pf-fo-n2.jpg" alt="DADA FOREST 19" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="DADA FOREST 20 크게 보기"><img src="images/pf-fo-n3.jpg" alt="DADA FOREST 20" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="DADA FOREST 21 크게 보기"><img src="images/pf-fo-n4.jpg" alt="DADA FOREST 21" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="DADA FOREST 22 크게 보기"><img src="images/pf-fo-n5.jpg" alt="DADA FOREST 22" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="DADA FOREST 23 크게 보기"><img src="images/pf-fo-n6.jpg" alt="DADA FOREST 23" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="DADA FOREST 24 크게 보기"><img src="images/pf-fo-n7.jpg" alt="DADA FOREST 24" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="DADA FOREST 25 크게 보기"><img src="images/pf-fo-s1.jpg" alt="DADA FOREST 25" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="DADA FOREST 26 크게 보기"><img src="images/pf-fo-s2.jpg" alt="DADA FOREST 26" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="DADA FOREST 27 크게 보기"><img src="images/pf-fo-s3.jpg" alt="DADA FOREST 27" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="DADA FOREST 28 크게 보기"><img src="images/pf-fo-s4.jpg" alt="DADA FOREST 28" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="DADA FOREST 29 크게 보기"><img src="images/pf-fo-det1.jpg" alt="DADA FOREST 29" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="DADA FOREST 30 크게 보기"><img src="images/pf-fo-det3.jpg" alt="DADA FOREST 30" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="DADA FOREST 31 크게 보기"><img src="images/pf-fo-det4.jpg" alt="DADA FOREST 31" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="DADA FOREST 32 크게 보기"><img src="images/pf-fo-det5.jpg" alt="DADA FOREST 32" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="DADA FOREST 33 크게 보기"><img src="images/pf-fo-det6.jpg" alt="DADA FOREST 33" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="DADA FOREST 34 크게 보기"><img src="images/pf-fo-det7.jpg" alt="DADA FOREST 34" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="DADA FOREST 35 크게 보기"><img src="images/pf-fo-det8.jpg" alt="DADA FOREST 35" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="DADA FOREST 36 크게 보기"><img src="images/pf-fo-hall1.jpg" alt="DADA FOREST 36" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="DADA FOREST 37 크게 보기"><img src="images/pf-fo-hall2.jpg" alt="DADA FOREST 37" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="DADA FOREST 38 크게 보기"><img src="images/pf-fo-path.jpg" alt="DADA FOREST 38" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="DADA FOREST 39 크게 보기"><img src="images/pf-fo-win1.jpg" alt="DADA FOREST 39" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="DADA FOREST 40 크게 보기"><img src="images/pf-fo-win2.jpg" alt="DADA FOREST 40" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="DADA FOREST 41 크게 보기"><img src="images/pf-fo-win3.jpg" alt="DADA FOREST 41" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="DADA FOREST 42 크게 보기"><img src="images/pf-fo-i1.jpg" alt="DADA FOREST 42" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="DADA FOREST 43 크게 보기"><img src="images/pf-fo-i2.jpg" alt="DADA FOREST 43" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="DADA FOREST 44 크게 보기"><img src="images/pf-fo-i3.jpg" alt="DADA FOREST 44" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="DADA FOREST 45 크게 보기"><img src="images/pf-fo-x1.jpg" alt="DADA FOREST 45" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="DADA FOREST 46 크게 보기"><img src="images/pf-fo-x2.jpg" alt="DADA FOREST 46" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="DADA FOREST 47 크게 보기"><img src="images/pf-fo-x3.jpg" alt="DADA FOREST 47" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="DADA FOREST 48 크게 보기"><img src="images/pf-fo-x4.jpg" alt="DADA FOREST 48" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="DADA FOREST 49 크게 보기"><img src="images/pf-fo-dw-site.jpg" alt="DADA FOREST 49" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="DADA FOREST 50 크게 보기"><img src="images/pf-fo-dw-plan.jpg" alt="DADA FOREST 50" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="DADA FOREST 51 크게 보기"><img src="images/pf-fo-dw-roof.jpg" alt="DADA FOREST 51" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="DADA FOREST 52 크게 보기"><img src="images/pf-fo-dw-elev.jpg" alt="DADA FOREST 52" loading="lazy" decoding="async"></button>
     </div>
     <nav class="pf-nav" aria-label="프로젝트 이동">
       <a href="#dadadesign" data-page="dadadesign">← 프로젝트 목록</a>
@@ -2179,7 +2235,6 @@
     </div>
     <div class="pf-over">
     <div class="d-intro">
-      <p class="serif">도시재생을 위한 역사문화환경의 새로운 장소적 보존기법 연구</p>
       <div class="desc">상하이 타이핑차오 신천지를 대상으로, 도시재생 과정에서 역사·문화 환경을 보존하는 방법을 연구했습니다. 재생 이전 옛 건물의 모습과 재생 뒤의 거리, 지역 개발 계획을 함께 살폈습니다.</div>
     </div>
     <div class="specs">
@@ -2190,16 +2245,21 @@
     </div>
     </div>
     <div class="pf-grid">
-      <button class="pf-tile" type="button" aria-label="신천지 거리 크게 보기"><img src="images/pf-xtd-street3.jpg" alt="신천지 거리" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="신천지 거리 크게 보기"><img src="images/pf-xtd-street1.jpg" alt="신천지 거리" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="신천지 거리 크게 보기"><img src="images/pf-xtd-street2.jpg" alt="신천지 거리" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="신천지 거리 크게 보기"><img src="images/pf-xtd-street4.jpg" alt="신천지 거리" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="옛 벽돌 건물 크게 보기"><img src="images/pf-xtd-old1.jpg" alt="옛 벽돌 건물" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="철거 중인 옛 건물 크게 보기"><img src="images/pf-xtd-old3.jpg" alt="철거 중인 옛 건물" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="철거 중인 옛 건물 크게 보기"><img src="images/pf-xtd-old5.jpg" alt="철거 중인 옛 건물" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="신천지 구역 배치 크게 보기"><img src="images/pf-xtd-map.jpg" alt="신천지 구역 배치" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="타이핑차오 지역 개발 계획 크게 보기"><img src="images/pf-xtd-plan.jpg" alt="타이핑차오 지역 개발 계획" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="타이핑차오 지역 모형 크게 보기"><img src="images/pf-xtd-model.jpg" alt="타이핑차오 지역 모형" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="상하이 신천지 연구 上海 新天地 1 크게 보기"><img src="images/pf-xtd-street3.jpg" alt="상하이 신천지 연구 上海 新天地 1" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="상하이 신천지 연구 上海 新天地 2 크게 보기"><img src="images/pf-xtd-street1.jpg" alt="상하이 신천지 연구 上海 新天地 2" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="상하이 신천지 연구 上海 新天地 3 크게 보기"><img src="images/pf-xtd-street2.jpg" alt="상하이 신천지 연구 上海 新天地 3" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="상하이 신천지 연구 上海 新天地 4 크게 보기"><img src="images/pf-xtd-street4.jpg" alt="상하이 신천지 연구 上海 新天地 4" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="상하이 신천지 연구 上海 新天地 5 크게 보기"><img src="images/pf-xtd-old1.jpg" alt="상하이 신천지 연구 上海 新天地 5" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="상하이 신천지 연구 上海 新天地 6 크게 보기"><img src="images/pf-xtd-old2.jpg" alt="상하이 신천지 연구 上海 新天地 6" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="상하이 신천지 연구 上海 新天地 7 크게 보기"><img src="images/pf-xtd-old3.jpg" alt="상하이 신천지 연구 上海 新天地 7" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="상하이 신천지 연구 上海 新天地 8 크게 보기"><img src="images/pf-xtd-old4.jpg" alt="상하이 신천지 연구 上海 新天地 8" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="상하이 신천지 연구 上海 新天地 9 크게 보기"><img src="images/pf-xtd-old5.jpg" alt="상하이 신천지 연구 上海 新天地 9" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="상하이 신천지 연구 上海 新天地 10 크게 보기"><img src="images/pf-xtd-old6.jpg" alt="상하이 신천지 연구 上海 新天地 10" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="상하이 신천지 연구 上海 新天地 11 크게 보기"><img src="images/pf-xtd-model.jpg" alt="상하이 신천지 연구 上海 新天地 11" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="상하이 신천지 연구 上海 新天地 12 크게 보기"><img src="images/pf-xtd-dw-map.jpg" alt="상하이 신천지 연구 上海 新天地 12" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="상하이 신천지 연구 上海 新天地 13 크게 보기"><img src="images/pf-xtd-dw-plan.jpg" alt="상하이 신천지 연구 上海 新天地 13" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="상하이 신천지 연구 上海 新天地 14 크게 보기"><img src="images/pf-xtd-dw-maps.jpg" alt="상하이 신천지 연구 上海 新天地 14" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="상하이 신천지 연구 上海 新天地 15 크게 보기"><img src="images/pf-xtd-dw-mass.jpg" alt="상하이 신천지 연구 上海 新天地 15" loading="lazy" decoding="async"></button>
     </div>
     <nav class="pf-nav" aria-label="프로젝트 이동">
       <a href="#dadadesign" data-page="dadadesign">← 프로젝트 목록</a>
@@ -2219,7 +2279,6 @@
     </div>
     <div class="pf-over">
     <div class="d-intro">
-      <p class="serif">씨앗·물·하늘을 커튼월의 색으로 옮긴 본사 건물</p>
       <div class="desc">베이징 세농종묘의 본사입니다. 2006년 8월 설계를 시작해 2008년 6월에 완공했습니다. 씨앗이 자라는 모습과 물, 하늘의 색을 유리 커튼월에 담았습니다. 건축설계는 베이징시건축설계연구원(BIAD)이, 실내설계와 건설사업관리(CM)는 DADA DESIGN이 맡았습니다.</div>
     </div>
     <div class="specs">
@@ -2230,12 +2289,15 @@
     </div>
     </div>
     <div class="pf-grid">
-      <button class="pf-tile" type="button" aria-label="세농종묘 본사 외관 투시도 크게 보기"><img src="images/pf-bj-persp1.jpg" alt="세농종묘 본사 외관 투시도" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="외관 투시도 크게 보기"><img src="images/pf-bj-persp2.jpg" alt="외관 투시도" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="건물 사이 길 크게 보기"><img src="images/pf-bj-persp3.jpg" alt="건물 사이 길" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="계단식 정원 크게 보기"><img src="images/pf-bj-persp4.jpg" alt="계단식 정원" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="실내 투시도 크게 보기"><img src="images/pf-bj-int1.jpg" alt="실내 투시도" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="로비 투시도 크게 보기"><img src="images/pf-bj-int2.jpg" alt="로비 투시도" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="세농종묘 본사 北京世農種苗 1 크게 보기"><img src="images/pf-bj-persp1.jpg" alt="세농종묘 본사 北京世農種苗 1" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="세농종묘 본사 北京世農種苗 2 크게 보기"><img src="images/pf-bj-persp2.jpg" alt="세농종묘 본사 北京世農種苗 2" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="세농종묘 본사 北京世農種苗 3 크게 보기"><img src="images/pf-bj-persp3.jpg" alt="세농종묘 본사 北京世農種苗 3" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="세농종묘 본사 北京世農種苗 4 크게 보기"><img src="images/pf-bj-persp4.jpg" alt="세농종묘 본사 北京世農種苗 4" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="세농종묘 본사 北京世農種苗 5 크게 보기"><img src="images/pf-bj-int1.jpg" alt="세농종묘 본사 北京世農種苗 5" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="세농종묘 본사 北京世農種苗 6 크게 보기"><img src="images/pf-bj-int2.jpg" alt="세농종묘 본사 北京世農種苗 6" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="세농종묘 본사 北京世農種苗 7 크게 보기"><img src="images/pf-bj-dw-day.jpg" alt="세농종묘 본사 北京世農種苗 7" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="세농종묘 본사 北京世農種苗 8 크게 보기"><img src="images/pf-bj-dw-night.jpg" alt="세농종묘 본사 北京世農種苗 8" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="세농종묘 본사 北京世農種苗 9 크게 보기"><img src="images/pf-bj-dw-concept.jpg" alt="세농종묘 본사 北京世農種苗 9" loading="lazy" decoding="async"></button>
     </div>
     <nav class="pf-nav" aria-label="프로젝트 이동">
       <a href="#dadadesign" data-page="dadadesign">← 프로젝트 목록</a>
@@ -2256,7 +2318,6 @@
     </div>
     <div class="pf-over">
     <div class="d-intro">
-      <p class="serif">실학박물관과 다산유적지를 하나로 잇는 계획</p>
       <div class="desc">다산 정약용 선생의 묘와 생가가 있는 다산유적지 옆에 실학박물관을 짓고, 유적지와 박물관을 하나의 동선으로 잇는 계획안입니다. 유적지 확장과 수변 정비, 문화마을 조성까지 세 단계로 나눠 계획했습니다.</div>
     </div>
     <div class="specs">
@@ -2269,18 +2330,56 @@
     </div>
     </div>
     <div class="pf-grid">
-      <button class="pf-tile" type="button" aria-label="실학박물관 투시도 크게 보기"><img src="images/pf-sh-persp.jpg" alt="실학박물관 투시도" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="배치도 크게 보기"><img src="images/pf-sh-site.jpg" alt="배치도" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="단계별 계획 구역 크게 보기"><img src="images/pf-sh-aerial.jpg" alt="단계별 계획 구역" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="중정과 수공간 크게 보기"><img src="images/pf-sh-img2.jpg" alt="중정과 수공간" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="수공간 옆 데크 크게 보기"><img src="images/pf-sh-img3.jpg" alt="수공간 옆 데크" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="유리 회랑 크게 보기"><img src="images/pf-sh-img4.jpg" alt="유리 회랑" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="1층 평면도 크게 보기"><img src="images/pf-sh-plan1.jpg" alt="1층 평면도" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="지하 1층 평면도 크게 보기"><img src="images/pf-sh-planb.jpg" alt="지하 1층 평면도" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="옥상 정원 스케치 크게 보기"><img src="images/pf-sh-sk-roof.jpg" alt="옥상 정원 스케치" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="박물관 스케치 크게 보기"><img src="images/pf-sh-sk-museum.jpg" alt="박물관 스케치" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="사색의 마당 스케치 크게 보기"><img src="images/pf-sh-sk-garden.jpg" alt="사색의 마당 스케치" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="입구 스케치 크게 보기"><img src="images/pf-sh-sketch.jpg" alt="입구 스케치" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="실학박물관·다산유적지 통합 계획 1 크게 보기"><img src="images/pf-sh-persp.jpg" alt="실학박물관·다산유적지 통합 계획 1" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="실학박물관·다산유적지 통합 계획 2 크게 보기"><img src="images/pf-sh-site1.jpg" alt="실학박물관·다산유적지 통합 계획 2" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="실학박물관·다산유적지 통합 계획 3 크게 보기"><img src="images/pf-sh-site2.jpg" alt="실학박물관·다산유적지 통합 계획 3" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="실학박물관·다산유적지 통합 계획 4 크게 보기"><img src="images/pf-sh-site3.jpg" alt="실학박물관·다산유적지 통합 계획 4" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="실학박물관·다산유적지 통합 계획 5 크게 보기"><img src="images/pf-sh-site4.jpg" alt="실학박물관·다산유적지 통합 계획 5" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="실학박물관·다산유적지 통합 계획 6 크게 보기"><img src="images/pf-sh-site5.jpg" alt="실학박물관·다산유적지 통합 계획 6" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="실학박물관·다산유적지 통합 계획 7 크게 보기"><img src="images/pf-sh-site6.jpg" alt="실학박물관·다산유적지 통합 계획 7" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="실학박물관·다산유적지 통합 계획 8 크게 보기"><img src="images/pf-sh-site7.jpg" alt="실학박물관·다산유적지 통합 계획 8" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="실학박물관·다산유적지 통합 계획 9 크게 보기"><img src="images/pf-sh-img1.jpg" alt="실학박물관·다산유적지 통합 계획 9" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="실학박물관·다산유적지 통합 계획 10 크게 보기"><img src="images/pf-sh-img2.jpg" alt="실학박물관·다산유적지 통합 계획 10" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="실학박물관·다산유적지 통합 계획 11 크게 보기"><img src="images/pf-sh-img3.jpg" alt="실학박물관·다산유적지 통합 계획 11" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="실학박물관·다산유적지 통합 계획 12 크게 보기"><img src="images/pf-sh-img4.jpg" alt="실학박물관·다산유적지 통합 계획 12" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="실학박물관·다산유적지 통합 계획 13 크게 보기"><img src="images/pf-sh-sketch.jpg" alt="실학박물관·다산유적지 통합 계획 13" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="실학박물관·다산유적지 통합 계획 14 크게 보기"><img src="images/pf-sh-aerial.jpg" alt="실학박물관·다산유적지 통합 계획 14" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="실학박물관·다산유적지 통합 계획 15 크게 보기"><img src="images/pf-sh-sk-future.jpg" alt="실학박물관·다산유적지 통합 계획 15" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="실학박물관·다산유적지 통합 계획 16 크게 보기"><img src="images/pf-sh-sk-memorial.jpg" alt="실학박물관·다산유적지 통합 계획 16" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="실학박물관·다산유적지 통합 계획 17 크게 보기"><img src="images/pf-sh-sk-center.jpg" alt="실학박물관·다산유적지 통합 계획 17" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="실학박물관·다산유적지 통합 계획 18 크게 보기"><img src="images/pf-sh-sk-gate.jpg" alt="실학박물관·다산유적지 통합 계획 18" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="실학박물관·다산유적지 통합 계획 19 크게 보기"><img src="images/pf-sh-sk-plaza.jpg" alt="실학박물관·다산유적지 통합 계획 19" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="실학박물관·다산유적지 통합 계획 20 크게 보기"><img src="images/pf-sh-sk-street.jpg" alt="실학박물관·다산유적지 통합 계획 20" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="실학박물관·다산유적지 통합 계획 21 크게 보기"><img src="images/pf-sh-sk-museum.jpg" alt="실학박물관·다산유적지 통합 계획 21" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="실학박물관·다산유적지 통합 계획 22 크게 보기"><img src="images/pf-sh-sk-garden.jpg" alt="실학박물관·다산유적지 통합 계획 22" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="실학박물관·다산유적지 통합 계획 23 크게 보기"><img src="images/pf-sh-sk-play.jpg" alt="실학박물관·다산유적지 통합 계획 23" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="실학박물관·다산유적지 통합 계획 24 크게 보기"><img src="images/pf-sh-sk-tunnel.jpg" alt="실학박물관·다산유적지 통합 계획 24" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="실학박물관·다산유적지 통합 계획 25 크게 보기"><img src="images/pf-sh-sk-roof.jpg" alt="실학박물관·다산유적지 통합 계획 25" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="실학박물관·다산유적지 통합 계획 26 크게 보기"><img src="images/pf-sh-sk-pond.jpg" alt="실학박물관·다산유적지 통합 계획 26" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="실학박물관·다산유적지 통합 계획 27 크게 보기"><img src="images/pf-sh-sk-top.jpg" alt="실학박물관·다산유적지 통합 계획 27" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="실학박물관·다산유적지 통합 계획 28 크게 보기"><img src="images/pf-sh-sk-bottom.jpg" alt="실학박물관·다산유적지 통합 계획 28" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="실학박물관·다산유적지 통합 계획 29 크게 보기"><img src="images/pf-sh-sk-plan.jpg" alt="실학박물관·다산유적지 통합 계획 29" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="실학박물관·다산유적지 통합 계획 30 크게 보기"><img src="images/pf-sh-dw-master.jpg" alt="실학박물관·다산유적지 통합 계획 30" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="실학박물관·다산유적지 통합 계획 31 크게 보기"><img src="images/pf-sh-dw-analysis.jpg" alt="실학박물관·다산유적지 통합 계획 31" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="실학박물관·다산유적지 통합 계획 32 크게 보기"><img src="images/pf-sh-dw-siteplan.jpg" alt="실학박물관·다산유적지 통합 계획 32" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="실학박물관·다산유적지 통합 계획 33 크게 보기"><img src="images/pf-sh-dw-alt1.jpg" alt="실학박물관·다산유적지 통합 계획 33" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="실학박물관·다산유적지 통합 계획 34 크게 보기"><img src="images/pf-sh-dw-alt2.jpg" alt="실학박물관·다산유적지 통합 계획 34" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="실학박물관·다산유적지 통합 계획 35 크게 보기"><img src="images/pf-sh-dw-p1.jpg" alt="실학박물관·다산유적지 통합 계획 35" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="실학박물관·다산유적지 통합 계획 36 크게 보기"><img src="images/pf-sh-dw-p2.jpg" alt="실학박물관·다산유적지 통합 계획 36" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="실학박물관·다산유적지 통합 계획 37 크게 보기"><img src="images/pf-sh-dw-p3.jpg" alt="실학박물관·다산유적지 통합 계획 37" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="실학박물관·다산유적지 통합 계획 38 크게 보기"><img src="images/pf-sh-dw-p4.jpg" alt="실학박물관·다산유적지 통합 계획 38" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="실학박물관·다산유적지 통합 계획 39 크게 보기"><img src="images/pf-sh-dw-p5.jpg" alt="실학박물관·다산유적지 통합 계획 39" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="실학박물관·다산유적지 통합 계획 40 크게 보기"><img src="images/pf-sh-dw-p6.jpg" alt="실학박물관·다산유적지 통합 계획 40" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="실학박물관·다산유적지 통합 계획 41 크게 보기"><img src="images/pf-sh-dw-roof.jpg" alt="실학박물관·다산유적지 통합 계획 41" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="실학박물관·다산유적지 통합 계획 42 크게 보기"><img src="images/pf-sh-dw-plan1.jpg" alt="실학박물관·다산유적지 통합 계획 42" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="실학박물관·다산유적지 통합 계획 43 크게 보기"><img src="images/pf-sh-dw-planb.jpg" alt="실학박물관·다산유적지 통합 계획 43" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="실학박물관·다산유적지 통합 계획 44 크게 보기"><img src="images/pf-sh-dw-key.jpg" alt="실학박물관·다산유적지 통합 계획 44" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="실학박물관·다산유적지 통합 계획 45 크게 보기"><img src="images/pf-sh-dw-elev-a.jpg" alt="실학박물관·다산유적지 통합 계획 45" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="실학박물관·다산유적지 통합 계획 46 크게 보기"><img src="images/pf-sh-dw-elev-b.jpg" alt="실학박물관·다산유적지 통합 계획 46" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="실학박물관·다산유적지 통합 계획 47 크게 보기"><img src="images/pf-sh-dw-sec-a.jpg" alt="실학박물관·다산유적지 통합 계획 47" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="실학박물관·다산유적지 통합 계획 48 크게 보기"><img src="images/pf-sh-dw-sec-b.jpg" alt="실학박물관·다산유적지 통합 계획 48" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="실학박물관·다산유적지 통합 계획 49 크게 보기"><img src="images/pf-sh-dw-circ1.jpg" alt="실학박물관·다산유적지 통합 계획 49" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="실학박물관·다산유적지 통합 계획 50 크게 보기"><img src="images/pf-sh-dw-circ2.jpg" alt="실학박물관·다산유적지 통합 계획 50" loading="lazy" decoding="async"></button>
     </div>
     <nav class="pf-nav" aria-label="프로젝트 이동">
       <a href="#dadadesign" data-page="dadadesign">← 프로젝트 목록</a>
@@ -2301,7 +2400,6 @@
     </div>
     <div class="pf-over">
     <div class="d-intro">
-      <p class="serif">광장 아래에 상가를 두고, 땅 위는 걷는 사람의 광장으로</p>
       <div class="desc">레닌 박물관과 극장, 투자청 사이의 광장 계획안입니다. 상가를 광장 아래에 두고 바닥에 유리를 끼워, 낮에는 햇빛이 상가로 들고 밤에는 상가의 불빛이 광장을 밝히게 했습니다. 상가 배치는 두 가지 안으로 비교했습니다.</div>
     </div>
     <div class="specs">
@@ -2312,12 +2410,21 @@
     </div>
     </div>
     <div class="pf-grid">
-      <button class="pf-tile" type="button" aria-label="울란바토르 광장 투시도 크게 보기"><img src="images/pf-ula-main.jpg" alt="울란바토르 광장 투시도" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="1안 크게 보기"><img src="images/pf-ula-alt1.jpg" alt="1안" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="2안 크게 보기"><img src="images/pf-ula-alt2.jpg" alt="2안" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="광장 바닥 크게 보기"><img src="images/pf-ula-plaza.jpg" alt="광장 바닥" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="밤의 광장 크게 보기"><img src="images/pf-ula-night.jpg" alt="밤의 광장" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="상가 입구 크게 보기"><img src="images/pf-ula-canopy.jpg" alt="상가 입구" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="울란바토르 광장 계획 1 크게 보기"><img src="images/pf-ula-main.jpg" alt="울란바토르 광장 계획 1" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="울란바토르 광장 계획 2 크게 보기"><img src="images/pf-ula-alt1.jpg" alt="울란바토르 광장 계획 2" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="울란바토르 광장 계획 3 크게 보기"><img src="images/pf-ula-alt2.jpg" alt="울란바토르 광장 계획 3" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="울란바토르 광장 계획 4 크게 보기"><img src="images/pf-ula-plaza.jpg" alt="울란바토르 광장 계획 4" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="울란바토르 광장 계획 5 크게 보기"><img src="images/pf-ula-view2.jpg" alt="울란바토르 광장 계획 5" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="울란바토르 광장 계획 6 크게 보기"><img src="images/pf-ula-canopy.jpg" alt="울란바토르 광장 계획 6" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="울란바토르 광장 계획 7 크게 보기"><img src="images/pf-ula-night.jpg" alt="울란바토르 광장 계획 7" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="울란바토르 광장 계획 8 크게 보기"><img src="images/pf-ula-dw-aerial1.jpg" alt="울란바토르 광장 계획 8" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="울란바토르 광장 계획 9 크게 보기"><img src="images/pf-ula-dw-aerial2.jpg" alt="울란바토르 광장 계획 9" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="울란바토르 광장 계획 10 크게 보기"><img src="images/pf-ula-dw-retail1.jpg" alt="울란바토르 광장 계획 10" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="울란바토르 광장 계획 11 크게 보기"><img src="images/pf-ula-dw-retail2.jpg" alt="울란바토르 광장 계획 11" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="울란바토르 광장 계획 12 크게 보기"><img src="images/pf-ula-dw-concept.jpg" alt="울란바토르 광장 계획 12" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="울란바토르 광장 계획 13 크게 보기"><img src="images/pf-ula-dw-model.jpg" alt="울란바토르 광장 계획 13" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="울란바토르 광장 계획 14 크게 보기"><img src="images/pf-ula-dw-site.jpg" alt="울란바토르 광장 계획 14" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="울란바토르 광장 계획 15 크게 보기"><img src="images/pf-ula-dw-plan.jpg" alt="울란바토르 광장 계획 15" loading="lazy" decoding="async"></button>
     </div>
     <nav class="pf-nav" aria-label="프로젝트 이동">
       <a href="#dadadesign" data-page="dadadesign">← 프로젝트 목록</a>
@@ -2337,7 +2444,6 @@
     </div>
     <div class="pf-over">
     <div class="d-intro">
-      <p class="serif">용인이씨 참의공파 종회의 재실</p>
       <div class="desc">용인이씨 참의공파 종회의 재실입니다. 나무 기둥 위에 기와지붕을 올린 목구조 한옥으로, 벽은 회벽으로 바르고 바닥에는 전통 마루를 깔았습니다. 대문과 담장도 함께 설계했습니다.</div>
     </div>
     <div class="specs">
@@ -2352,11 +2458,25 @@
     </div>
     </div>
     <div class="pf-grid">
-      <button class="pf-tile" type="button" aria-label="봉계당 대문과 재실 크게 보기"><img src="images/pf-bkd-main.jpg" alt="봉계당 대문과 재실" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="툇마루와 기둥 크게 보기"><img src="images/pf-bkd-side.jpg" alt="툇마루와 기둥" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="정면 창호 크게 보기"><img src="images/pf-bkd-front.jpg" alt="정면 창호" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="담장 옆 길 크게 보기"><img src="images/pf-bkd-wall.jpg" alt="담장 옆 길" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="기둥과 툇마루 크게 보기"><img src="images/pf-bkd-column.jpg" alt="기둥과 툇마루" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="봉계당 鳳溪堂 1 크게 보기"><img src="images/pf-bkd-main.jpg" alt="봉계당 鳳溪堂 1" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="봉계당 鳳溪堂 2 크게 보기"><img src="images/pf-bkd-gate.jpg" alt="봉계당 鳳溪堂 2" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="봉계당 鳳溪堂 3 크게 보기"><img src="images/pf-bkd-side.jpg" alt="봉계당 鳳溪堂 3" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="봉계당 鳳溪堂 4 크게 보기"><img src="images/pf-bkd-front.jpg" alt="봉계당 鳳溪堂 4" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="봉계당 鳳溪堂 5 크게 보기"><img src="images/pf-bkd-wall.jpg" alt="봉계당 鳳溪堂 5" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="봉계당 鳳溪堂 6 크게 보기"><img src="images/pf-bkd-column.jpg" alt="봉계당 鳳溪堂 6" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="봉계당 鳳溪堂 7 크게 보기"><img src="images/pf-bkd-eave.jpg" alt="봉계당 鳳溪堂 7" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="봉계당 鳳溪堂 8 크게 보기"><img src="images/pf-bkd-d1.jpg" alt="봉계당 鳳溪堂 8" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="봉계당 鳳溪堂 9 크게 보기"><img src="images/pf-bkd-d2.jpg" alt="봉계당 鳳溪堂 9" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="봉계당 鳳溪堂 10 크게 보기"><img src="images/pf-bkd-d3.jpg" alt="봉계당 鳳溪堂 10" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="봉계당 鳳溪堂 11 크게 보기"><img src="images/pf-bkd-d4.jpg" alt="봉계당 鳳溪堂 11" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="봉계당 鳳溪堂 12 크게 보기"><img src="images/pf-bkd-d5.jpg" alt="봉계당 鳳溪堂 12" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="봉계당 鳳溪堂 13 크게 보기"><img src="images/pf-bkd-b1.jpg" alt="봉계당 鳳溪堂 13" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="봉계당 鳳溪堂 14 크게 보기"><img src="images/pf-bkd-b2.jpg" alt="봉계당 鳳溪堂 14" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="봉계당 鳳溪堂 15 크게 보기"><img src="images/pf-bkd-b3.jpg" alt="봉계당 鳳溪堂 15" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="봉계당 鳳溪堂 16 크게 보기"><img src="images/pf-bkd-dw-plan.jpg" alt="봉계당 鳳溪堂 16" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="봉계당 鳳溪堂 17 크게 보기"><img src="images/pf-bkd-dw-elev.jpg" alt="봉계당 鳳溪堂 17" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="봉계당 鳳溪堂 18 크게 보기"><img src="images/pf-bkd-dw-gate.jpg" alt="봉계당 鳳溪堂 18" loading="lazy" decoding="async"></button>
+      <button class="pf-tile fit" type="button" aria-label="봉계당 鳳溪堂 19 크게 보기"><img src="images/pf-bkd-dw-door.jpg" alt="봉계당 鳳溪堂 19" loading="lazy" decoding="async"></button>
     </div>
     <nav class="pf-nav" aria-label="프로젝트 이동">
       <a href="#dadadesign" data-page="dadadesign">← 프로젝트 목록</a>
@@ -3957,9 +4077,11 @@ if (root) (async () => {
     var lb=document.querySelector('.pf-lb'), img=lb.querySelector('img'), cap=lb.querySelector('figcaption'), list=[], i=0, back=null;
     // 작은 판넬 사진은 화면에서 너무 작지 않게 최대 1.8배까지만 키움(그 이상은 흐려짐)
     img.addEventListener('load',function(){ var w=img.naturalWidth, h=img.naturalHeight; if(!w) return;
-      var k=Math.min(1.8, innerWidth*(innerWidth<821?0.96:0.7)/w, innerHeight*(innerWidth<821?0.7:0.72)/h); img.style.width=(k>1?Math.round(w*k):w)+'px'; });
-    function show(k){ i=(k+list.length)%list.length; var t=list[i].querySelector('img'); img.style.width=''; img.src=t.getAttribute('src'); img.alt=t.alt;
-      cap.textContent=t.alt+'  ·  '+(i+1)+' / '+list.length; }
+      // 가로·세로를 같은 배율로(비율 그대로). 화면보다 크면 줄이고, 작으면 최대 1.8배까지만 키움
+      var k=Math.min(1.8, innerWidth*(innerWidth<821?0.96:0.7)/w, innerHeight*(innerWidth<821?0.7:0.72)/h);
+      img.style.width=Math.round(w*k)+'px'; img.style.height=Math.round(h*k)+'px'; });
+    function show(k){ i=(k+list.length)%list.length; var t=list[i].querySelector('img'); img.style.width=''; img.style.height=''; img.src=t.getAttribute('src'); img.alt=t.alt;
+      cap.textContent=(i+1)+' / '+list.length; }
     function open(tile){ list=[].slice.call(tile.parentNode.querySelectorAll('.pf-tile')); back=tile; show(list.indexOf(tile));
       lb.hidden=false; document.documentElement.classList.add('pf-lb-on'); lb.querySelector('.pf-lb-x').focus(); }
     function close(){ lb.hidden=true; document.documentElement.classList.remove('pf-lb-on'); img.removeAttribute('src'); if(back) back.focus(); }

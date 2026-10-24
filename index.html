@@ -1257,7 +1257,10 @@
   .pf-over .d-intro{padding:0;margin:0;}
   .pf-over .d-intro p.serif{margin-top:0;}
   .pf-over .specs{padding:0;}
-  .pf-over .specs .row{grid-template-columns:110px 1fr auto;gap:16px;padding:12px 0;font-size:14px;}
+  .pf-over .specs .row{grid-template-columns:84px 1fr auto;gap:12px;padding:7px 0;font-size:13px;line-height:1.55;}   /* 개요는 작고 촘촘하게 */
+  .pf-over .specs .row .ca{font-size:11.5px;}
+  /* 제목 75%(운영자 의견) */
+  .page[id^="pf-"] .page-head h1{font-size:clamp(30px,4.8vw,60px);}
   .pf-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:56px 0 0;}
   .pf-tile{display:block;padding:0;border:0;background:#e9e5dc;aspect-ratio:4/3;overflow:hidden;border-radius:6px;cursor:zoom-in;}
   .pf-tile img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .35s ease,opacity .2s ease;}
@@ -1913,7 +1916,7 @@
           <div class="cap"><div class="pn">DADA FOREST</div><div class="py">목조 건물 두 동 · 강원 평창</div></div>
         </a>
         <a class="port-item" href="#pf-hy" data-page="pf-hy">
-          <div class="pic" data-lazybg="images/hy-main.jpg"></div>
+          <div class="pic" data-lazybg="images/pf-hy-ext1.jpg"></div>
           <div class="cap"><div class="pn">희연재 喜蓮齋</div><div class="py">단독주택 · 경기 양평</div></div>
         </a>
         <a class="port-item" href="#pf-xtd" data-page="pf-xtd">
@@ -1966,19 +1969,18 @@
       <div class="row"><span class="nm">건축면적</span><span class="de">176.7㎡</span><span class="ca">약 53평</span></div>
       <div class="row"><span class="nm">연면적</span><span class="de">229.7㎡</span><span class="ca">약 69평</span></div>
       <div class="row"><span class="nm">규모</span><span class="de">지하 1층 · 지상 2층</span><span class="ca">3개 층</span></div>
-      <div class="row"><span class="nm">외부마감</span><span class="de">노출콘크리트 · 드라이비트</span><span class="ca">-</span></div>
-      <div class="row"><span class="nm">설계·시공</span><span class="de">DADA DESIGN</span><span class="ca">컨설팅부터 준공까지</span></div>
+      <div class="row"><span class="nm">외부마감</span><span class="de">노출콘크리트 · 드라이비트</span><span class="ca"></span></div>
     </div>
     </div>
     <div class="pf-grid">
-      <button class="pf-tile" type="button" aria-label="희연재 전경 크게 보기"><img src="images/hy-main.jpg" alt="희연재 전경" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="외관 전경 크게 보기"><img src="images/hy-01.jpg" alt="외관 전경" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="측면에서 본 전경 크게 보기"><img src="images/hy-02.jpg" alt="측면에서 본 전경" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="진입부 크게 보기"><img src="images/hy-03.jpg" alt="진입부" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="거실 크게 보기"><img src="images/hy-04.jpg" alt="거실" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="높이가 다른 실내 크게 보기"><img src="images/hy-05.jpg" alt="높이가 다른 실내" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="목재 천장 크게 보기"><img src="images/hy-06.jpg" alt="목재 천장" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="실내 디테일 크게 보기"><img src="images/hy-07.jpg" alt="실내 디테일" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="외관 전경 크게 보기"><img src="images/pf-hy-ext1.jpg" alt="외관 전경" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="진입부 크게 보기"><img src="images/pf-hy-ext2.jpg" alt="진입부" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="마당에서 본 외관 크게 보기"><img src="images/pf-hy-ext3.jpg" alt="마당에서 본 외관" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="테라스 크게 보기"><img src="images/pf-hy-bw.jpg" alt="테라스" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="거실 크게 보기"><img src="images/pf-hy-int1.jpg" alt="거실" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="식당 크게 보기"><img src="images/pf-hy-int2.jpg" alt="식당" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="2층 계단과 원형 창 크게 보기"><img src="images/pf-hy-int3.jpg" alt="2층 계단과 원형 창" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="2층 거실 크게 보기"><img src="images/pf-hy-int4.jpg" alt="2층 거실" loading="lazy" decoding="async"></button>
     </div>
     <nav class="pf-nav" aria-label="프로젝트 이동">
       <a href="#dadadesign" data-page="dadadesign">← 프로젝트 목록</a>
@@ -2007,11 +2009,10 @@
       <div class="row"><span class="nm">대지면적</span><span class="de">874.00㎡</span><span class="ca">264.39평</span></div>
       <div class="row"><span class="nm">건축면적</span><span class="de">509.28㎡</span><span class="ca">154.06평</span></div>
       <div class="row"><span class="nm">연면적</span><span class="de">2,522.72㎡</span><span class="ca">763.12평</span></div>
-      <div class="row"><span class="nm">건폐율 / 용적률</span><span class="de">58.27% / 221.80%</span><span class="ca">-</span></div>
+      <div class="row"><span class="nm">건폐율 / 용적률</span><span class="de">58.27% / 221.80%</span><span class="ca"></span></div>
       <div class="row"><span class="nm">규모</span><span class="de">지하 1층 · 지상 5층</span><span class="ca">6개 층</span></div>
-      <div class="row"><span class="nm">외부마감</span><span class="de">알루미늄 시트패널 · 16mm 페어글라스</span><span class="ca">-</span></div>
+      <div class="row"><span class="nm">외부마감</span><span class="de">알루미늄 시트패널 · 16mm 페어글라스</span><span class="ca"></span></div>
       <div class="row"><span class="nm">수상</span><span class="de">제1회 경기도 건축문화상 대상</span><span class="ca">1996</span></div>
-      <div class="row"><span class="nm">설계·시공</span><span class="de">DADA DESIGN</span><span class="ca">컨설팅부터 준공까지</span></div>
     </div>
     </div>
     <div class="pf-grid">
@@ -2068,9 +2069,8 @@
       <div class="row"><span class="nm">대지면적</span><span class="de"><span class="todo">입력</span></span><span class="ca">약 800평</span></div>
       <div class="row"><span class="nm">연면적</span><span class="de"><span class="todo">입력</span></span><span class="ca"><span class="todo">입력</span></span></div>
       <div class="row"><span class="nm">구성</span><span class="de">A동 메인홀 20평 · B동 소모임 홀 8평 · 메인 테라스 30평 · 느티나무 테라스 30평</span><span class="ca">두 동</span></div>
-      <div class="row"><span class="nm">원래 건물</span><span class="de">1941년</span><span class="ca">-</span></div>
-      <div class="row"><span class="nm">준공</span><span class="de"><span class="todo">입력</span></span><span class="ca">-</span></div>
-      <div class="row"><span class="nm">설계·시공</span><span class="de">DADA DESIGN</span><span class="ca">컨설팅부터 준공까지</span></div>
+      <div class="row"><span class="nm">원래 건물</span><span class="de">1941년</span><span class="ca"></span></div>
+      <div class="row"><span class="nm">준공</span><span class="de"><span class="todo">입력</span></span><span class="ca"></span></div>
       <div class="row"><span class="nm">공간 대관</span><span class="de"><a href="#s1941" data-page="s1941">STUDIO 1941 대관 안내 →</a></span><span class="ca"></span></div>
     </div>
     </div>
@@ -2110,8 +2110,7 @@
       <div class="row"><span class="nm">구성</span><span class="de">중정(마당)을 중심으로 한 ㄷ자 배치 · 실내 홀 · 회랑 · 테라스</span><span class="ca">단층</span></div>
       <div class="row"><span class="nm">구조</span><span class="de">기존 목구조와 기와지붕 보존 · 내부 노출 서까래 · 폴리카보네이트 회랑 증축</span><span class="ca">재생</span></div>
       <div class="row"><span class="nm">원래 건물</span><span class="de"><span class="todo">입력</span></span><span class="ca">지은 해</span></div>
-      <div class="row"><span class="nm">준공</span><span class="de"><span class="todo">입력</span></span><span class="ca">-</span></div>
-      <div class="row"><span class="nm">설계·시공</span><span class="de">DADA DESIGN</span><span class="ca">컨설팅부터 준공까지</span></div>
+      <div class="row"><span class="nm">준공</span><span class="de"><span class="todo">입력</span></span><span class="ca"></span></div>
       <div class="row"><span class="nm">공간 대관</span><span class="de"><a href="#spaceon" data-page="spaceon">SPACE ON 대관 안내 →</a></span><span class="ca"></span></div>
     </div>
     </div>
@@ -2144,14 +2143,13 @@
       <div class="desc">자작나무와 낙엽송, 전나무가 자라는 숲 사이에 작은 목조 건물 두 동이 있습니다. 두 동에 홀과 발코니를 두고, 주방·바와 바비큐 공간을 따로 마련했습니다.</div>
     </div>
     <div class="specs">
-      <div class="row"><span class="nm">위치</span><span class="de">강원 평창군 진부면 척천리 235</span><span class="ca">-</span></div>
+      <div class="row"><span class="nm">위치</span><span class="de">강원 평창군 진부면 척천리 235</span><span class="ca"></span></div>
       <div class="row"><span class="nm">용도</span><span class="de"><span class="todo">입력</span></span><span class="ca">모임·워케이션</span></div>
       <div class="row"><span class="nm">대지면적</span><span class="de"><span class="todo">입력</span></span><span class="ca">약 3,000평</span></div>
       <div class="row"><span class="nm">연면적</span><span class="de"><span class="todo">입력</span></span><span class="ca"><span class="todo">입력</span></span></div>
       <div class="row"><span class="nm">구성</span><span class="de">A동 홀·발코니 20평 · B동 홀·발코니 15평 · 주방·바·화장실 7평 · 바비큐 공간 4평</span><span class="ca">목조 두 동</span></div>
       <div class="row"><span class="nm">구분</span><span class="de"><span class="todo">입력</span></span><span class="ca">신축 / 리모델링</span></div>
-      <div class="row"><span class="nm">준공</span><span class="de"><span class="todo">입력</span></span><span class="ca">-</span></div>
-      <div class="row"><span class="nm">설계·시공</span><span class="de">DADA DESIGN</span><span class="ca">컨설팅부터 준공까지</span></div>
+      <div class="row"><span class="nm">준공</span><span class="de"><span class="todo">입력</span></span><span class="ca"></span></div>
       <div class="row"><span class="nm">공간 대관</span><span class="de"><a href="#forest" data-page="forest">DADA FOREST 대관 안내 →</a></span><span class="ca"></span></div>
     </div>
     </div>
@@ -2186,7 +2184,7 @@
     </div>
     <div class="specs">
       <div class="row"><span class="nm">연구</span><span class="de">도시재생을 위한 역사문화환경의 새로운 장소적 보존기법 연구</span><span class="ca">上海 太平橋 新天地를 중심으로</span></div>
-      <div class="row"><span class="nm">연구자</span><span class="de">이천복</span><span class="ca">-</span></div>
+      <div class="row"><span class="nm">연구자</span><span class="de">이천복</span><span class="ca"></span></div>
       <div class="row"><span class="nm">소속</span><span class="de">성균관대학교 과학기술대학원 건축공학</span><span class="ca">지도 김도년 교수</span></div>
       <div class="row"><span class="nm">구분</span><span class="de">연구</span><span class="ca">설계 프로젝트 아님</span></div>
     </div>
@@ -2225,11 +2223,10 @@
       <div class="desc">베이징 세농종묘의 본사입니다. 2006년 8월 설계를 시작해 2008년 6월에 완공했습니다. 씨앗이 자라는 모습과 물, 하늘의 색을 유리 커튼월에 담았습니다. 건축설계는 베이징시건축설계연구원(BIAD)이, 실내설계와 건설사업관리(CM)는 DADA DESIGN이 맡았습니다.</div>
     </div>
     <div class="specs">
-      <div class="row"><span class="nm">위치</span><span class="de">중국 베이징 다싱 바이오·의약 산업단지</span><span class="ca">-</span></div>
+      <div class="row"><span class="nm">위치</span><span class="de">중국 베이징 다싱 바이오·의약 산업단지</span><span class="ca"></span></div>
       <div class="row"><span class="nm">용도</span><span class="de">업무시설</span><span class="ca">본사</span></div>
-      <div class="row"><span class="nm">건축설계</span><span class="de">베이징시건축설계연구원(BIAD)</span><span class="ca">-</span></div>
+      <div class="row"><span class="nm">건축설계</span><span class="de">베이징시건축설계연구원(BIAD)</span><span class="ca"></span></div>
       <div class="row"><span class="nm">기간</span><span class="de">2006년 8월 설계 시작</span><span class="ca">2008년 6월 준공</span></div>
-      <div class="row"><span class="nm">실내설계·CM</span><span class="de">DADA DESIGN</span><span class="ca">설계 자문</span></div>
     </div>
     </div>
     <div class="pf-grid">
@@ -2263,13 +2260,12 @@
       <div class="desc">다산 정약용 선생의 묘와 생가가 있는 다산유적지 옆에 실학박물관을 짓고, 유적지와 박물관을 하나의 동선으로 잇는 계획안입니다. 유적지 확장과 수변 정비, 문화마을 조성까지 세 단계로 나눠 계획했습니다.</div>
     </div>
     <div class="specs">
-      <div class="row"><span class="nm">위치</span><span class="de">경기 남양주시 조안면 능내리 75번지 일대</span><span class="ca">-</span></div>
+      <div class="row"><span class="nm">위치</span><span class="de">경기 남양주시 조안면 능내리 75번지 일대</span><span class="ca"></span></div>
       <div class="row"><span class="nm">면적</span><span class="de">실학박물관 대지 7,130㎡ · 다산유적지 23,522㎡ · 문화의 거리 2,702㎡</span><span class="ca">총 33,354㎡</span></div>
-      <div class="row"><span class="nm">규모</span><span class="de">본관 지상 1층·지하 1층, 별관 지하 1층</span><span class="ca">-</span></div>
-      <div class="row"><span class="nm">건축면적</span><span class="de">약 4,350㎡</span><span class="ca">-</span></div>
-      <div class="row"><span class="nm">연면적</span><span class="de">약 6,650㎡</span><span class="ca">-</span></div>
-      <div class="row"><span class="nm">주요 시설</span><span class="de">상설·특별·기획·야외 전시실, 대강당, 어린이 박물관, 수장고, 연구실</span><span class="ca">-</span></div>
-      <div class="row"><span class="nm">설계</span><span class="de">DADA DESIGN</span><span class="ca">계획안</span></div>
+      <div class="row"><span class="nm">규모</span><span class="de">본관 지상 1층·지하 1층, 별관 지하 1층</span><span class="ca"></span></div>
+      <div class="row"><span class="nm">건축면적</span><span class="de">약 4,350㎡</span><span class="ca"></span></div>
+      <div class="row"><span class="nm">연면적</span><span class="de">약 6,650㎡</span><span class="ca"></span></div>
+      <div class="row"><span class="nm">주요 시설</span><span class="de">상설·특별·기획·야외 전시실, 대강당, 어린이 박물관, 수장고, 연구실</span><span class="ca"></span></div>
     </div>
     </div>
     <div class="pf-grid">
@@ -2279,7 +2275,11 @@
       <button class="pf-tile" type="button" aria-label="중정과 수공간 크게 보기"><img src="images/pf-sh-img2.jpg" alt="중정과 수공간" loading="lazy" decoding="async"></button>
       <button class="pf-tile" type="button" aria-label="수공간 옆 데크 크게 보기"><img src="images/pf-sh-img3.jpg" alt="수공간 옆 데크" loading="lazy" decoding="async"></button>
       <button class="pf-tile" type="button" aria-label="유리 회랑 크게 보기"><img src="images/pf-sh-img4.jpg" alt="유리 회랑" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="박물관 전체 크게 보기"><img src="images/pf-sh-img1.jpg" alt="박물관 전체" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="1층 평면도 크게 보기"><img src="images/pf-sh-plan1.jpg" alt="1층 평면도" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="지하 1층 평면도 크게 보기"><img src="images/pf-sh-planb.jpg" alt="지하 1층 평면도" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="옥상 정원 스케치 크게 보기"><img src="images/pf-sh-sk-roof.jpg" alt="옥상 정원 스케치" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="박물관 스케치 크게 보기"><img src="images/pf-sh-sk-museum.jpg" alt="박물관 스케치" loading="lazy" decoding="async"></button>
+      <button class="pf-tile" type="button" aria-label="사색의 마당 스케치 크게 보기"><img src="images/pf-sh-sk-garden.jpg" alt="사색의 마당 스케치" loading="lazy" decoding="async"></button>
       <button class="pf-tile" type="button" aria-label="입구 스케치 크게 보기"><img src="images/pf-sh-sketch.jpg" alt="입구 스케치" loading="lazy" decoding="async"></button>
     </div>
     <nav class="pf-nav" aria-label="프로젝트 이동">
@@ -2306,10 +2306,9 @@
     </div>
     <div class="specs">
       <div class="row"><span class="nm">위치</span><span class="de">몽골 울란바토르</span><span class="ca">레닌 박물관 앞</span></div>
-      <div class="row"><span class="nm">용도</span><span class="de">광장 · 지하 상가</span><span class="ca">-</span></div>
-      <div class="row"><span class="nm">1안</span><span class="de">도로를 따라 상가를 길게 두어 기존 가로를 그대로 이음</span><span class="ca">-</span></div>
-      <div class="row"><span class="nm">2안</span><span class="de">상가를 나누고 건물 사이 12m를 틔워 광장으로 들어오게 함</span><span class="ca">-</span></div>
-      <div class="row"><span class="nm">설계</span><span class="de">DADA DESIGN</span><span class="ca">계획안</span></div>
+      <div class="row"><span class="nm">용도</span><span class="de">광장 · 지하 상가</span><span class="ca"></span></div>
+      <div class="row"><span class="nm">1안</span><span class="de">도로를 따라 상가를 길게 두어 기존 가로를 그대로 이음</span><span class="ca"></span></div>
+      <div class="row"><span class="nm">2안</span><span class="de">상가를 나누고 건물 사이 12m를 틔워 광장으로 들어오게 함</span><span class="ca"></span></div>
     </div>
     </div>
     <div class="pf-grid">
@@ -2343,19 +2342,17 @@
     </div>
     <div class="specs">
       <div class="row"><span class="nm">위치</span><span class="de">경기 용인시 신봉동 114-10</span><span class="ca">준농림지역</span></div>
-      <div class="row"><span class="nm">건축주</span><span class="de">용인이씨 종중</span><span class="ca">-</span></div>
-      <div class="row"><span class="nm">용도</span><span class="de">재실 및 관리사</span><span class="ca">-</span></div>
-      <div class="row"><span class="nm">대지면적</span><span class="de">830.0㎡</span><span class="ca">-</span></div>
-      <div class="row"><span class="nm">연면적</span><span class="de">137.76㎡</span><span class="ca">-</span></div>
+      <div class="row"><span class="nm">건축주</span><span class="de">용인이씨 종중</span><span class="ca"></span></div>
+      <div class="row"><span class="nm">용도</span><span class="de">재실 및 관리사</span><span class="ca"></span></div>
+      <div class="row"><span class="nm">대지면적</span><span class="de">830.0㎡</span><span class="ca"></span></div>
+      <div class="row"><span class="nm">연면적</span><span class="de">137.76㎡</span><span class="ca"></span></div>
       <div class="row"><span class="nm">규모</span><span class="de">지상 1층</span><span class="ca">높이 7.81m</span></div>
-      <div class="row"><span class="nm">구조</span><span class="de">목구조</span><span class="ca">-</span></div>
-      <div class="row"><span class="nm">외부마감</span><span class="de">벽 회벽 바르기 · 바닥 전통 마루 깔기</span><span class="ca">-</span></div>
-      <div class="row"><span class="nm">설계·시공</span><span class="de">DADA DESIGN</span><span class="ca">컨설팅부터 준공까지</span></div>
+      <div class="row"><span class="nm">구조</span><span class="de">목구조</span><span class="ca"></span></div>
+      <div class="row"><span class="nm">외부마감</span><span class="de">벽 회벽 바르기 · 바닥 전통 마루 깔기</span><span class="ca"></span></div>
     </div>
     </div>
     <div class="pf-grid">
       <button class="pf-tile" type="button" aria-label="봉계당 대문과 재실 크게 보기"><img src="images/pf-bkd-main.jpg" alt="봉계당 대문과 재실" loading="lazy" decoding="async"></button>
-      <button class="pf-tile" type="button" aria-label="대문 크게 보기"><img src="images/pf-bkd-gate.jpg" alt="대문" loading="lazy" decoding="async"></button>
       <button class="pf-tile" type="button" aria-label="툇마루와 기둥 크게 보기"><img src="images/pf-bkd-side.jpg" alt="툇마루와 기둥" loading="lazy" decoding="async"></button>
       <button class="pf-tile" type="button" aria-label="정면 창호 크게 보기"><img src="images/pf-bkd-front.jpg" alt="정면 창호" loading="lazy" decoding="async"></button>
       <button class="pf-tile" type="button" aria-label="담장 옆 길 크게 보기"><img src="images/pf-bkd-wall.jpg" alt="담장 옆 길" loading="lazy" decoding="async"></button>

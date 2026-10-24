@@ -1251,6 +1251,8 @@
 
 <style id="portfolio-grid">
   /* ═══════════ 프로젝트 상세: 위 개요 · 아래 같은 크기 사진 칸 ═══════════ */
+  /* 폭: 화면 가득 쓰지 않고 가운데 960px(2026-10-24 운영자 의견, 참고 gbldrs.com/40) */
+  .page[id^="pf-"] > .wrap{max-width:1040px;margin-left:auto;margin-right:auto;}
   .pf-over{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:56px;margin-top:40px;align-items:start;}
   .pf-over .d-intro{padding:0;margin:0;}
   .pf-over .d-intro p.serif{margin-top:0;}
@@ -1262,14 +1264,16 @@
   .pf-tile:hover img{transform:scale(1.03);}
   .pf-tile:focus-visible{outline:2px solid var(--ink);outline-offset:2px;}
   /* 크게 보기 */
-  .pf-lb{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;background:#0f0f0e;}
+  .pf-lb{position:fixed;inset:0;z-index:5000;display:flex;align-items:center;justify-content:center;background:rgba(15,15,14,.5);}   /* 반투명: 뒤 페이지가 살짝 비치게(운영자 의견) */
   .pf-lb[hidden]{display:none;}
   .pf-lb figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:14px;}
-  .pf-lb img{display:block;max-width:86vw;max-height:80vh;width:auto;height:auto;border-radius:4px;}
-  .pf-lb figcaption{font-size:13px;color:rgba(255,255,255,.75);letter-spacing:.02em;}
-  .pf-lb button{position:absolute;border:0;background:transparent;color:#fff;cursor:pointer;line-height:1;}
-  .pf-lb-x{top:18px;right:22px;font-size:34px;}
-  .pf-lb-nav{top:50%;transform:translateY(-50%);font-size:48px;padding:10px 16px;}
+  .pf-lb img{display:block;max-width:70vw;max-height:72vh;width:auto;height:auto;border-radius:4px;}
+  .pf-lb img{box-shadow:0 12px 40px rgba(0,0,0,.35);}
+  .pf-lb figcaption{font-size:13px;color:#fff;letter-spacing:.02em;background:rgba(15,15,14,.6);padding:6px 14px;border-radius:999px;}
+  .pf-lb button{position:absolute;border:0;background:rgba(15,15,14,.6);color:#fff;cursor:pointer;line-height:1;
+    width:48px;height:48px;border-radius:50%;display:grid;place-items:center;padding:0 0 3px;}
+  .pf-lb-x{top:88px;right:24px;font-size:28px;}   /* 위 메뉴 줄 아래 */
+  .pf-lb-nav{top:50%;transform:translateY(-50%);font-size:34px;}
   .pf-lb-nav.prev{left:14px;} .pf-lb-nav.next{right:14px;}
   html.pf-lb-on,html.pf-lb-on body{overflow:hidden;}
   @media(max-width:980px){ .pf-grid{grid-template-columns:repeat(3,1fr);} }
@@ -1277,8 +1281,9 @@
     .pf-over{grid-template-columns:1fr;gap:28px;margin-top:28px;}
     .pf-over .specs .row{grid-template-columns:96px 1fr;}
     .pf-grid{grid-template-columns:repeat(2,1fr);gap:6px;margin-top:36px;}
-    .pf-lb img{max-width:96vw;max-height:76vh;}
-    .pf-lb-nav{top:auto;bottom:18px;transform:none;font-size:40px;}
+    .pf-lb img{max-width:96vw;max-height:70vh;}
+    .pf-lb-x{top:80px;right:14px;}
+    .pf-lb-nav{top:auto;bottom:18px;transform:none;font-size:30px;}
   }
 </style>
 </head>
@@ -3955,7 +3960,7 @@ if (root) (async () => {
     var lb=document.querySelector('.pf-lb'), img=lb.querySelector('img'), cap=lb.querySelector('figcaption'), list=[], i=0, back=null;
     // 작은 판넬 사진은 화면에서 너무 작지 않게 최대 1.8배까지만 키움(그 이상은 흐려짐)
     img.addEventListener('load',function(){ var w=img.naturalWidth, h=img.naturalHeight; if(!w) return;
-      var k=Math.min(1.8, innerWidth*(innerWidth<821?0.96:0.86)/w, innerHeight*(innerWidth<821?0.76:0.8)/h); img.style.width=(k>1?Math.round(w*k):w)+'px'; });
+      var k=Math.min(1.8, innerWidth*(innerWidth<821?0.96:0.7)/w, innerHeight*(innerWidth<821?0.7:0.72)/h); img.style.width=(k>1?Math.round(w*k):w)+'px'; });
     function show(k){ i=(k+list.length)%list.length; var t=list[i].querySelector('img'); img.style.width=''; img.src=t.getAttribute('src'); img.alt=t.alt;
       cap.textContent=t.alt+'  ·  '+(i+1)+' / '+list.length; }
     function open(tile){ list=[].slice.call(tile.parentNode.querySelectorAll('.pf-tile')); back=tile; show(list.indexOf(tile));

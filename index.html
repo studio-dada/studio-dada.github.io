@@ -1214,17 +1214,16 @@
   #about .about-hero .eyebrow{font-size:18px;letter-spacing:.14em;color:var(--ink-soft);}
   /* 대표 이력: 이름 > 이력(연도 작게) > 소속 */
   #about .ab-prof{padding-bottom:104px;}
-  #about .ab-prof h2{font-size:clamp(24px,2.6vw,34px);letter-spacing:-.02em;word-break:keep-all;}
-  #about .ab-prof h2 b{font-weight:800;}
-  #about .ab-prof h2 i{font-style:normal;font-weight:300;margin:0 .4em;color:var(--stone);}
-  #about .ab-prof h2 span{font-weight:300;letter-spacing:.01em;}
-  #about .ab-cols{display:grid;grid-template-columns:1.25fr 1fr;gap:48px;margin-top:48px;text-align:left;}
-  #about .ab-cols h3{font-size:13px;font-weight:600;letter-spacing:.02em;color:var(--stone);margin-bottom:10px;}
-  #about .ab-career{list-style:none;margin:0;padding:0;border-top:1px solid var(--line);}
-  #about .ab-career li{display:grid;grid-template-columns:84px 1fr;gap:12px;align-items:baseline;padding:9px 0;border-bottom:1px solid var(--line-soft);}
-  #about .ab-career span{font-size:13px;font-weight:600;color:var(--stone);}
-  #about .ab-career p{font-size:15px;color:var(--ink);word-break:keep-all;}
-  #about .ab-member{margin-top:24px;font-size:13px;color:var(--stone);word-break:keep-all;}
+  /* 대표 이력: 선 없는 연도 목록(건축사무소 대표 소개 방식). 이름 > 직함 > 소속 > 이력 */
+  #about .ab-prof h2{font-size:24px;font-weight:800;letter-spacing:-.02em;}
+  #about .ab-role{margin-top:8px;font-size:12px;font-weight:500;letter-spacing:.16em;color:var(--ink-soft);}
+  #about .ab-member{margin-top:12px;font-size:13px;color:var(--stone);word-break:keep-all;}
+  #about .ab-cols{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;max-width:920px;margin:48px auto 0;text-align:left;}
+  #about .ab-cols h3{font-size:15px;font-weight:700;letter-spacing:-.01em;color:var(--ink);margin-bottom:14px;}
+  #about .ab-career{list-style:none;margin:0;padding:0;}
+  #about .ab-career li{display:grid;grid-template-columns:76px 1fr;gap:8px;align-items:baseline;padding:5px 0;}
+  #about .ab-career span{font-size:13px;color:var(--stone);}
+  #about .ab-career p{font-size:14.5px;line-height:1.5;color:var(--ink-soft);word-break:keep-all;}
   /* 문의 칸: 로고 > 전화번호 > 이름표·링크 */
   #about .ab-reach{display:flex;flex-direction:column;align-items:center;}
   #about .ab-logo{display:block;width:168px;height:auto;margin:0 0 56px;color:var(--ink);}
@@ -1255,7 +1254,7 @@
     #about .about-hero .eyebrow{font-size:16px;}
     #about .ab-prof{padding-bottom:72px;}
     #about .ab-cols{grid-template-columns:1fr;gap:32px;margin-top:36px;}
-    #about .ab-career li{grid-template-columns:84px 1fr;gap:10px;}
+    #about .ab-career li{grid-template-columns:76px 1fr;gap:6px;}
     #about .ab-career p{font-size:14px;}
     #about .ab-rows{margin-top:44px;gap:24px;}
     #about .ab-row{grid-template-columns:1fr;}
@@ -2554,7 +2553,11 @@
       </div>
     </div>
     <section class="ab-sec ab-prof" aria-labelledby="ab-profile">
-      <h2 id="ab-profile"><b>이천복</b><i aria-hidden="true">·</i><span>PRINCIPAL ARCHITECT</span></h2>
+      <div class="ab-who">
+        <h2 id="ab-profile">이천복</h2>
+        <div class="ab-role">PRINCIPAL ARCHITECT</div>
+        <p class="ab-member">한국건축가협회 · 대한건축학회 · 한국도시설계학회 · 도코모모코리아 정회원</p>
+      </div>
       <div class="ab-cols">
         <div><h3>주요 이력</h3><ol class="ab-career">
           <li><span>1992</span><p>다다건축사사무소 개설 · 건축사</p></li>
@@ -2575,7 +2578,6 @@
           <li><span>2010</span><p>수원지방법원장 공로표창</p></li>
         </ol></div>
       </div>
-      <p class="ab-member">한국건축가협회 · 대한건축학회 · 한국도시설계학회 · 도코모모코리아 정회원</p>
     </section>
   </div>
 </section>

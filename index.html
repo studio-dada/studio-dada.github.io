@@ -1214,11 +1214,14 @@
   #about .about-hero .eyebrow{font-size:18px;letter-spacing:.14em;color:var(--ink-soft);}
   /* 대표 이력: 이름 > 이력(연도 작게) > 소속 */
   #about .ab-prof{padding-bottom:104px;}
-  #about .ab-name{margin-top:40px;display:flex;flex-direction:column;align-items:center;gap:8px;}
-  #about .ab-name b{font-family:var(--display);font-size:26px;font-weight:800;letter-spacing:-.02em;color:var(--ink);}
-  #about .ab-name span{font-size:13px;font-weight:600;letter-spacing:.08em;color:var(--stone);}
-  #about .ab-career{list-style:none;margin:40px auto 0;padding:0;max-width:600px;text-align:left;border-top:1px solid var(--line);}
-  #about .ab-career li{display:grid;grid-template-columns:104px 1fr;gap:16px;align-items:baseline;padding:11px 0;border-bottom:1px solid var(--line-soft);}
+  #about .ab-prof h2{font-size:clamp(24px,2.6vw,34px);letter-spacing:-.02em;word-break:keep-all;}
+  #about .ab-prof h2 b{font-weight:800;}
+  #about .ab-prof h2 i{font-style:normal;font-weight:300;margin:0 .4em;color:var(--stone);}
+  #about .ab-prof h2 span{font-weight:300;letter-spacing:.01em;}
+  #about .ab-cols{display:grid;grid-template-columns:1.25fr 1fr;gap:48px;margin-top:48px;text-align:left;}
+  #about .ab-cols h3{font-size:13px;font-weight:600;letter-spacing:.02em;color:var(--stone);margin-bottom:10px;}
+  #about .ab-career{list-style:none;margin:0;padding:0;border-top:1px solid var(--line);}
+  #about .ab-career li{display:grid;grid-template-columns:84px 1fr;gap:12px;align-items:baseline;padding:9px 0;border-bottom:1px solid var(--line-soft);}
   #about .ab-career span{font-size:13px;font-weight:600;color:var(--stone);}
   #about .ab-career p{font-size:15px;color:var(--ink);word-break:keep-all;}
   #about .ab-member{margin-top:24px;font-size:13px;color:var(--stone);word-break:keep-all;}
@@ -1251,6 +1254,7 @@
     #about .contact2{margin-top:64px;padding:64px 0 0;}
     #about .about-hero .eyebrow{font-size:16px;}
     #about .ab-prof{padding-bottom:72px;}
+    #about .ab-cols{grid-template-columns:1fr;gap:32px;margin-top:36px;}
     #about .ab-career li{grid-template-columns:84px 1fr;gap:10px;}
     #about .ab-career p{font-size:14px;}
     #about .ab-rows{margin-top:44px;gap:24px;}
@@ -2550,20 +2554,27 @@
       </div>
     </div>
     <section class="ab-sec ab-prof" aria-labelledby="ab-profile">
-      <h2 id="ab-profile">Principal architect</h2>
-      <div class="ab-name"><b>이천복</b><span>LEE CHEON BOK · 대표 건축사</span></div>
-      <ol class="ab-career">
-        <li><span>1992</span><p>다다건축사사무소 개설 · 건축사</p></li>
-        <li><span>1996</span><p>제1회 경기도 건축문화상 대상</p></li>
-        <li><span>1997</span><p>수원시 건축위원회 위원 · 수원지방법원 건축전문조정위원</p></li>
-        <li><span>2002</span><p>경기예술대상 대상</p></li>
-        <li><span>2002–2004</span><p>대한민국 건축대전 초대작가</p></li>
-        <li><span>2003</span><p>한국목조건축대전 입선</p></li>
-        <li><span>2007</span><p>다다포레스트 개설</p></li>
-        <li><span>2008</span><p>WOOD UNIVERSITY 수료 (CANADA WOOD)</p></li>
-        <li><span>2012</span><p>경기도 디자인자문위원</p></li>
-        <li><span>2017–</span><p>호서대학교 건축학과 출강</p></li>
-      </ol>
+      <h2 id="ab-profile"><b>이천복</b><i aria-hidden="true">·</i><span>PRINCIPAL ARCHITECT</span></h2>
+      <div class="ab-cols">
+        <div><h3>주요 이력</h3><ol class="ab-career">
+          <li><span>1992</span><p>다다건축사사무소 개설 · 건축사</p></li>
+          <li><span>1997</span><p>수원시 건축위원회 위원 · 수원지방법원 건축전문조정위원</p></li>
+          <li><span>2002–2004</span><p>대한민국 건축대전 초대작가</p></li>
+          <li><span>2007</span><p>다다포레스트 개설</p></li>
+          <li><span>2008</span><p>WOOD UNIVERSITY 수료 (CANADA WOOD)</p></li>
+          <li><span>2012</span><p>경기도 디자인자문위원</p></li>
+          <li><span>2017–</span><p>호서대학교 건축학과 초빙교수</p></li>
+        </ol></div>
+        <div><h3>수상</h3><ol class="ab-career">
+          <li><span>1992</span><p>농촌주택 기본설계 현상공모 입상</p></li>
+          <li><span>1996</span><p>제1회 경기도 건축문화상 대상</p></li>
+          <li><span>2001</span><p>경기도 도지사 공로표창</p></li>
+          <li><span>2002</span><p>경기예술대상 대상</p></li>
+          <li><span>2003</span><p>한국목조건축대전 입선</p></li>
+          <li><span>2006</span><p>성균관대학교 총장 공로표창</p></li>
+          <li><span>2010</span><p>수원지방법원장 공로표창</p></li>
+        </ol></div>
+      </div>
       <p class="ab-member">한국건축가협회 · 대한건축학회 · 한국도시설계학회 · 도코모모코리아 정회원</p>
     </section>
   </div>

@@ -1216,7 +1216,8 @@
   /* 소개 글과 What we do 사이 넓은 사진(화면 너비 가득, nota.com/en/about 참고) */
   #about{overflow-x:clip;}
   #about .ab-wide{margin:72px calc(50% - 50vw) 0;}
-  #about .ab-wide img{display:block;width:100%;height:auto;}
+  #about .ab-wide{aspect-ratio:2/1;}   /* 사진 위아래를 잘라 높이를 줄임 */
+  #about .ab-wide img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 58%;}
   #about .ab-wide + .ab-sec{margin-top:0;border-top:0;}
   /* 대표 이력: 선 없는 연도 목록(건축사무소 대표 소개 방식). 이름 > 직함 > 소속 > 이력 */
   #about .ab-prof h2{font-size:24px;font-weight:800;letter-spacing:-.02em;}
@@ -1339,8 +1340,6 @@
   /* 스크롤에 따라 변하는 사진: 틀은 사진 비율 그대로, 안의 사진만 크기가 변함 */
   .sc-zoom{overflow:hidden;}
   .sc-zoom img{transform:scale(1.1);transform-origin:50% 50%;will-change:transform;}
-  .art-pic{margin:0;border-radius:10px;background:var(--paper-2);}
-  .art-pic img{display:block;width:100%;height:auto;}
   @media(prefers-reduced-motion:reduce){ .sc-zoom img{transform:none;} }
   /* 공간 대관 카드: 세 곳을 한 줄로(빈칸 없게), 설계·시공 프로젝트 목록과 같은 4:3 */
   @media(min-width:821px){ .sr-grid{grid-template-columns:repeat(3,1fr);gap:40px 16px;} .sr-card .ph{aspect-ratio:4/3;} }
@@ -1943,7 +1942,7 @@
       <li><span class="en">ART</span><span class="ko">미술</span><span class="sub">회화 · 사진 · 설치</span></li>
       <li><span class="en">ARCHITECTURE</span><span class="ko">건축</span><span class="sub">도면 · 모형 · 아카이브</span></li>
     </ol>
-    <figure class="art-pic sc-zoom"><img src="images/spaceon-int-5.jpg" alt="SPACE ON 실내 홀" loading="lazy" decoding="async"></figure>
+    <div class="hero-img pic--img" data-lazybg="images/spaceon-int-5.jpg" role="img" aria-label="SPACE ON 실내 홀"></div>
     <div class="port">
       <div class="note">※ 공연과 전시 일정이 정해지면 이곳에 올립니다.<br>※ 공연이 있는 날에는 핑거푸드와 카페를 운영할 예정입니다. 자세한 내용은 정해지는 대로 안내해 드립니다.</div>
     </div>

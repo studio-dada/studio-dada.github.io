@@ -1216,7 +1216,7 @@
   /* 소개 글과 What we do 사이 넓은 사진(화면 너비 가득, nota.com/en/about 참고) */
   #about{overflow-x:clip;}
   #about .ab-wide{margin:72px calc(50% - 50vw) 0;}
-  #about .ab-wide img{display:block;width:100%;height:auto;max-height:680px;object-fit:cover;}
+  #about .ab-wide img{display:block;width:100%;height:auto;}
   #about .ab-wide + .ab-sec{margin-top:0;border-top:0;}
   /* 대표 이력: 선 없는 연도 목록(건축사무소 대표 소개 방식). 이름 > 직함 > 소속 > 이력 */
   #about .ab-prof h2{font-size:24px;font-weight:800;letter-spacing:-.02em;}
@@ -1334,8 +1334,14 @@
   .sr-card .cap{font-size:14px;font-weight:600;}
   .sr-filter .k,.ex-ctrl .k,.grp .k,.sr-filter button,.ex-ctrl button,.ex-findtoggle{font-size:13px;}
   .note{font-size:13px;}
-  #dadaart .port{padding-top:0;}
-  #dadaart .dd-fields{padding-bottom:44px;}
+  #dadaart .dd-fields{padding-bottom:48px;}
+  #dadaart .port{padding-top:24px;}
+  /* 스크롤에 따라 변하는 사진: 틀은 사진 비율 그대로, 안의 사진만 크기가 변함 */
+  .sc-zoom{overflow:hidden;}
+  .sc-zoom img{transform:scale(1.1);transform-origin:50% 50%;will-change:transform;}
+  .art-pic{margin:0;border-radius:10px;background:var(--paper-2);}
+  .art-pic img{display:block;width:100%;height:auto;}
+  @media(prefers-reduced-motion:reduce){ .sc-zoom img{transform:none;} }
   /* 공간 대관 카드: 세 곳을 한 줄로(빈칸 없게), 설계·시공 프로젝트 목록과 같은 4:3 */
   @media(min-width:821px){ .sr-grid{grid-template-columns:repeat(3,1fr);gap:40px 16px;} .sr-card .ph{aspect-ratio:4/3;} }
   /* SPACE ON 사진 구석의 로고가 잘려 보이지 않게 위치 조정 */
@@ -1932,12 +1938,12 @@
       <div class="eyebrow">음악 · 미술 · 건축</div>
       <h1 class="serif">DADA ART</h1>
     </div>
-    <div class="hero-img pic--img" data-lazybg="images/spaceon-int-5.jpg" role="img" aria-label="SPACE ON 실내 홀"></div>
     <ol class="dd-fields">
       <li><span class="en">MUSIC</span><span class="ko">음악</span><span class="sub">재즈 · 팝 · 기악 · 성악</span></li>
       <li><span class="en">ART</span><span class="ko">미술</span><span class="sub">회화 · 사진 · 설치</span></li>
       <li><span class="en">ARCHITECTURE</span><span class="ko">건축</span><span class="sub">도면 · 모형 · 아카이브</span></li>
     </ol>
+    <figure class="art-pic sc-zoom"><img src="images/spaceon-int-5.jpg" alt="SPACE ON 실내 홀" loading="lazy" decoding="async"></figure>
     <div class="port">
       <div class="note">※ 공연과 전시 일정이 정해지면 이곳에 올립니다.<br>※ 공연이 있는 날에는 핑거푸드와 카페를 운영할 예정입니다. 자세한 내용은 정해지는 대로 안내해 드립니다.</div>
     </div>
@@ -2515,7 +2521,7 @@
     <div class="manifesto">
       <p>DADA는 건축과 인테리어 설계·시공과 건축 재생,<br>공간 대관과 공연·전시 기획을 함께하며,<br>직접 짓고 고친 공간을 공유합니다.</p>
     </div>
-    <figure class="ab-wide"><img src="images/about-wide-forest.jpg" alt="눈 덮인 DADA FOREST" loading="lazy" decoding="async" width="1940" height="831"></figure>
+    <figure class="ab-wide sc-zoom"><img src="images/about-wide-forest.jpg" alt="눈 덮인 DADA FOREST" loading="lazy" decoding="async" width="2000" height="1125"></figure>
     <section class="ab-sec" aria-labelledby="ab-work">
       <h2 id="ab-work">What we do</h2>
       <ul class="ab-grid three">
@@ -2543,25 +2549,25 @@
       <h2 id="ab-values">Our values</h2>
       <ul class="ab-rows">
         <li class="ab-row">
-          <figure class="ab-pic"><img src="images/about-value-nature.jpg" alt="DADA FOREST의 자작나무 숲" loading="lazy" decoding="async" width="1200" height="1200"></figure>
+          <figure class="ab-pic sc-zoom"><img src="images/about-value-nature.jpg" alt="DADA FOREST의 자작나무 숲" loading="lazy" decoding="async" width="1200" height="1200"></figure>
           <div class="ab-txt"><span class="ab-no">01</span><h3>IN NATURE</h3><p>자연은 되도록 그대로 둡니다.<br>
 땅의 생김새와 나무를 살리고, 주변 풍경을 거스르지 않게 설계합니다.<br>
 건물이 풍경의 주인공이 되지 않도록 합니다.</p></div>
         </li>
         <li class="ab-row">
-          <figure class="ab-pic"><img src="images/about-value-heritage.jpg" alt="SPACE ON의 서까래와 회랑" loading="lazy" decoding="async" width="1200" height="1200"></figure>
+          <figure class="ab-pic sc-zoom"><img src="images/about-value-heritage.jpg" alt="SPACE ON의 서까래와 회랑" loading="lazy" decoding="async" width="1200" height="1200"></figure>
           <div class="ab-txt"><span class="ab-no">02</span><h3>HERITAGE</h3><p>과거와 현재가 함께하는 공간을 만듭니다.<br>
 건물에 쌓인 시간과 이야기는 지키고, 다음 세대로 이어 갑니다.<br>
 고쳐 쓰는 것이 가장 오래가는 건축이라고 믿기 때문입니다.</p></div>
         </li>
         <li class="ab-row">
-          <figure class="ab-pic"><img src="images/about-value-culture.jpg" alt="DADA FOREST 홀" loading="lazy" decoding="async" width="1200" height="1200"></figure>
+          <figure class="ab-pic sc-zoom"><img src="images/about-value-culture.jpg" alt="DADA FOREST 홀" loading="lazy" decoding="async" width="1200" height="1200"></figure>
           <div class="ab-txt"><span class="ab-no">03</span><h3>ART&amp;CULTURE</h3><p>DADA의 공간이 예술과 문화로 채워지길 바랍니다.<br>
 음악가와 미술가, 무언가를 만드는 모든 사람에게<br>
 작업하고, 공유하고, 서로 만날 수 있는 자리를 내어 드립니다.</p></div>
         </li>
         <li class="ab-row">
-          <figure class="ab-pic"><img src="images/about-value-space.jpg" alt="STUDIO 1941 홀" loading="lazy" decoding="async" width="1200" height="1200"></figure>
+          <figure class="ab-pic sc-zoom"><img src="images/about-value-space.jpg" alt="STUDIO 1941 홀" loading="lazy" decoding="async" width="1200" height="1200"></figure>
           <div class="ab-txt"><span class="ab-no">04</span><h3>CREATIVE SPACE</h3><p>일상에서 한 걸음 떨어진, 자연 속 오래된 공간.<br>
 누구나 영감과 아이디어를 얻고<br>
 새로운 일을 시작할 수 있는 곳을 만듭니다.</p></div>
@@ -4144,6 +4150,29 @@ if (root) (async () => {
     var x0=null; lb.addEventListener('touchstart',function(e){ x0=e.touches[0].clientX; },{passive:true});
     lb.addEventListener('touchend',function(e){ if(x0===null) return; var dx=e.changedTouches[0].clientX-x0; x0=null;
       if(Math.abs(dx)>40) show(dx<0?i+1:i-1); });
+  })();
+</script>
+<script>
+  // 사진이 살짝 확대된 채 화면에 들어와, 가운데에 오면 원래 크기(잘림 없음)가 되게. 움직임 줄이기 설정이면 그대로 둠
+  (function(){
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var items = [].slice.call(document.querySelectorAll('.sc-zoom')), Z = 0.1, wait = false;
+    function step(){
+      wait = false;
+      var vh = innerHeight;
+      items.forEach(function(el){
+        var img = el.querySelector('img'), r = el.getBoundingClientRect();
+        if (!r.height || r.bottom < 0 || r.top > vh) return;
+        var end = (vh - r.height) / 2, p = (vh - r.top) / (vh - end);
+        p = Math.max(0, Math.min(1, p));
+        img.style.transform = 'scale(' + (1 + Z * (1 - p)).toFixed(4) + ')';
+      });
+    }
+    function ask(){ if (!wait) { wait = true; requestAnimationFrame(step); } }
+    addEventListener('scroll', ask, {passive:true}); addEventListener('resize', ask);
+    function soon(){ setTimeout(step, 80); setTimeout(step, 400); }   // 페이지가 바뀌고 자리를 잡은 뒤
+    document.addEventListener('pagechange', soon); addEventListener('hashchange', soon); addEventListener('load', soon);
+    step(); soon();
   })();
 </script>
 </body>

@@ -4329,7 +4329,11 @@ if (root) (async () => {
   const pad = n => String(n).padStart(2, '0');
   function dayStr(plus) { const d = new Date(); d.setDate(d.getDate() + plus); return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`; }
   function dayLabel(iso) { const [y, m, d] = iso.split('-').map(Number); return `${m}/${d}(${'일월화수목금토'[new Date(y, m - 1, d).getDay()]})`; }
-  function phoneText(v) { const n = v.replace(/\D/g, ''), a = n.startsWith('02') ? 2 : 3; return `${n.slice(0, a)}-${n.slice(a, -4)}-${n.slice(-4)}`; }
+  // Works on a half-typed number too (010-12, 010-123-4567, 010-1234-5678), so the field can fill in the hyphens.
+  function phoneText(v) {
+    const d = v.replace(/\D/g, ''), a = d.startsWith('02') ? 2 : 3, rest = d.slice(a, a + 8), mid = rest.length > 7 ? 4 : 3;
+    return [d.slice(0, a), rest.slice(0, mid), rest.slice(mid)].filter(Boolean).join('-');
+  }
   // Free text: no links, mail addresses or HTML, and no invisible characters. The inbox server
   // checks the same things again, because a page's own checks can be skipped.
   const LINK = /https?:\/\/|www\.|[a-z0-9-]+\.[a-z]{2,}|[<>]/i;
@@ -4600,6 +4604,15 @@ if (root) (async () => {
       input.name = fd.name;
       for (const k of ['min', 'max', 'maxLength', 'placeholder', 'autocomplete']) if (fd[k] !== undefined) input[k] = fd[k];
       if (fd.type === 'trap') { input.tabIndex = -1; input.autocomplete = 'off'; wrap.setAttribute('aria-hidden', 'true'); }
+      // Hyphens are filled in while typing, so digits alone are enough. The caret stays after the same digit.
+      if (fd.type === 'tel') input.addEventListener('input', e => {
+        if (e.isComposing) return;
+        const before = input.value.slice(0, input.selectionStart).replace(/\D/g, '').length;
+        input.value = phoneText(input.value);
+        let at = 0;
+        for (let seen = 0; at < input.value.length && seen < before; at++) if (/\d/.test(input.value[at])) seen++;
+        input.setSelectionRange(at, at);
+      });
       if (fd.type === 'checkbox') wrap.append(input, text); else wrap.append(text, input);
       el.appendChild(wrap);
     }

@@ -1160,7 +1160,8 @@
 
   /* ═══════════ 공간 상세 첫 영상 ═══════════ */
   .hero-img.has-video{position:relative;overflow:hidden;filter:none;}
-  .hero-img .d-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease;}
+  /* .6 s: what fades in is the video's first frame, still, over the photo; it plays after that */
+  .hero-img .d-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s ease;}
   .hero-img .d-video.on{opacity:1;}
   @media(max-width:820px){ .hero-img.has-video{aspect-ratio:1/1;} }
 
@@ -3020,6 +3021,9 @@
     const FIRST=5, WAIT=6000;   // seconds downloaded from the start before it shows; after WAIT ms it shows with what it has
     let inView=true, ready=document.readyState==="complete", state="", since=0, gen=0;   // state: "load" (hidden) → "show" → "on"
     v.muted=true; v.defaultMuted=true;
+    // A new source (the phone turned) starts playing hidden at once, so the old picture goes at once too instead of
+    // fading out over it.
+    function hide(v){ v.style.transition="none"; v.classList.remove("on"); void v.offsetWidth; v.style.transition=""; }
     function playing(){ return ready && !rm.matches && !saveData && inView && !document.hidden && home.classList.contains("active"); }
     function loaded(){ return v.buffered.length && v.buffered.start(0)<.1 ? v.buffered.end(0) : 0; }   // seconds from the start
     function check(){
@@ -3038,7 +3042,7 @@
       const on=playing();
       if(on){
         const want=(tallQ.matches&&v.dataset.tall)||v.dataset.wide;   // 세로판이 없으면 가로판
-        if(v.dataset.cur!==want){ v.classList.remove("on"); v.dataset.cur=want; v.src=want; state="load"; since=performance.now(); gen++; }
+        if(v.dataset.cur!==want){ hide(v); v.dataset.cur=want; v.src=want; state="load"; since=performance.now(); gen++; }
       }
       hero.classList.toggle("is-playing",on&&state==="on");   // the grain moves only over the playing video
       if(!on){ if(!v.paused) v.pause(); return; }
@@ -3055,19 +3059,40 @@
   })();
 
   // ---- 공간 상세 첫 영상: 화면에 들어올 때만 불러와 재생, 휴대폰은 정사각판, '동작 줄이기'·데이터 절약이면 사진만 ----
+  // Smooth start, as on the landing (2026-11-21): each video plays hidden until its first 5 s are downloaded (at most
+  // 6 s), goes back to its first frame, fades that still frame in over the photo and only then plays. It used to fade
+  // in for 1.2 s while already moving over a different photo, and stopped and started on a phone connection.
   (function(){
     const vids=[...document.querySelectorAll("video.d-video")]; if(!vids.length) return;
     const sq=window.matchMedia("(max-width:820px)"), rm=window.matchMedia("(prefers-reduced-motion:reduce)");
-    const saveData=!!(navigator.connection&&navigator.connection.saveData), seen=new Map();
+    const saveData=!!(navigator.connection&&navigator.connection.saveData), seen=new Map(), st=new Map();
+    const FIRST=5, WAIT=6000;   // seconds downloaded from the start before it shows; after WAIT ms it shows with what it has
+    function loaded(v){ return v.buffered.length && v.buffered.start(0)<.1 ? v.buffered.end(0) : 0; }   // seconds from the start
+    function hide(v){ v.style.transition="none"; v.classList.remove("on"); void v.offsetWidth; v.style.transition=""; }   // as on the landing
+    function check(v){
+      const s=st.get(v); if(s.state!=="load"||!v.duration) return;   // state: "load" (hidden) → "show" → "on"
+      if(loaded(v)<Math.min(FIRST,v.duration-.1) && performance.now()-s.since<WAIT) return;
+      s.state="show"; const g=s.gen; let done=false;
+      const show=()=>{ if(done||g!==s.gen) return; done=true;   // the first frame is on screen before it fades in
+        requestAnimationFrame(()=>requestAnimationFrame(()=>{ if(g!==s.gen) return; v.classList.add("on");
+          setTimeout(()=>{ if(g===s.gen&&s.state==="show"){ s.state="on"; sync(v); } },650); })); };
+      v.pause(); v.addEventListener("seeked",show,{once:true}); setTimeout(show,1000);
+      v.currentTime=0;   // back to the first frame
+    }
     function sync(v){
       const on=seen.get(v) && v.closest(".page").classList.contains("active") && !document.hidden && !rm.matches && !saveData;
+      const s=st.get(v);
+      if(on){
+        const want=(sq.matches&&v.dataset.sq)||v.dataset.wide;
+        if(v.dataset.cur!==want){ hide(v); v.dataset.cur=want; v.src=want; s.state="load"; s.since=performance.now(); s.gen++; }
+      }
       if(!on){ if(!v.paused) v.pause(); return; }
-      const want=(sq.matches&&v.dataset.sq)||v.dataset.wide;
-      if(v.dataset.cur!==want){ v.classList.remove("on"); v.dataset.cur=want; v.src=want; }
+      if(s.state==="show") return;   // its first frame is fading in; it plays after that
       const p=v.play(); if(p&&p.catch) p.catch(()=>{});
     }
-    vids.forEach(v=>{ v.muted=true; v.defaultMuted=true;
-      v.addEventListener("playing",()=>v.classList.add("on")); v.addEventListener("error",()=>v.classList.remove("on")); });
+    vids.forEach(v=>{ v.muted=true; v.defaultMuted=true; st.set(v,{state:"",since:0,gen:0});
+      ["progress","timeupdate","playing","canplaythrough"].forEach(n=>v.addEventListener(n,()=>check(v)));
+      v.addEventListener("error",()=>{ v.classList.remove("on"); st.get(v).state=""; }); });
     const io="IntersectionObserver" in window ? new IntersectionObserver(es=>es.forEach(e=>{ seen.set(e.target,e.isIntersecting); sync(e.target); }),{threshold:.15}) : null;
     vids.forEach(v=>{ if(io) io.observe(v); else seen.set(v,true); });
     const all=()=>vids.forEach(sync);

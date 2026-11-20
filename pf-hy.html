@@ -1395,6 +1395,9 @@
   padding:10px 12px 12px;border-top:1px solid var(--line-soft);}
 /* Answers sit in two equal columns. A label too long for half the row, or one left over, takes the whole row. */
 .dbot-opts .dbot-opt{flex:1 1 calc(50% - 3px);justify-content:center;padding:0 8px;white-space:nowrap;}
+/* Times of day: short answers of one kind on one row, '처음으로' on the next. */
+.dbot-opts.row .dbot-opt{flex:1 1 0;min-width:0;padding:0 4px;}
+.dbot-opts.row .dbot-opt.ghost{flex-basis:100%;}
 .dbot-opt{display:inline-flex;align-items:center;min-height:34px;padding:0 12px;border:1px solid var(--ink);
   background:var(--paper);color:var(--ink);font:inherit;font-size:13.5px;text-decoration:none;cursor:pointer;}
 /* Hover is only a tint: a filled answer under a resting pointer looked like it was already chosen. */
@@ -4354,14 +4357,14 @@ if (root) (async () => {
       map: 'https://map.naver.com/p/search/%EA%B2%BD%EA%B8%B0%20%EC%88%98%EC%9B%90%EC%8B%9C%20%EC%9E%A5%EC%95%88%EA%B5%AC%20%EC%83%81%EA%B4%91%EA%B5%90%EB%8F%99%20322',
       uses: ['워크숍', '수업·클래스', '소모임', '촬영', '공연', '스몰웨딩·가족 행사'],
       people: n => n <= 25 ? ['ok', 'A동 메인홀 최대 25명'] : n <= 30 ? ['ok', '메인 테라스까지 쓰면 최대 30명'] : ['no', '최대 30명(테라스 포함)'],
-      slots: [['오전', '09:00~13:00'], ['오후', '13:00~18:00'], ['야간', '18:00~22:00']],
+      slots: [['오전', '09:00~13:00'], ['오후', '13:00~18:00']],   // no 야간: nobody can open the doors at night (operator 2026-11-21)
     },
     forest: {
       name: 'DADA FOREST', where: '평창 자작나무 숲', addr: '강원 평창군 진부면 척천리 235 · 주차 20대',
       map: 'https://map.naver.com/p/search/%EA%B0%95%EC%9B%90%20%ED%8F%89%EC%B0%BD%EA%B5%B0%20%EC%B2%99%EC%B2%9C%EB%A6%AC%20235',
       uses: ['워크숍', '사외 모임', '요가·명상', '소모임'],
       people: n => n <= 15 ? ['ok', 'A동 홀 최대 15명'] : n <= 25 ? ['maybe', 'A·B동을 나눠 쓰면 25명, 문의 필요'] : ['no', '실내 홀은 최대 15명·10명'],
-      slots: [['오후', '12:00~18:00'], ['야간', '18:00~22:00']],
+      slots: [['오후', '12:00~18:00']],
     },
     spaceon: {
       name: 'SPACE ON', where: '강릉 구도심 한옥', addr: '강원 강릉시 임영로 99-6',
@@ -4380,7 +4383,7 @@ if (root) (async () => {
 
   // ---------- Requests (inquiry, site visit): picked answers become one message ----------
   const KIND = { tour: '사전 답사 신청', rent: '공간 대여 문의' };
-  const ANY_SLOTS = [['오전', ''], ['오후', ''], ['야간', '']];   // a space without set hours yet
+  const ANY_SLOTS = [['오전', ''], ['오후', '']];   // a space without set hours yet
   const TOUR_SLOTS = [['오전', ''], ['오후', '']];
   const pad = n => String(n).padStart(2, '0');
   function dayStr(plus) { const d = new Date(); d.setDate(d.getDate() + plus); return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`; }
@@ -4491,11 +4494,15 @@ if (root) (async () => {
     reqSlot: () => {
       const sp = SPACES[answers.space];
       const slots = answers.kind === 'tour' ? TOUR_SLOTS : (sp && sp.slots) || ANY_SLOTS;
+      // One row of short answers (operator 2026-11-21: '시간 협의' was an unclear choice, '모두 가능' is clear; no 야간).
+      // A space's set hours go in the message; a time and its hours never break apart.
+      const hours = slots.filter(([, h]) => h).map(([key, h]) => `${key}\u00a0${h}`).join(' · ');
       return {
-        say: '희망 시간대를 선택해 주세요.',
+        say: `희망 시간대를 선택해 주세요.${hours ? `\n${hours}` : ''}`,
+        row: true,
         opts: [
-          ...slots.map(([key, hours]) => ({ label: `${key} ${hours}`.trim(), to: 'reqContact', set: { slot: key, slotText: `${key} ${hours}`.trim() } })),
-          { label: '시간 협의', to: 'reqContact', set: { slot: '', slotText: '' } }, HOME,
+          ...slots.map(([key, h]) => ({ label: key, to: 'reqContact', set: { slot: key, slotText: `${key} ${h}`.trim() } })),
+          { label: '모두 가능', to: 'reqContact', set: { slot: '모두 가능', slotText: '모두 가능' } }, HOME,
         ],
       };
     },
@@ -4771,6 +4778,7 @@ if (root) (async () => {
     const fm = st.form && form(st.form);
     if (fm) log.appendChild(fm.el);
     opts.replaceChildren(...(fm ? [fm.err, fm.go] : []), ...st.opts.map(button));
+    opts.classList.toggle('row', !!st.row);
     settle();
     reveal(msg.previousElementSibling || msg, fm && fm.el); // keep the visitor's own answer in view too
     // The answer that was picked is gone with the old answers, or '이전' was just hidden:

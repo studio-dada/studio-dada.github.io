@@ -1383,11 +1383,15 @@
 .dbot-card span{display:block;margin-top:2px;font-size:12.5px;color:var(--ink-soft);}
 .dbot-card .dbot-note{margin-top:4px;color:var(--ink);}
 .dbot-cardbtns{display:flex;gap:6px;margin-top:8px;}
-.dbot-opts{flex:0 0 auto;display:flex;flex-wrap:wrap;gap:6px;max-height:min(240px,40vh);overflow-y:auto;
+.dbot-opts{flex:0 0 auto;display:flex;flex-wrap:wrap;gap:6px;max-height:min(260px,46vh);overflow-y:auto;
   padding:10px 12px 12px;border-top:1px solid var(--line-soft);}
+/* Answers sit in two equal columns. A label too long for half the row, or one left over, takes the whole row. */
+.dbot-opts .dbot-opt{flex:1 1 calc(50% - 3px);justify-content:center;padding:0 8px;white-space:nowrap;}
 .dbot-opt{display:inline-flex;align-items:center;min-height:34px;padding:0 12px;border:1px solid var(--ink);
   background:var(--paper);color:var(--ink);font:inherit;font-size:13.5px;text-decoration:none;cursor:pointer;}
-.dbot-opt:hover{background:var(--ink);color:var(--paper);}
+/* Hover is only a tint: a filled answer under a resting pointer looked like it was already chosen. */
+@media(hover:hover){.dbot-opt:hover{background:var(--paper-2);}}
+.dbot-opt:active{background:var(--ink);color:var(--paper);}
 .dbot-opt.ghost{border-color:var(--line);color:var(--ink-soft);}
 .dbot-cardbtns .dbot-opt{min-height:30px;padding:0 10px;font-size:12.5px;}
 .dbot-opt.main{background:var(--ink);color:var(--paper);}
@@ -4638,16 +4642,15 @@ if (root) (async () => {
 
   function choose(o) {
     if (o.copy) return copy(o.copy);
+    if (o.page) { // a page link is not an answer: it adds no line here and leaves an open form alone
+      location.hash = o.page; // patch_paths.py's router turns #s1941 into /studio1941 and shows it
+      if (phone.matches) close(false); // let them see the page; the bot keeps its place
+      return;
+    }
     log.querySelectorAll('.dbot-form').forEach(f => f.remove()); // an unsent form goes when they pick another answer
     if (o.to === 'start') { answers = {}; log.replaceChildren(); return step('start'); }
     say(o.label, 'me');
     if (o.set) Object.assign(answers, o.set);
-    if (o.page) {
-      location.hash = o.page; // patch_paths.py's router turns #s1941 into /studio1941 and shows it
-      log.scrollTop = log.scrollHeight;
-      if (phone.matches) close(false); // let them see the page; the bot keeps its place
-      return;
-    }
     step(o.to);
   }
 

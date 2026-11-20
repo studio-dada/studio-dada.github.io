@@ -1372,6 +1372,7 @@
   background:var(--paper);color:var(--ink);border:1px solid var(--line);box-shadow:0 8px 24px rgba(20,20,18,.16);
   opacity:0;transform:translateX(8px);transition:opacity .35s ease,transform .35s ease;}
 .dbot-hint.in{opacity:1;transform:none;}
+.dbot-hint:not(.in){pointer-events:none;}   /* coming in or leaving: it takes no taps */
 .dbot-hint[hidden]{display:none;}
 .dbot-hint::after{content:"";position:absolute;right:-6px;top:50%;width:10px;height:10px;margin-top:-5px;background:var(--paper);
   border:solid var(--line);border-width:1px 1px 0 0;transform:rotate(45deg);}   /* the tail, pointing at the button */
@@ -4482,7 +4483,8 @@ if (root) (async () => {
     }),
     people: () => ({
       say: '인원을 선택해 주세요.',
-      opts: [...PEOPLE.map(([label, n]) => ({ label, to: 'match', set: { people: n, peopleLabel: label } })), HOME],
+      // From a space page's greeting the space is already chosen: on to the date, with no list of matching spaces.
+      opts: [...PEOPLE.map(([label, n]) => ({ label, to: answers.fixed ? 'reqDate' : 'match', set: { people: n, peopleLabel: label } })), HOME],
     }),
     match: () => {
       const fits = Object.entries(SPACES)
@@ -4640,6 +4642,18 @@ if (root) (async () => {
         opts: [
           { label: '네이버 지도', href: sp.map, out: true }, { label: '공간 보기', page: answers.place },
           { label: '사전 답사 신청', to: 'reqDate', set: { kind: 'tour', space: answers.place } }, { label: '다른 공간', to: 'where' }, HOME,
+        ],
+      };
+    },
+    // A space page's greeting ("… 대여를 도와드릴까요?") opens this: help with that space at once.
+    space: () => {
+      const id = answers.place, sp = SPACES[id];
+      return {
+        say: `${sp.name} 대여를 도와드립니다.\n원하시는 항목을 선택해 주세요.`,
+        opts: [
+          { label: '대여 문의', to: 'rent', set: { kind: 'rent', space: id, fixed: id }, main: true },
+          { label: '사전 답사 신청', to: 'reqDate', set: { kind: 'tour', space: id } },
+          { label: '오시는 길', to: 'place' }, HOME,
         ],
       };
     },
@@ -4864,14 +4878,14 @@ if (root) (async () => {
     step(o.to);
   }
 
-  function open() {
+  function open(at = 'start') { // the greeting opens the step it speaks of
     hideHint();
     store('sessionStorage', 'dbotHint', '1'); // they found the bot: no greeting later in this visit
     panel.hidden = false;
     root.classList.add('open');
     fab.setAttribute('aria-expanded', 'true');
     fab.setAttribute('aria-label', 'DADA 안내 닫기');
-    if (!started) { started = true; step('start'); }
+    if (!started) { started = true; step(at); }
     const first = opts.querySelector('.dbot-opt');
     if (first) first.focus({ preventScroll: true });
   }
@@ -4899,24 +4913,20 @@ if (root) (async () => {
   }
 
   // ---------- A greeting beside the round button ----------
-  // Once a visit, 6 s after the page is in view, one line says what the bot does on this page. It leaves after
-  // 12 s, when the bot opens or the page changes, and × keeps it away for a week. Formal and short, like the bot.
-  const HINT = {
-    home: '공간 대여와 사전 답사를 안내합니다.',
-    spacerental: '모임과 인원에 맞는 공간을 찾아 드립니다.',
-    dadaart: '공연·전시 관람과 개최를 안내합니다.',
-    dadadesign: '설계·시공 의뢰 방법을 안내합니다.',
-  };
-  function hintText(id) {
-    if (HINT[id]) return HINT[id];
-    if (SPACES[id]) return `${SPACES[id].name} 대여 문의와 사전 답사를 안내합니다.`;
-    return id.startsWith('pf-') ? HINT.dadadesign : HINT.home; // portfolio pages belong to design
+  // Once a visit, 6 s after the page is in view, one line says what the bot does on this page, and a tap on it
+  // opens that step. It leaves after 12 s, when the bot opens or the page changes, and × keeps it away for a week.
+  // Copy (operator 2026-11-21): the visitor's gain, short; on space pages a question.
+  function hintFor(id) { // [the line, the step a tap opens]
+    if (SPACES[id]) return [`${SPACES[id].name} 대여를 도와드릴까요?`, 'space'];
+    if (id === 'dadaart') return ['공연·전시 관람과 개최를 안내합니다.', 'start'];
+    if (id === 'dadadesign' || id.startsWith('pf-')) return ['설계·시공 의뢰 방법을 안내합니다.', 'design']; // portfolio pages belong to design
+    return ['모임과 인원을 고르면 맞는 공간을 찾아 드립니다.', 'rent']; // home, space rental, about
   }
   function store(kind, key, value) { // storage can be missing or blocked: then the greeting simply comes again
     try { return value === undefined ? window[kind].getItem(key) : window[kind].setItem(key, value); } catch (e) { return null; }
   }
   const hintBox = root.querySelector('.dbot-hint'), hintOpen = hintBox.querySelector('.dbot-hint-open');
-  let hintTimer;
+  let hintTimer, hintPage = 'home';
   function hideHint() {
     clearTimeout(hintTimer);
     root.classList.remove('hinting');
@@ -4929,14 +4939,20 @@ if (root) (async () => {
     const off = Number(store('localStorage', 'dbotHintOff')) || 0;
     if (started || !panel.hidden || store('sessionStorage', 'dbotHint') || Date.now() - off < 7 * 864e5) return;
     const page = document.querySelector('.page.active');
-    hintOpen.textContent = hintText(page ? page.id : 'home');
+    hintPage = page ? page.id : 'home';
+    hintOpen.textContent = hintFor(hintPage)[0];
     store('sessionStorage', 'dbotHint', '1');
     hintBox.hidden = false;
-    requestAnimationFrame(() => requestAnimationFrame(() => hintBox.classList.add('in')));
+    void hintBox.offsetWidth; // the fade starts from here; waiting for a frame left it unshown where frames were held back
+    hintBox.classList.add('in');
     root.classList.add('hinting');
     hintTimer = setTimeout(hideHint, 12000);
   }
-  hintOpen.addEventListener('click', open);
+  hintOpen.addEventListener('click', () => {
+    const at = hintFor(hintPage)[1];
+    if (at === 'space') answers = { place: hintPage };
+    open(at);
+  });
   hintBox.querySelector('.dbot-hint-close').addEventListener('click', () => { store('localStorage', 'dbotHintOff', String(Date.now())); hideHint(); });
   document.addEventListener('pagechange', hideHint);
   setTimeout(hint, 6000);

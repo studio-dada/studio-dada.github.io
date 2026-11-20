@@ -1402,6 +1402,10 @@
 .dbot-opts .dbot-opt.main:has(+ .dbot-opt:last-child){flex:2 1 calc(66.666% - 4px);}
 .dbot-opts .dbot-opt.main + .dbot-opt:last-child{flex:1 1 calc(33.333% - 2px);}
 .dbot-opt[disabled]{opacity:.5;cursor:default;}
+/* New answers wait a moment before they take a tap (see settle() in the script). */
+.dbot-opts.settling{pointer-events:none;}
+/* Quick taps on the bot are taps, not a double-tap zoom of the page. */
+.dbot-fab,.dbot-panel{touch-action:manipulation;}
 .dbot-form{position:relative;align-self:stretch;display:flex;flex-direction:column;gap:8px;padding:10px;
   border:1px solid var(--line);background:var(--paper);}
 .dbot-field{display:flex;flex-direction:column;gap:3px;font-size:12.5px;color:var(--ink-soft);}
@@ -4476,6 +4480,7 @@ if (root) (async () => {
           { name: 'website', label: '비워 두세요', type: 'trap' },
         ],
         submit: '보내기',
+        busy: '전송 중',
         check: v => !/^[가-힣a-zA-Z][가-힣a-zA-Z .·]{1,19}$/.test(v.name.trim()) ? '이름은 한글 또는 영문 2~20자로 입력해 주세요.'
           : !/^0\d{8,10}$/.test(v.phone.replace(/\D/g, '')) ? '연락처를 확인해 주세요. 예: 010-1234-5678'
           : tidy(v.note).length > 200 ? '추가 문의는 200자 이내로 입력해 주세요.'
@@ -4667,16 +4672,28 @@ if (root) (async () => {
     }
     el.addEventListener('submit', async e => {
       e.preventDefault();
+      if (go.disabled) return; // already being sent
       const v = {};
       for (const fd of f.fields) { const input = el.elements[fd.name]; v[fd.name] = fd.type === 'checkbox' ? input.checked : input.value; }
       err.textContent = f.check(v);
       if (err.textContent) return;
-      go.disabled = true;
+      // Nothing else can be picked while it is sent: an answer picked then met the reply in a restarted conversation.
+      for (const b of opts.querySelectorAll('button')) b.disabled = true;
+      if (f.busy) go.textContent = f.busy;
       const next = await f.done(v);
       el.replaceWith(say(f.echo(v), 'me'));
       step(next);
     });
     return { el, err, go };
+  }
+
+  // The second tap of a double tap lands on whatever answer took the first one's place, and would pick it.
+  // So new answers ignore taps for a moment.
+  let settling;
+  function settle() {
+    opts.classList.add('settling');
+    clearTimeout(settling);
+    settling = setTimeout(() => opts.classList.remove('settling'), 300);
   }
 
   function step(id) {
@@ -4692,6 +4709,7 @@ if (root) (async () => {
     const fm = st.form && form(st.form);
     if (fm) log.appendChild(fm.el);
     opts.replaceChildren(...(fm ? [fm.err, fm.go] : []), ...st.opts.map(button));
+    settle();
     reveal(msg.previousElementSibling || msg); // keep the visitor's own answer in view too
   }
 
@@ -4748,7 +4766,12 @@ if (root) (async () => {
     panel.addEventListener('focusout', () => setTimeout(fitKeyboard, 100));
   }
 
-  fab.addEventListener('click', () => (panel.hidden ? open() : close()));
+  let toggled = -1000; // a double tap on the round button would open the panel and close it again at once
+  fab.addEventListener('click', () => {
+    if (performance.now() - toggled < 400) return;
+    toggled = performance.now();
+    if (panel.hidden) open(); else close();
+  });
   root.querySelector('.dbot-close').addEventListener('click', () => close());
   panel.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
 })();

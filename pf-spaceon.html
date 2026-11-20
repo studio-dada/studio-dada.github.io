@@ -1397,6 +1397,10 @@
 .dbot-opt.main{background:var(--ink);color:var(--paper);}
 /* A form's send button and its error line sit with the answers, always in view, each on a row of its own. */
 .dbot-opts .dbot-opt.main,.dbot-opts .dbot-err{flex-basis:100%;}
+/* With a single other answer left ('보내기' and '처음으로'), the two share one row 2:1: the step the visitor
+   is expected to take is the large one. Without :has() the two stay on rows of their own. */
+.dbot-opts .dbot-opt.main:has(+ .dbot-opt:last-child){flex:2 1 calc(66.666% - 4px);}
+.dbot-opts .dbot-opt.main + .dbot-opt:last-child{flex:1 1 calc(33.333% - 2px);}
 .dbot-opt[disabled]{opacity:.5;cursor:default;}
 .dbot-form{position:relative;align-self:stretch;display:flex;flex-direction:column;gap:8px;padding:10px;
   border:1px solid var(--line);background:var(--paper);}

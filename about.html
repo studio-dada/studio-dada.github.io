@@ -1395,10 +1395,11 @@
 .dbot-opt.ghost{border-color:var(--line);color:var(--ink-soft);}
 .dbot-cardbtns .dbot-opt{min-height:30px;padding:0 10px;font-size:12.5px;}
 .dbot-opt.main{background:var(--ink);color:var(--paper);}
+/* A form's send button and its error line sit with the answers, always in view, each on a row of its own. */
+.dbot-opts .dbot-opt.main,.dbot-opts .dbot-err{flex-basis:100%;}
 .dbot-opt[disabled]{opacity:.5;cursor:default;}
 .dbot-form{position:relative;align-self:stretch;display:flex;flex-direction:column;gap:8px;padding:10px;
   border:1px solid var(--line);background:var(--paper);}
-.dbot-form .dbot-opt{align-self:flex-start;}
 .dbot-field{display:flex;flex-direction:column;gap:3px;font-size:12.5px;color:var(--ink-soft);}
 /* 16px so that iOS does not zoom in when a field is tapped */
 .dbot-field input,.dbot-field textarea{width:100%;padding:7px 9px;border:1px solid var(--line);border-radius:0;
@@ -4586,14 +4587,18 @@ if (root) (async () => {
   }
 
   // A small form inside the conversation (a date, or contact details). Everything typed is put
-  // on the page with textContent only, never as HTML.
+  // on the page with textContent only, never as HTML. Its send button and error line go with the
+  // answers below the conversation: a button at the end of a long form was scrolled out of view,
+  // and visitors pressed '처음으로' instead.
   function form(f) {
     const el = document.createElement('form'), err = document.createElement('p'), go = document.createElement('button');
     el.className = 'dbot-form';
+    el.id = 'dbotForm';
     el.noValidate = true;
     err.className = 'dbot-err';
     err.setAttribute('role', 'alert');
     go.className = 'dbot-opt main';
+    go.setAttribute('form', el.id); // sends this form from outside it
     go.textContent = f.submit;
     for (const fd of f.fields) {
       const wrap = document.createElement('label'), text = document.createElement('span');
@@ -4616,7 +4621,6 @@ if (root) (async () => {
       if (fd.type === 'checkbox') wrap.append(input, text); else wrap.append(text, input);
       el.appendChild(wrap);
     }
-    el.append(err, go);
     el.addEventListener('submit', async e => {
       e.preventDefault();
       const v = {};
@@ -4628,7 +4632,7 @@ if (root) (async () => {
       el.replaceWith(say(f.echo(v), 'me'));
       step(next);
     });
-    return el;
+    return { el, err, go };
   }
 
   function step(id) {
@@ -4641,8 +4645,9 @@ if (root) (async () => {
       st.cards.forEach(c => wrap.appendChild(card(c)));
       log.appendChild(wrap);
     }
-    if (st.form) log.appendChild(form(st.form));
-    opts.replaceChildren(...st.opts.map(button));
+    const fm = st.form && form(st.form);
+    if (fm) log.appendChild(fm.el);
+    opts.replaceChildren(...(fm ? [fm.err, fm.go] : []), ...st.opts.map(button));
     reveal(msg.previousElementSibling || msg); // keep the visitor's own answer in view too
   }
 

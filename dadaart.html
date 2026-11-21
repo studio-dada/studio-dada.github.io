@@ -2,16 +2,14 @@
 <html lang="ko" class="live">
 <head>
 <meta name="robots" content="noindex, nofollow">
-<meta name="description" content="Spaces to Gather, Wrapped in Nature.">
+<meta name="description" content="음악 · 미술 · 건축. DADA의 공간에서 여는 공연과 전시를 안내합니다.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="DADA">
-<meta property="og:title" content="DADA">
-<meta property="og:description" content="Spaces to Gather, Wrapped in Nature.">
+<meta property="og:title" content="DADA ART | DADA">
+<meta property="og:description" content="음악 · 미술 · 건축. DADA의 공간에서 여는 공연과 전시를 안내합니다.">
 <meta property="og:url" content="https://dada-studio.io/dadaart">
-<meta property="og:image" content="https://dada-studio.io/og-image.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="DADA FOREST 전나무 숲과 DADA 로고">
+<meta property="og:image" content="https://dada-studio.io/images/spaceon-int-5.jpg">
+<meta property="og:image:alt" content="DADA ART">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
@@ -21,7 +19,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-<title>DADA STUDIO</title>
+<title>DADA ART | DADA</title>
 <style>
 
   :root{
@@ -923,6 +921,13 @@
       box-shadow:6px 0 8px -6px rgba(20,20,18,.18);}
     .cmp td,.cmp thead th:not(:first-child){min-width:150px;}
   }
+  /* Photo dots (2026-11-21 review): they were 7px buttons, hard to tap. The dot looks the same, drawn inside
+     a 22 x 28px button, which also spaces the dots a little wider. */
+  .gdots{gap:0;}
+  .gdots button{display:grid;place-items:center;width:22px;height:28px;background:none;opacity:1;border-radius:0;}
+  .gdots button::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--stone);opacity:.4;transition:.2s;}
+  .gdots button.on{width:30px;}
+  .gdots button.on::before{width:20px;border-radius:4px;opacity:1;}
 </style>
 
 <style id="tone">
@@ -1703,7 +1708,7 @@
             <tr><th scope="row">주차</th><td>20대</td><td>20대</td><td><span class="todo">입력</span></td></tr>
             <tr><th scope="row">추천 용도</th><td>스몰웨딩 · 기업행사 · 문화행사 · 촬영</td><td>워크숍 · 사외 모임 · 요가·명상</td><td>전시 · 공연 · 수업 · 워크숍 · 팝업 · 촬영</td></tr>
             <tr><th scope="row">요금</th><td>A동 12~80만원<br>B동 6~50만원</td><td><span class="todo">입력</span></td><td><span class="todo">입력</span></td></tr>
-            <tr><th scope="row">예약</th><td>네이버 예약</td><td>전화 예약</td><td>전화 문의</td></tr>
+            <tr><th scope="row">예약</th><td>전화 문의</td><td>전화 문의</td><td>전화 문의</td></tr>
           </tbody>
         </table>
       </div>
@@ -1713,7 +1718,7 @@
 
 <!-- ================= STUDIO 1941 ================= -->
 <section class="page" id="s1941">
-  <div class="lnav"><div class="wrap"><b>STUDIO 1941</b><a class="lnav-cta" href="https://map.naver.com/p/search/%EA%B2%BD%EA%B8%B0%20%EC%88%98%EC%9B%90%EC%8B%9C%20%EC%9E%A5%EC%95%88%EA%B5%AC%20%EC%83%81%EA%B4%91%EA%B5%90%EB%8F%99%20322" target="_blank" rel="noopener">네이버 예약</a></div></div>
+  <div class="lnav"><div class="wrap"><b>STUDIO 1941</b><a class="lnav-cta" href="tel:031-221-2100">전화 문의</a></div></div>
   <div class="wrap">
     <div class="page-head">
       <div class="eyebrow">(SINCE 1941 GWANGGYO)</div>
@@ -1881,20 +1886,19 @@
           <p>STUDIO 1941은 오전(09:00~13:00), 오후(13:00~18:00), 야간(18:00~22:00)으로 운영됩니다. 동 단위로 빌릴 수 있습니다.</p>
         </div>
         <div class="cta">
-          <!-- TODO: 네이버 예약 페이지 주소가 정해지면 href 교체 (지금은 지도 검색) -->
-          <a class="btn btn--solid" href="https://map.naver.com/p/search/%EA%B2%BD%EA%B8%B0%20%EC%88%98%EC%9B%90%EC%8B%9C%20%EC%9E%A5%EC%95%88%EA%B5%AC%20%EC%83%81%EA%B4%91%EA%B5%90%EB%8F%99%20322" target="_blank" rel="noopener">네이버 예약 <span aria-hidden="true">→</span></a>
-          <a class="btn btn--ghost" href="tel:031-221-2100">전화 문의 031-221-2100 <span aria-hidden="true">→</span></a>
+          <!-- Until Naver booking opens: phone first. Then the 네이버 예약 link goes back here as the dark button. -->
+          <a class="btn btn--solid" href="tel:031-221-2100">전화 문의 031-221-2100 <span aria-hidden="true">→</span></a>
           <a class="btn btn--ghost" href="https://map.naver.com/p/search/%EA%B2%BD%EA%B8%B0%20%EC%88%98%EC%9B%90%EC%8B%9C%20%EC%9E%A5%EC%95%88%EA%B5%AC%20%EC%83%81%EA%B4%91%EA%B5%90%EB%8F%99%20322" target="_blank" rel="noopener">오시는 길 <span aria-hidden="true">→</span></a>
         </div>
       </div>
     </div>
-    <div class="sticky-cta"><a href="tel:031-221-2100">전화 문의</a><a class="main" href="https://map.naver.com/p/search/%EA%B2%BD%EA%B8%B0%20%EC%88%98%EC%9B%90%EC%8B%9C%20%EC%9E%A5%EC%95%88%EA%B5%AC%20%EC%83%81%EA%B4%91%EA%B5%90%EB%8F%99%20322" target="_blank" rel="noopener">네이버 예약</a></div>
+    <div class="sticky-cta"><a href="https://map.naver.com/p/search/%EA%B2%BD%EA%B8%B0%20%EC%88%98%EC%9B%90%EC%8B%9C%20%EC%9E%A5%EC%95%88%EA%B5%AC%20%EC%83%81%EA%B4%91%EA%B5%90%EB%8F%99%20322" target="_blank" rel="noopener">오시는 길</a><a class="main" href="tel:031-221-2100">전화 문의</a></div>
   </div>
 </section>
 
 <!-- ================= DADA FOREST ================= -->
 <section class="page" id="forest">
-  <div class="lnav"><div class="wrap"><b>DADA FOREST</b><a class="lnav-cta" href="tel:031-221-2100">전화 예약</a></div></div>
+  <div class="lnav"><div class="wrap"><b>DADA FOREST</b><a class="lnav-cta" href="tel:031-221-2100">전화 문의</a></div></div>
   <div class="wrap">
     <div class="page-head">
       <div class="eyebrow">강원 평창</div>
@@ -1988,13 +1992,13 @@
           <p>DADA FOREST는 오후(12:00~18:00)와 야간(18:00~22:00)으로 운영됩니다. 사외 모임과 요가·명상에 알맞습니다.</p>
         </div>
         <div class="cta">
-          <a class="btn btn--solid" href="tel:031-221-2100">전화 예약 031-221-2100 <span aria-hidden="true">→</span></a>
+          <a class="btn btn--solid" href="tel:031-221-2100">전화 문의 031-221-2100 <span aria-hidden="true">→</span></a>
           <a class="btn btn--ghost" href="https://map.naver.com/p/search/%EA%B0%95%EC%9B%90%20%ED%8F%89%EC%B0%BD%EA%B5%B0%20%EC%B2%99%EC%B2%9C%EB%A6%AC%20235" target="_blank" rel="noopener">오시는 길 <span aria-hidden="true">→</span></a>
         </div>
       </div>
       <div class="note">※ 요금과 프로그램은 미정입니다.</div>
     </div>
-    <div class="sticky-cta"><a href="https://map.naver.com/p/search/%EA%B0%95%EC%9B%90%20%ED%8F%89%EC%B0%BD%EA%B5%B0%20%EC%B2%99%EC%B2%9C%EB%A6%AC%20235" target="_blank" rel="noopener">오시는 길</a><a class="main" href="tel:031-221-2100">전화 예약</a></div>
+    <div class="sticky-cta"><a href="https://map.naver.com/p/search/%EA%B0%95%EC%9B%90%20%ED%8F%89%EC%B0%BD%EA%B5%B0%20%EC%B2%99%EC%B2%9C%EB%A6%AC%20235" target="_blank" rel="noopener">오시는 길</a><a class="main" href="tel:031-221-2100">전화 문의</a></div>
   </div>
 </section>
 

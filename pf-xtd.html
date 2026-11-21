@@ -1442,6 +1442,11 @@
 .dbot-field input,.dbot-field textarea{width:100%;padding:7px 9px;border:1px solid var(--line);border-radius:0;
   background:var(--box);color:var(--ink);font:inherit;font-size:16px;}
 .dbot-field textarea{height:68px;resize:none;line-height:1.45;}
+/* iPhone Safari draws a date field as its own control, wider than the box (operator screenshot 2026-11-21).
+   As a plain field it keeps to the box like the others; a tap still opens the date picker. */
+.dbot-field input[type="date"]{-webkit-appearance:none;appearance:none;display:block;min-width:0;max-width:100%;
+  min-height:2.625em;text-align:left;}   /* 42px, as tall as the text fields */
+.dbot-field input[type="date"]::-webkit-date-and-time-value{margin:0;text-align:left;}
 .dbot-field.checkbox{flex-direction:row;align-items:flex-start;gap:8px;line-height:1.45;color:var(--ink);}
 .dbot-field.checkbox input{flex:none;width:16px;height:16px;margin:2px 0 0;padding:0;}
 .dbot-field.trap{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
